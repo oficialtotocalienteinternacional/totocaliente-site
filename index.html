@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sitio oficial de TOTO CALIENTE INTERNACIONAL. Novedades, eventos y actualizaciones en tiempo real.">
+    <meta name="description" content="Sitio oficial de TOTO CALIENTE INTERNACIONAL. Novedades y eventos.">
     <title>TOTO CALIENTE INTERNACIONAL | Sitio Oficial</title>
     
-    <!-- Fuente moderna de Google Fonts -->
+    <!-- Fuente moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- VARIABLES DE COLOR (EDITA AQUÍ LOS COLORES) --- */
+        /* --- VARIABLES DE COLOR --- */
         :root {
             --color-fondo: #0f0f0f;
             --color-tarjeta: #1a1a1a;
-            --color-primario: #ff4500; /* Naranja Fuego */
-            --color-secundario: #4267B2; /* Azul Confiable */
+            --color-primario: #ff4500;
+            --color-secundario: #4267B2;
             --color-texto: #ffffff;
             --color-texto-suave: #cccccc;
         }
 
-        /* --- ESTILOS GENERALES --- */
         html, body {
             height: 100%;
             margin: 0;
-            font-family: 'Montserrat', sans-serif; /* Tipografía moderna */
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--color-fondo);
             background-image: radial-gradient(circle at top right, #2a1005, transparent 40%);
             color: var(--color-texto);
@@ -33,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Accesibilidad: Enlace para saltar al contenido principal */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -42,37 +40,31 @@
             color: white;
             padding: 8px;
             z-index: 2000;
-            transition: top 0.3s;
         }
         .skip-link:focus { top: 0; }
 
-        /* --- LOGO STICKY --- */
         .logo-esquina {
             position: fixed;
             top: 20px;
             left: 20px;
-            width: 100px; /* Tamaño ajustado */
+            width: 100px;
             height: auto;
             z-index: 1000;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
-            transition: transform 0.3s ease;
         }
-        .logo-esquina:hover { transform: scale(1.05); }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
         main {
             flex: 1;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 100px 20px 40px; /* Padding superior para no tapar con el logo */
+            padding: 100px 20px 40px;
             box-sizing: border-box;
             text-align: center;
         }
 
-        /* --- ENCABEZADO --- */
         .logo-titulo {
-            font-size: clamp(32px, 5vw, 56px); /* Tamaño responsivo */
+            font-size: clamp(32px, 5vw, 56px);
             font-weight: 900;
             color: var(--color-primario);
             text-transform: uppercase;
@@ -80,14 +72,7 @@
             margin-bottom: 10px;
             letter-spacing: 1px;
         }
-        .subtitulo {
-            font-size: 18px;
-            color: var(--color-texto-suave);
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
 
-        /* --- BOTONES --- */
         .btn-seguir {
             display: inline-flex;
             align-items: center;
@@ -104,16 +89,16 @@
             border: none;
             cursor: pointer;
             gap: 10px;
+            white-space: nowrap;
         }
         .btn-seguir:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(66, 103, 178, 0.6);
         }
 
-        /* --- TARJETAS (NOVEDADES Y FORMULARIO) --- */
         .novedad {
-            background: rgba(28, 28, 28, 0.7); /* Transparencia */
-            backdrop-filter: blur(10px); /* Efecto vidrio */
+            background: rgba(28, 28, 28, 0.7);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 69, 0, 0.2);
             border-left: 5px solid var(--color-primario);
             padding: 30px;
@@ -122,9 +107,7 @@
             text-align: left;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
         }
-        .novedad:hover { transform: translateY(-5px); }
         
         .novedad h3 {
             color: var(--color-primario);
@@ -136,7 +119,7 @@
         }
         .novedad p { line-height: 1.6; color: #ddd; }
 
-        /* --- FORMULARIO MEJORADO --- */
+        /* Formulario Simplificado */
         .form-group {
             display: flex;
             flex-direction: column;
@@ -162,7 +145,6 @@
             border-color: var(--color-primario);
         }
         
-        /* Mensaje de éxito oculto por defecto */
         #mensaje-exito {
             display: none;
             margin-top: 15px;
@@ -171,7 +153,6 @@
             text-align: center;
         }
 
-        /* --- FOOTER --- */
         footer {
             background: #000;
             padding: 20px;
@@ -186,50 +167,42 @@
 
 <body>
 
-    <!-- Accesibilidad: Saltar al contenido -->
     <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
 
-    <!-- Logo (Asegúrate de tener la imagen 'no_bg_image.png' en la misma carpeta) -->
-    <!-- EDITAR: Si no tienes imagen aún, puedes borrar esta línea o cambiar el src -->
-    <img src="no_bg_image.png" alt="Logo TOTO CALIENTE" class="logo-esquina" onerror="this.style.display='none'">
+    <img src="no_bg_image.png" alt="Logo" class="logo-esquina" onerror="this.style.display='none'">
 
     <main id="contenido-principal">
         
-        <!-- Encabezado -->
         <header>
             <div class="logo-titulo">
                 🔥 TOTO CALIENTE <br> INTERNACIONAL 🔥
             </div>
-            <p class="subtitulo">Noticias verificadas • Actualización constante • Comunidad global</p>
+            <p style="color:#ccc; margin-bottom:30px;">Noticias verificadas • Actualización constante</p>
             
-            <a href="#novedades" class="btn-seguir" aria-label="Ver las últimas novedades">
+            <a href="#novedades" class="btn-seguir">
                 <span>🔔</span> Ver Novedades
             </a>
         </header>
 
-        <!-- Sección de Novedades -->
         <section id="novedades">
-            <!-- EDITAR AQUÍ: Contenido de la noticia -->
+            <!-- Noticia -->
             <article class="novedad">
                 <h3><span>📢</span> Última Actualización</h3>
                 <p>
-                    <strong>¡Atención comunidad!</strong> Se ha confirmado un nuevo evento especial para este fin de semana. 
-                    Los detalles completos se revelarán en nuestras redes oficiales. Mantente atento para no perderte nada.
-                    <br><br>
-                    <em>Publicado: Hoy, 13 de Junio 2026</em>
+                    <strong>¡Atención comunidad!</strong> Nuevo evento confirmado para este fin de semana. 
+                    Detalles completos próximamente en redes oficiales.
                 </p>
             </article>
 
-            <!-- Formulario de Suscripción -->
+            <!-- Formulario Simplificado (Sin textos extra) -->
             <article class="novedad">
-                <h3><span>✉️</span> Suscríbete al Boletín</h3>
-                <p>Recibe información prioritaria directamente en tu correo. Sin spam, solo lo importante.</p>
-                
+                <h3><span>✉️</span> Suscríbete</h3>
+                <!-- Solo el input y el botón -->
                 <form id="formulario-suscripcion" onsubmit="manejarSuscripcion(event)">
                     <div class="form-group">
-                        <input type="email" placeholder="tu@correo-ejemplo.com" required aria-label="Correo electrónico">
+                        <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
                         <button type="submit" class="btn-seguir" style="padding: 15px 25px; font-size: 16px;">
-                            Suscribirme
+                            Enviar
                         </button>
                     </div>
                     <div id="mensaje-exito">¡Gracias! Te has suscrito correctamente. 🔥</div>
@@ -239,20 +212,13 @@
 
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 <strong>TOTO CALIENTE INTERNACIONAL</strong>. Todos los derechos reservados.</p>
-        <p>
-            <a href="#">Política de Privacidad</a> | <a href="#">Contacto</a>
-        </p>
     </footer>
 
-    <!-- Script ligero para funcionalidad del formulario -->
     <script>
         function manejarSuscripcion(event) {
-            event.preventDefault(); // Evita que la página se recargue
-            
-            // Simulación de envío exitoso
+            event.preventDefault();
             const btn = event.target.querySelector('button');
             const originalText = btn.innerText;
             
@@ -261,11 +227,10 @@
 
             setTimeout(() => {
                 document.getElementById('mensaje-exito').style.display = 'block';
-                event.target.reset(); // Limpia el formulario
-                btn.innerText = "¡Suscrito!";
-                btn.style.background = "#4caf50"; // Cambia a verde
+                event.target.reset();
+                btn.innerText = "¡Enviado!";
+                btn.style.background = "#4caf50";
                 
-                // Restaurar botón después de 3 segundos
                 setTimeout(() => {
                     btn.innerText = originalText;
                     btn.disabled = false;
