@@ -15,35 +15,56 @@ body{
   position:relative;
 }
 
-.logo{
-  font-size:40px;
-  font-weight:bold;
-  margin-bottom:20px;
+/* Logo sticky en la esquina */
+.logo-esquina{
+  position:fixed;
+  top:20px;
+  left:20px;        /* cámbialo a right:20px si lo quieres a la derecha */
+  width:120px;
+  height:auto;
+  z-index:1000;
 }
 
-.btn{
+/* Encabezado llamativo */
+.logo-titulo{
+  font-size:48px;
+  font-weight:bold;
+  color:#ff4500; /* naranja fuego */
+  text-shadow:2px 2px 8px #000;
+  margin-bottom:30px;
+}
+
+/* Botón estilo seguir */
+.btn-seguir{
   display:inline-block;
-  padding:15px 30px;
-  background:#28a745;
+  padding:12px 25px;
+  background:#4267B2; /* azul estilo Facebook */
   color:white;
   text-decoration:none;
-  border-radius:10px;
-  font-size:20px;
-  margin-top:20px;
+  border-radius:8px;
+  font-size:18px;
+  margin-top:15px;
   transition:background 0.3s;
 }
-.btn:hover{
-  background:#218838;
+.btn-seguir:hover{
+  background:#365899;
 }
 
-.card{
-  background:#222;
+/* Tarjetas estilo post */
+.novedad{
+  background:#1c1c1c;
+  border-left:5px solid #ff4500;
   padding:20px;
   margin:20px auto;
   max-width:700px;
+  text-align:left;
   border-radius:10px;
 }
+.novedad h3{
+  color:#ff4500;
+}
 
+/* Formulario */
 input[type="email"]{
   padding:10px;
   border-radius:5px;
@@ -52,20 +73,14 @@ input[type="email"]{
   margin-top:10px;
 }
 
+/* Footer elegante */
 footer{
   margin-top:40px;
   font-size:14px;
   color:#aaa;
-}
-
-/* Logo sticky en la esquina */
-.logo-esquina{
-  position:fixed;   /* se queda fijo aunque hagas scroll */
-  top:20px;
-  left:20px;        /* cámbialo a right:20px si lo quieres a la derecha */
-  width:120px;      /* ajusta el tamaño a lo que quieras */
-  height:auto;      /* mantiene proporción */
-  z-index:1000;     /* asegura que quede por encima del contenido */
+  background:#000;
+  padding:15px;
+  border-top:1px solid #333;
 }
 </style>
 </head>
@@ -75,8 +90,34 @@ footer{
 <!-- Logo sticky en la esquina -->
 <img src="logo.png" alt="Logo TOTO CALIENTE INTERNACIONAL" class="logo-esquina">
 
-<div class="logo">
+<!-- Encabezado llamativo -->
+<div class="logo-titulo">
 🔥 TOTO CALIENTE INTERNACIONAL 🔥
 </div>
 
-<div class="card">
+<!-- Botón estilo seguir -->
+<a href="#novedades" class="btn-seguir">🔔 Ver Novedades</a>
+
+<!-- Sección de novedades -->
+<div class="novedad" id="novedades">
+  <h3>Última actualización</h3>
+  <p>🔥 Nuevo evento confirmado para este fin de semana. ¡No te lo pierdas!</p>
+</div>
+
+<!-- Formulario de suscripción -->
+<div class="novedad">
+  <h3>Suscríbete</h3>
+  <p>Déjanos tu correo para recibir novedades:</p>
+  <form>
+    <input type="email" placeholder="Tu correo electrónico" required>
+    <button type="submit" class="btn-seguir">Suscribirme</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2026 TOTO CALIENTE INTERNACIONAL - Todos los derechos reservados
+</footer>
+
+</body>
+</html>
