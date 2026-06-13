@@ -1,243 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sitio oficial de TOTO CALIENTE INTERNACIONAL. Novedades y eventos.">
-    <title>TOTO CALIENTE INTERNACIONAL | Sitio Oficial</title>
-    
-    <!-- Fuente moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- VARIABLES DE COLOR --- */
-        :root {
-            --color-fondo: #0f0f0f;
-            --color-tarjeta: #1a1a1a;
-            --color-primario: #ff4500;
-            --color-secundario: #4267B2;
-            --color-texto: #ffffff;
-            --color-texto-suave: #cccccc;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--color-fondo);
-            background-image: radial-gradient(circle at top right, #2a1005, transparent 40%);
-            color: var(--color-texto);
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--color-primario);
-            color: white;
-            padding: 8px;
-            z-index: 2000;
-        }
-        .skip-link:focus { top: 0; }
-
-        .logo-esquina {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 100px;
-            height: auto;
-            z-index: 1000;
-            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
-        }
-
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 20px 40px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .logo-titulo {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 900;
-            color: var(--color-primario);
-            text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .btn-seguir {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            background: linear-gradient(45deg, var(--color-secundario), #365899);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(66, 103, 178, 0.4);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            gap: 10px;
-            white-space: nowrap;
-        }
-        .btn-seguir:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(66, 103, 178, 0.6);
-        }
-
-        .novedad {
-            background: rgba(28, 28, 28, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 69, 0, 0.2);
-            border-left: 5px solid var(--color-primario);
-            padding: 30px;
-            margin: 30px auto;
-            width: 100%;
-            text-align: left;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .novedad h3 {
-            color: var(--color-primario);
-            margin-top: 0;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .novedad p { line-height: 1.6; color: #ddd; }
-
-        /* Formulario Simplificado */
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        @media (min-width: 600px) {
-            .form-group { flex-direction: row; }
-        }
-        
-        input[type="email"] {
-            flex: 1;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #333;
-            background: #222;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        input[type="email"]:focus {
-            border-color: var(--color-primario);
-        }
-        
-        #mensaje-exito {
-            display: none;
-            margin-top: 15px;
-            color: #4caf50;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        footer {
-            background: #000;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-        footer a { color: var(--color-primario); text-decoration: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOTO CALIENTE INTERNACIONAL</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--fondo:#0f0f0f;--primario:#ff4500;--texto:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Montserrat',sans-serif;
+background:#0f0f0f;
+background-image:radial-gradient(circle at top right,#2a1005,transparent 40%);
+color:#fff;
+}
+main{max-width:1000px;margin:auto;padding:40px 20px}
+.logo-titulo{text-align:center;font-size:clamp(35px,5vw,65px);font-weight:900;color:#ff4500;margin-bottom:15px}
+.subtitulo{text-align:center;color:#ccc;margin-bottom:30px}
+.novedad{
+background:rgba(25,25,25,.85);
+border-left:5px solid #ff4500;
+padding:25px;border-radius:15px;margin-bottom:25px
+}
+.novedad h3{color:#ff4500;margin-bottom:10px}
+.btn{
+display:inline-block;padding:14px 28px;background:#4267B2;color:#fff;
+text-decoration:none;border-radius:50px;font-weight:bold
+}
+.online{font-size:50px;font-weight:900;color:#4caf50;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.stat{background:#222;padding:20px;border-radius:12px;text-align:center}
+.stat span{display:block;font-size:28px;font-weight:bold;margin-top:8px}
+.telegram-float{
+position:fixed;bottom:20px;right:20px;background:#0088cc;color:white;
+padding:16px 20px;border-radius:50px;text-decoration:none;font-weight:bold
+}
+.popup-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.75)
+}
+.popup{
+position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+background:#1a1a1a;padding:30px;border-radius:15px;border:2px solid #ff4500;
+width:90%;max-width:500px;text-align:center
+}
+footer{text-align:center;padding:20px;color:#777}
+</style>
 </head>
-
 <body>
 
-    <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+<div class="popup-overlay" id="overlay"></div>
+<div class="popup" id="popup">
+<h2>🚨 ANUNCIO IMPORTANTE</h2>
+<p>Guarda esta página para encontrar siempre los enlaces oficiales actualizados.</p><br>
+<a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn">🔥 Canal Oficial</a><br><br>
+<button onclick="cerrarPopup()">Cerrar</button>
+</div>
 
-    <img src="no_bg_image.png" alt="Logo" class="logo-esquina" onerror="this.style.display='none'">
+<main>
+<div class="logo-titulo">🔥 TOTO CALIENTE<br>INTERNACIONAL 🔥</div>
+<p class="subtitulo">Centro Oficial de Información y Enlaces</p>
 
-    <main id="contenido-principal">
-        
-        <header>
-            <div class="logo-titulo">
-                🔥 TOTO CALIENTE <br> INTERNACIONAL 🔥
-            </div>
-            <p style="color:#ccc; margin-bottom:30px;">Noticias verificadas • Actualización constante</p>
-            
-            <a href="#novedades" class="btn-seguir">
-                <span>🔔</span> Ver Novedades
-            </a>
-        </header>
+<div class="novedad">
+<h3>🟢 Estado del Servicio</h3>
+<p>Todos los canales funcionan correctamente.</p>
+</div>
 
-        <section id="novedades">
-            <!-- Noticia -->
-            <article class="novedad">
-                <h3><span>📢</span> Última Actualización</h3>
-                <p>
-                    <strong>¡Atención comunidad!</strong> Nuevo evento confirmado para este fin de semana. 
-                    Detalles completos próximamente en redes oficiales.
-                </p>
-            </article>
+<div class="novedad">
+<h3>👥 Usuarios Conectados</h3>
+<div class="online" id="onlineUsers">127</div>
+<p style="text-align:center;color:#ccc">Usuarios navegando actualmente</p>
+</div>
 
-            <!-- Formulario Simplificado (Sin textos extra) -->
-            <article class="novedad">
-                <h3><span>✉️</span> Suscríbete</h3>
-                <!-- Solo el input y el botón -->
-                <form id="formulario-suscripcion" onsubmit="manejarSuscripcion(event)">
-                    <div class="form-group">
-                        <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
-                        <button type="submit" class="btn-seguir" style="padding: 15px 25px; font-size: 16px;">
-                            Enviar
-                        </button>
-                    </div>
-                    <div id="mensaje-exito">¡Gracias! Te has suscrito correctamente. 🔥</div>
-                </form>
-            </article>
-        </section>
+<div class="novedad">
+<h3>🔥 Canal Principal</h3>
+<p>Canal oficial activo.</p><br>
+<a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn">✈️ Unirse</a>
+</div>
 
-    </main>
+<div class="novedad">
+<h3>🔗 Canales de Respaldo</h3>
+<p>🟢 Respaldo #1</p><br>
+<a href="#" class="btn">Entrar</a><br><br>
+<p>🟢 Respaldo #2</p><br>
+<a href="#" class="btn">Entrar</a>
+</div>
 
-    <footer>
-        <p>&copy; 2026 <strong>TOTO CALIENTE INTERNACIONAL</strong>. Todos los derechos reservados.</p>
-    </footer>
+<div class="novedad">
+<h3>📊 Estadísticas</h3>
+<div class="stats">
+<div class="stat">Visitantes Hoy<span>1,284</span></div>
+<div class="stat">Visitantes Totales<span>57,412</span></div>
+<div class="stat">Canales Activos<span>3</span></div>
+<div class="stat">Anuncios<span>18</span></div>
+</div>
+</div>
 
-    <script>
-        function manejarSuscripcion(event) {
-            event.preventDefault();
-            const btn = event.target.querySelector('button');
-            const originalText = btn.innerText;
-            
-            btn.innerText = "Enviando...";
-            btn.disabled = true;
+<div class="novedad">
+<h3>📝 Historial</h3>
+<p>📌 Canal principal actualizado.</p>
+<p>📌 Nuevo respaldo agregado.</p>
+<p>📌 Mantenimiento completado.</p>
+</div>
+</main>
 
-            setTimeout(() => {
-                document.getElementById('mensaje-exito').style.display = 'block';
-                event.target.reset();
-                btn.innerText = "¡Enviado!";
-                btn.style.background = "#4caf50";
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    btn.style.background = ""; 
-                }, 3000);
-            }, 1000);
-        }
-    </script>
+<footer>© 2026 TOTO CALIENTE INTERNACIONAL</footer>
+
+<a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-float">✈️ Canal Oficial</a>
+
+<script>
+function cerrarPopup(){
+document.getElementById('popup').style.display='none';
+document.getElementById('overlay').style.display='none';
+}
+setInterval(()=>{
+document.getElementById('onlineUsers').innerText=Math.floor(Math.random()*80)+120;
+},5000);
+</script>
+
 </body>
-</html>   
+</html>
