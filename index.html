@@ -7,36 +7,54 @@
 
 <style>
 body{
-font-family:Arial,sans-serif;
-background:#111;
-color:white;
-text-align:center;
-padding:40px;
+  font-family:Arial,sans-serif;
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:40px;
 }
 
 .logo{
-font-size:40px;
-font-weight:bold;
-margin-bottom:20px;
+  font-size:40px;
+  font-weight:bold;
+  margin-bottom:20px;
 }
 
 .btn{
-display:inline-block;
-padding:15px 30px;
-background:#28a745;
-color:white;
-text-decoration:none;
-border-radius:10px;
-font-size:20px;
-margin-top:20px;
+  display:inline-block;
+  padding:15px 30px;
+  background:#28a745;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-size:20px;
+  margin-top:20px;
+  transition:background 0.3s;
+}
+.btn:hover{
+  background:#218838;
 }
 
 .card{
-background:#222;
-padding:20px;
-margin:20px auto;
-max-width:700px;
-border-radius:10px;
+  background:#222;
+  padding:20px;
+  margin:20px auto;
+  max-width:700px;
+  border-radius:10px;
+}
+
+input[type="email"]{
+  padding:10px;
+  border-radius:5px;
+  border:none;
+  width:60%;
+  margin-top:10px;
+}
+
+footer{
+  margin-top:40px;
+  font-size:14px;
+  color:#aaa;
 }
 </style>
 </head>
@@ -48,19 +66,31 @@ border-radius:10px;
 </div>
 
 <div class="card">
-<h2>Portal Oficial</h2>
-<p>Bienvenido a nuestra comunidad.</p>
-<p>Aquí encontrarás publicaciones, anuncios y enlaces oficiales.</p>
+  <h2>Portal Oficial</h2>
+  <p>Bienvenido a nuestra comunidad.</p>
+  <p>Aquí encontrarás publicaciones, anuncios y enlaces oficiales.</p>
+  <!-- Botón que lleva a la sección de novedades -->
+  <a href="#novedades" class="btn">🔔 Ver Novedades</a>
+</div>
+
+<div class="card" id="novedades">
+  <h3>Última actualización</h3>
+  <p>Consulta nuestros canales oficiales para más información.</p>
 </div>
 
 <div class="card">
-<h3>Última actualización</h3>
-<p>Consulta nuestros canales oficiales para más información.</p>
+  <h3>Suscríbete</h3>
+  <p>Déjanos tu correo para recibir novedades:</p>
+  <!-- Formulario de suscripción -->
+  <form>
+    <input type="email" placeholder="Tu correo electrónico" required>
+    <button type="submit" class="btn">Suscribirme</button>
+  </form>
 </div>
 
-<a class="btn" href="https://t.me/" target="_blank">
-Entrar al Canal Oficial
-</a>
+<footer>
+  © 2026 TOTO CALIENTE INTERNACIONAL - Todos los derechos reservados
+</footer>
 
 </body>
 </html>
