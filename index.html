@@ -6,20 +6,24 @@
 <title>TOTO CALIENTE INTERNACIONAL</title>
 
 <style>
-body{
+html, body {
+  height: 100%;              /* ocupa toda la altura de la ventana */
+  margin: 0;                 /* elimina márgenes por defecto */
+  display: flex;
+  flex-direction: column;    /* organiza en columna */
   font-family:Arial,sans-serif;
   background:#111;
   color:white;
   text-align:center;
-  padding:40px;
   position:relative;
+  padding:0;
 }
 
 /* Logo sticky en la esquina */
 .logo-esquina{
   position:fixed;
   top:20px;
-  left:20px;        /* cámbialo a right:20px si lo quieres a la derecha */
+  left:20px;
   width:120px;
   height:auto;
   z-index:1000;
@@ -29,7 +33,7 @@ body{
 .logo-titulo{
   font-size:48px;
   font-weight:bold;
-  color:#ff4500; /* naranja fuego */
+  color:#ff4500;
   text-shadow:2px 2px 8px #000;
   margin-bottom:30px;
 }
@@ -38,7 +42,7 @@ body{
 .btn-seguir{
   display:inline-block;
   padding:12px 25px;
-  background:#4267B2; /* azul estilo Facebook */
+  background:#4267B2;
   color:white;
   text-decoration:none;
   border-radius:8px;
@@ -75,12 +79,13 @@ input[type="email"]{
 
 /* Footer elegante */
 footer{
-  margin-top:40px;
+  margin-top:auto;           /* empuja el footer al fondo */
   font-size:14px;
   color:#aaa;
   background:#000;
   padding:15px;
   border-top:1px solid #333;
+  text-align:center;
 }
 </style>
 </head>
@@ -90,29 +95,31 @@ footer{
 <!-- Logo sticky en la esquina -->
 <img src="logo.png" alt="Logo TOTO CALIENTE INTERNACIONAL" class="logo-esquina">
 
-<!-- Encabezado llamativo -->
-<div class="logo-titulo">
-🔥 TOTO CALIENTE INTERNACIONAL 🔥
-</div>
+<main>
+  <!-- Encabezado llamativo -->
+  <div class="logo-titulo">
+    🔥 TOTO CALIENTE INTERNACIONAL 🔥
+  </div>
 
-<!-- Botón estilo seguir -->
-<a href="#novedades" class="btn-seguir">🔔 Ver Novedades</a>
+  <!-- Botón estilo seguir -->
+  <a href="#novedades" class="btn-seguir">🔔 Ver Novedades</a>
 
-<!-- Sección de novedades -->
-<div class="novedad" id="novedades">
-  <h3>Última actualización</h3>
-  <p>🔥 Nuevo evento confirmado para este fin de semana. ¡No te lo pierdas!</p>
-</div>
+  <!-- Sección de novedades -->
+  <div class="novedad" id="novedades">
+    <h3>Última actualización</h3>
+    <p>🔥 Nuevo evento confirmado para este fin de semana. ¡No te lo pierdas!</p>
+  </div>
 
-<!-- Formulario de suscripción -->
-<div class="novedad">
-  <h3>Suscríbete</h3>
-  <p>Déjanos tu correo para recibir novedades:</p>
-  <form>
-    <input type="email" placeholder="Tu correo electrónico" required>
-    <button type="submit" class="btn-seguir">Suscribirme</button>
-  </form>
-</div>
+  <!-- Formulario de suscripción -->
+  <div class="novedad">
+    <h3>Suscríbete</h3>
+    <p>Déjanos tu correo para recibir novedades:</p>
+    <form>
+      <input type="email" placeholder="Tu correo electrónico" required>
+      <button type="submit" class="btn-seguir">Suscribirme</button>
+    </form>
+  </div>
+</main>
 
 <!-- Footer -->
 <footer>
