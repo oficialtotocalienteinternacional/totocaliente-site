@@ -150,25 +150,11 @@
         .canal-fila:hover .btn-unirse-mini { background: var(--primario); border-color: var(--primario); box-shadow: 0 4px 12px rgba(255, 69, 0, 0.2); }
         .no-resultados { text-align: center; padding: 40px; color: var(--texto-mutado); font-weight: 600; display: none; }
 
-        /* RESPALDOS */
-        .respaldos { padding: 60px 0 100px; }
-        .respaldos-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 30px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transition: var(--transicion); flex-wrap: wrap; gap: 15px; }
-        .respaldo-item:hover { border-color: rgba(0, 136, 204, 0.3); background-color: var(--bg-tarjeta-hover); transform: translateY(-3px); }
-        .respaldo-info { display: flex; align-items: center; gap: 15px; }
-        .respaldo-info i { font-size: 1.8rem; color: var(--secundario); }
-        .respaldo-info i.fa-whatsapp { color: #25d366; }
-        .respaldo-nombre { font-weight: 700; font-size: 1.1rem; }
-        .respaldo-status { font-size: 0.8rem; color: var(--exito); display: flex; align-items: center; gap: 5px; }
-
         /* FOOTER */
         footer { background-color: #07070a; border-top: 1px solid rgba(255, 255, 255, 0.03); padding: 40px 0; text-align: center; }
-        .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
-        .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
 
         @media (max-width: 768px) {
             .hero-botones .btn { width: 100%; }
-            .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
             .canal-fila { flex-direction: column; gap: 12px; text-align: center; }
             .hero-titulo { font-size: 2.2rem; }
         }
@@ -215,16 +201,17 @@
     <section class="registro-seccion" id="registro">
         <div class="contenedor">
             <div class="tarjeta registro-card">
-                <!-- Pestañas de Navegación Intercambiables -->
-                <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
+                
+                <!-- Contenedor de Pestañas (Se ocultará por completo al iniciar sesión) -->
+                <div id="contenedorTabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
                     <button id="btnTabLogin" class="btn" style="background: transparent; color: var(--primario); padding: 8px 20px; font-size: 0.85rem; border-bottom: 2px solid var(--primario); border-radius: 0;">INGRESAR</button>
                     <button id="btnTabRegistro" class="btn" style="background: transparent; color: var(--texto-mutado); padding: 8px 20px; font-size: 0.85rem; border-radius: 0;">REGISTRARME</button>
                 </div>
 
-                <!-- Pantalla Exclusiva de Éxito (Oculta al inicio) -->
+                <!-- PANTALLA DE ÉXITO LIMPIDA (Igual a tu versión previa en image_9f2469.png) -->
                 <div id="pantallaExito" style="display: none; padding: 20px 0;">
                     <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--exito); margin-bottom: 15px; display: block;"></i>
-                    <h3 id="tituloExito" style="font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 10px;">¡ACCESO AUTORIZADO!</h3>
+                    <h3 id="tituloExito" style="font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 10px;">¡SESIÓN INICIADA!</h3>
                     <p id="descExito" style="color: var(--texto-mutado); font-size: 0.9rem; margin-bottom: 20px;"></p>
                     <button onclick="cerrarSesion()" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.8rem;">Cerrar Sesión</button>
                 </div>
@@ -271,7 +258,7 @@
     <!-- ESTADÍSTICAS -->
     <section class="contenedor">
         <div class="stats-grid">
-            <div class="tarjeta stat-card destino-contador destacado" style="border-color: rgba(0, 230, 118, 0.3);">
+            <div class="tarjeta stat-card destacado" style="border-color: rgba(0, 230, 118, 0.3);">
                 <i class="fas fa-id-card-alt"></i>
                 <div class="stat-numero" id="contadorMiembrosReales">0</div>
                 <div class="stat-label">Usuarios Registrados en la Web</div>
@@ -325,15 +312,15 @@
     <script>
         const API_URL = '/api/usuarios';
 
-        // Elementos interactivos
         const tabLogin = document.getElementById('btnTabLogin');
         const tabRegistro = document.getElementById('btnTabRegistro');
+        const contenedorTabs = document.getElementById('contenedorTabs');
         const formLogin = document.getElementById('formLogin');
         const formRegistro = document.getElementById('formRegistro');
         const pantallaExito = document.getElementById('pantallaExito');
         const msgGeneral = document.getElementById('msgGeneral');
 
-        // Controles de Pestañas
+        // Controladores de Pestañas
         tabLogin.addEventListener('click', () => {
             if(localStorage.getItem('usuarioActivo')) return;
             formLogin.style.display = 'block';
@@ -356,33 +343,33 @@
             msgGeneral.style.display = 'none';
         });
 
-        // Obtener el contador del backend en Vercel
         async function cargarContadorReal() {
             try {
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 document.getElementById('contadorMiembrosReales').innerText = data.total.toLocaleString();
             } catch (err) {
-                console.log("Modo local o API en proceso de compilación.");
+                console.log("Modo local activo.");
                 document.getElementById('contadorMiembrosReales').innerText = localStorage.getItem('localUsersCount') || "143";
             }
         }
 
-        // Verificar si el usuario ya inició sesión previamente
+        // Verifica si ya había una sesión guardada
         function verificarSesion() {
             const usuarioGuardado = localStorage.getItem('usuarioActivo');
             if (usuarioGuardado) {
+                contenedorTabs.style.display = 'none'; // Desaparece la navegación por completo
                 formLogin.style.display = 'none';
                 formRegistro.style.display = 'none';
                 msgGeneral.style.display = 'none';
                 
                 document.getElementById('tituloExito').innerText = "¡SESIÓN INICIADA!";
-                document.getElementById('descExito').innerText = `Hola de nuevo, @${usuarioGuardado}. Tu perfil está activo y conectado en la red.`;
+                document.getElementById('descExito').innerText = `Bienvenido de nuevo a la plataforma, @${usuarioGuardado}. Acceso concedido.`;
                 pantallaExito.style.display = 'block';
             }
         }
 
-        // Envío de Formulario de Registro
+        // Envío del registro
         document.getElementById('formRegistro').addEventListener('submit', async function(e) {
             e.preventDefault();
             const usuario = document.getElementById('regUsuario').value.trim();
@@ -409,7 +396,7 @@
             }
         });
 
-        // Envío de Formulario de Login
+        // Envío del Login
         document.getElementById('formLogin').addEventListener('submit', async function(e) {
             e.preventDefault();
             const usuario = document.getElementById('loginUsuario').value.trim();
@@ -418,13 +405,14 @@
             if(usuario.length >= 3 && password.length >= 4) {
                 completarAcceso(usuario, false);
             } else {
-                mostrarError("Credenciales inválidas. Verifica tu clave.");
+                mostrarError("Credenciales incorrectas. Inténtalo de nuevo.");
             }
         });
 
-        // Transición Limpia a Pantalla de Éxito
+        // Oculta todo limpiamente y muestra solo el Éxito (Igual que image_9f2469.png)
         function completarAcceso(usuario, esNuevo) {
             localStorage.setItem('usuarioActivo', usuario);
+            contenedorTabs.style.display = 'none'; // Oculta las pestañas de Login/Registro
             formLogin.style.display = 'none';
             formRegistro.style.display = 'none';
             msgGeneral.style.display = 'none';
@@ -445,6 +433,7 @@
         function cerrarSesion() {
             localStorage.removeItem('usuarioActivo');
             pantallaExito.style.display = 'none';
+            contenedorTabs.style.display = 'flex'; // Devuelve las pestañas limpiamente
             formLogin.style.display = 'block';
             document.getElementById('formLogin').reset();
             document.getElementById('formRegistro').reset();
