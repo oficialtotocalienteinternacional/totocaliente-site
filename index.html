@@ -419,15 +419,23 @@
 
     <!-- SCRIPTS INTERACTIVOS -->
     <script>
-        // Simulación dinámica de conectados
+        // Simulación dinámica de conectados en el rango de 60,000
         setInterval(() => {
             const contador = document.getElementById('contadorOnline');
             if (contador) {
-                const variacion = Math.floor(Math.random() * 10) - 5; 
-                let actual = parseInt(contador.innerText) + variacion;
-                if(actual < 100) actual = 130;
-                if(actual > 200) actual = 150;
-                contador.innerText = actual;
+                // Quitamos la coma para poder hacer la matemática
+                let actual = parseInt(contador.innerText.replace(',', ''));
+                
+                // Genera una variación de subir o bajar entre 1 y 15 personas
+                const variacion = Math.floor(Math.random() * 30) - 15; 
+                actual = actual + variacion;
+                
+                // Límites de seguridad para que no se salga del rango de las 60 mil
+                if(actual < 60000) actual = 60250;
+                if(actual > 61500) actual = 60780;
+                
+                // Volvemos a ponerle la coma para que se vea estético (Ej: 60,425)
+                contador.innerText = actual.toLocaleString('en-US');
             }
         }, 4000);
 
