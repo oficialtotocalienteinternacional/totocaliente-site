@@ -139,7 +139,7 @@
         }
 
         .seccion-titulo span { color: var(--primario); }
-        .seccion-subtitulo { color: var(--texto-mutado); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
+        .seccion-subtitulo { color: var(--texto-mutated); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
 
         .tarjeta {
             background-color: var(--bg-tarjeta);
@@ -198,7 +198,7 @@
 
         /* HERO - NUEVOS ESTILOS INTEGRADOS */
         .hero { padding: 60px 0 60px; text-align: center; }
-        .hero-banner { max-width: 850px; margin: 0 auto; }
+        .hero-banner { max-width: 950px; margin: 0 auto; }
         
         .hero-logo-img {
             width: 120px;
@@ -223,8 +223,19 @@
             color: var(--primario);
         }
 
-        .hero-titulo { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-top: 20px; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-titulo span { background: linear-gradient(135deg, var(--primario) 30%, #ff8c00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Modificación para el gran título solicitado */
+        .hero-titulo { 
+            font-size: clamp(2.5rem, 6.5vw, 4.8rem); 
+            font-weight: 900; 
+            line-height: 1.1; 
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+        }
+        .hero-titulo span { 
+            color: var(--primario);
+        }
+        
         .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 650px; margin: 0 auto 35px; }
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
@@ -335,7 +346,6 @@
     <header>
         <div class="contenedor">
             <a href="#" class="brand">
-                <!-- LOGO DE TU REPOSITORIO -->
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
@@ -343,11 +353,11 @@
         </div>
     </header>
 
-    <!-- HERO PRINCIPAL - CON LOGO Y MARCA SUPERIOR CENTRADOS -->
+    <!-- HERO PRINCIPAL -->
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <!-- Logo principal en grande -->
+                <!-- Logo principal -->
                 <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
                 
                 <!-- Nombre de la marca arriba -->
@@ -356,7 +366,8 @@
                 <!-- Badge de estado online -->
                 <div class="badge-estado" style="margin-bottom: 25px;"><span class="punto"></span> Todos los canales online</div>
                 
-                <h1 class="hero-titulo">Portal Oficial de Enlaces y <span>Verificación</span></h1>
+                <!-- NUEVO TÍTULO GIGANTE SOLICITADO -->
+                <h1 class="hero-titulo">TOTO CALIENTE <br><span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
                 
