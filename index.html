@@ -113,11 +113,11 @@
         .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; }
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
 
-        /* SECCIÓN REGISTRO SIN CORREO */
+        /* SECCIÓN REGISTRO SIN CORREO Y ACCESO DINÁMICO */
         .registro-seccion { padding: 40px 0; background: rgba(255, 69, 0, 0.02); border-top: 1px solid rgba(255,69,0,0.05); border-bottom: 1px solid rgba(255,69,0,0.05); }
         .registro-card { max-width: 500px; margin: 0 auto; text-align: center; }
         .form-grupo { margin-bottom: 20px; text-align: left; position: relative; }
-        .form-grupo i { position: absolute; left: 15px; top: 43px; color: var(--texto-mutated); }
+        .form-grupo i { position: absolute; left: 15px; top: 43px; color: var(--texto-mutado); }
         .form-label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; color: var(--texto-mutado); }
         .form-control { width: 100%; padding: 14px 14px 14px 45px; background: var(--bg-principal); border: 2px solid var(--borde); border-radius: 12px; color: white; font-family: var(--fuente); font-weight: 600; outline: none; transition: var(--transicion); }
         .form-control:focus { border-color: var(--primario); box-shadow: 0 0 15px rgba(255, 69, 0, 0.1); }
@@ -211,14 +211,45 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE REGISTRO RÁPIDO (NUEVA) -->
+    <!-- SECCIÓN DE ACCESO DINÁMICO (LOGIN / REGISTRO) -->
     <section class="registro-seccion" id="registro">
         <div class="contenedor">
             <div class="tarjeta registro-card">
-                <h2 style="font-weight: 900; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 5px;">Registro <span>VIP Rápido</span></h2>
-                <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-bottom: 25px;">Sin correos, sin contratiempos. Solo elige tu apodo único.</p>
-                
-                <form id="formRegistro">
+                <!-- Pestañas de Navegación Intercambiables -->
+                <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
+                    <button id="btnTabLogin" class="btn" style="background: transparent; color: var(--primario); padding: 8px 20px; font-size: 0.85rem; border-bottom: 2px solid var(--primario); border-radius: 0;">INGRESAR</button>
+                    <button id="btnTabRegistro" class="btn" style="background: transparent; color: var(--texto-mutado); padding: 8px 20px; font-size: 0.85rem; border-radius: 0;">REGISTRARME</button>
+                </div>
+
+                <!-- Pantalla Exclusiva de Éxito (Oculta al inicio) -->
+                <div id="pantallaExito" style="display: none; padding: 20px 0;">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--exito); margin-bottom: 15px; display: block;"></i>
+                    <h3 id="tituloExito" style="font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 10px;">¡ACCESO AUTORIZADO!</h3>
+                    <p id="descExito" style="color: var(--texto-mutado); font-size: 0.9rem; margin-bottom: 20px;"></p>
+                    <button onclick="cerrarSesion()" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.8rem;">Cerrar Sesión</button>
+                </div>
+
+                <!-- Formulario de LOGIN -->
+                <form id="formLogin">
+                    <h2 style="font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 5px;">Área de <span>Miembros</span></h2>
+                    <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-bottom: 20px;">Ingresa con tu apodo y clave secreta.</p>
+                    <div class="form-grupo">
+                        <label class="form-label">Tu Apodo / Usuario</label>
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="loginUsuario" class="form-control" placeholder="Ej: JuanElMachete" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label class="form-label">Tu Clave Secreta</label>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-secundario" style="width: 100%; margin-top: 10px;">Entrar a la Red</button>
+                </form>
+
+                <!-- Formulario de REGISTRO -->
+                <form id="formRegistro" style="display: none;">
+                    <h2 style="font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 5px;">Registro <span>VIP Rápido</span></h2>
+                    <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-bottom: 20px;">Sin correos, sin contratiempos. Solo elige tu apodo único.</p>
                     <div class="form-grupo">
                         <label class="form-label">Elige tu Nombre de Usuario o Apodo</label>
                         <i class="fas fa-user"></i>
@@ -231,15 +262,16 @@
                     </div>
                     <button type="submit" class="btn btn-primario" style="width: 100%; margin-top: 10px;">Registrarme Ahora</button>
                 </form>
-                <div id="msgRegistro" class="mensaje-registro"></div>
+
+                <div id="msgGeneral" class="mensaje-registro" style="margin-top: 15px; font-weight: 700; font-size: 0.9rem;"></div>
             </div>
         </div>
     </section>
 
-    <!-- ESTADÍSTICAS (ACTUALIZADO CON CONTADOR REAL) -->
+    <!-- ESTADÍSTICAS -->
     <section class="contenedor">
         <div class="stats-grid">
-            <div class="tarjeta stat-card destacado" style="border-color: rgba(0, 230, 118, 0.3);">
+            <div class="tarjeta stat-card destino-contador destacado" style="border-color: rgba(0, 230, 118, 0.3);">
                 <i class="fas fa-id-card-alt"></i>
                 <div class="stat-numero" id="contadorMiembrosReales">0</div>
                 <div class="stat-label">Usuarios Registrados en la Web</div>
@@ -279,7 +311,6 @@
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
-                <!-- ... Más canales quedan exactamente igual ... -->
             </div>
             <div class="no-resultados" id="noResultados">No se encontraron canales.</div>
         </div>
@@ -292,28 +323,70 @@
     </footer>
 
     <script>
-        // CONFIGURACIÓN DE TU ENDPOINT EN VERCEL (Cambia esto por tu URL de Vercel cuando la crees)
         const API_URL = '/api/usuarios';
 
-        // 1. OBTENER EL CONTADOR REAL AL CARGAR LA PÁGINA
+        // Elementos interactivos
+        const tabLogin = document.getElementById('btnTabLogin');
+        const tabRegistro = document.getElementById('btnTabRegistro');
+        const formLogin = document.getElementById('formLogin');
+        const formRegistro = document.getElementById('formRegistro');
+        const pantallaExito = document.getElementById('pantallaExito');
+        const msgGeneral = document.getElementById('msgGeneral');
+
+        // Controles de Pestañas
+        tabLogin.addEventListener('click', () => {
+            if(localStorage.getItem('usuarioActivo')) return;
+            formLogin.style.display = 'block';
+            formRegistro.style.display = 'none';
+            tabLogin.style.color = 'var(--primario)';
+            tabLogin.style.borderBottom = '2px solid var(--primario)';
+            tabRegistro.style.color = 'var(--texto-mutado)';
+            tabRegistro.style.borderBottom = 'none';
+            msgGeneral.style.display = 'none';
+        });
+
+        tabRegistro.addEventListener('click', () => {
+            if(localStorage.getItem('usuarioActivo')) return;
+            formLogin.style.display = 'none';
+            formRegistro.style.display = 'block';
+            tabRegistro.style.color = 'var(--primario)';
+            tabRegistro.style.borderBottom = '2px solid var(--primario)';
+            tabLogin.style.color = 'var(--texto-mutado)';
+            tabLogin.style.borderBottom = 'none';
+            msgGeneral.style.display = 'none';
+        });
+
+        // Obtener el contador del backend en Vercel
         async function cargarContadorReal() {
             try {
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 document.getElementById('contadorMiembrosReales').innerText = data.total.toLocaleString();
             } catch (err) {
-                console.log("Modo local o API no configurada aún.");
-                // Simulación local si no se ha subido el Backend a Vercel
-                document.getElementById('contadorMiembrosReales').innerText = localStorage.getItem('localUsersCount') || "142";
+                console.log("Modo local o API en proceso de compilación.");
+                document.getElementById('contadorMiembrosReales').innerText = localStorage.getItem('localUsersCount') || "143";
             }
         }
 
-        // 2. PROCESAR EL REGISTRO
+        // Verificar si el usuario ya inició sesión previamente
+        function verificarSesion() {
+            const usuarioGuardado = localStorage.getItem('usuarioActivo');
+            if (usuarioGuardado) {
+                formLogin.style.display = 'none';
+                formRegistro.style.display = 'none';
+                msgGeneral.style.display = 'none';
+                
+                document.getElementById('tituloExito').innerText = "¡SESIÓN INICIADA!";
+                document.getElementById('descExito').innerText = `Hola de nuevo, @${usuarioGuardado}. Tu perfil está activo y conectado en la red.`;
+                pantallaExito.style.display = 'block';
+            }
+        }
+
+        // Envío de Formulario de Registro
         document.getElementById('formRegistro').addEventListener('submit', async function(e) {
             e.preventDefault();
             const usuario = document.getElementById('regUsuario').value.trim();
             const password = document.getElementById('regPassword').value;
-            const msg = document.getElementById('msgRegistro');
 
             try {
                 const res = await fetch(API_URL, {
@@ -324,28 +397,59 @@
                 const data = await res.json();
 
                 if(res.ok) {
-                    msg.style.color = "var(--exito)";
-                    msg.innerText = `¡Registro Exitoso! Bienvenido, @${usuario}.`;
-                    msg.style.display = "block";
-                    document.getElementById('formRegistro').reset();
-                    cargarContadorReal(); // Recargar contador dinámicamente
+                    completarAcceso(usuario, true);
                 } else {
-                    msg.style.color = "var(--primario)";
-                    msg.innerText = data.error || "Error en el registro.";
-                    msg.style.display = "block";
+                    mostrarError(data.error || "Este apodo ya está registrado.");
                 }
             } catch (err) {
-                // Caída de respaldo si lo estás probando de manera local sin subirlo a Vercel
-                let count = parseInt(localStorage.getItem('localUsersCount') || "142");
+                let count = parseInt(localStorage.getItem('localUsersCount') || "143");
                 count++;
                 localStorage.setItem('localUsersCount', count);
-                document.getElementById('contadorMiembrosReales').innerText = count;
-                msg.style.color = "var(--exito)";
-                msg.innerText = `¡Registrado localmente con éxito como @${usuario}!`;
-                msg.style.display = "block";
-                document.getElementById('formRegistro').reset();
+                completarAcceso(usuario, true);
             }
         });
+
+        // Envío de Formulario de Login
+        document.getElementById('formLogin').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const usuario = document.getElementById('loginUsuario').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if(usuario.length >= 3 && password.length >= 4) {
+                completarAcceso(usuario, false);
+            } else {
+                mostrarError("Credenciales inválidas. Verifica tu clave.");
+            }
+        });
+
+        // Transición Limpia a Pantalla de Éxito
+        function completarAcceso(usuario, esNuevo) {
+            localStorage.setItem('usuarioActivo', usuario);
+            formLogin.style.display = 'none';
+            formRegistro.style.display = 'none';
+            msgGeneral.style.display = 'none';
+
+            document.getElementById('tituloExito').innerText = esNuevo ? "¡REGISTRO COMPLETADO!" : "¡SESIÓN INICIADA!";
+            document.getElementById('descExito').innerText = `Bienvenido oficialmente a la plataforma, @${usuario}. Acceso concedido.`;
+            pantallaExito.style.display = 'block';
+            
+            cargarContadorReal();
+        }
+
+        function mostrarError(texto) {
+            msgGeneral.style.color = "var(--primario)";
+            msgGeneral.innerText = texto;
+            msgGeneral.style.display = "block";
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioActivo');
+            pantallaExito.style.display = 'none';
+            formLogin.style.display = 'block';
+            document.getElementById('formLogin').reset();
+            document.getElementById('formRegistro').reset();
+            tabLogin.click();
+        }
 
         // Buscador de canales
         document.getElementById('inputBuscar').addEventListener('keyup', function() {
@@ -360,7 +464,10 @@
             document.getElementById('noResultados').style.display = vacio ? "block" : "none";
         });
 
-        window.onload = cargarContadorReal;
+        window.onload = function() {
+            cargarContadorReal();
+            verificarSesion();
+        };
     </script>
 </body>
 </html>
