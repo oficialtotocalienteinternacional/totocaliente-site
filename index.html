@@ -118,6 +118,16 @@
             transform: translateY(-2px);
         }
 
+        .btn-secundario {
+            background: linear-gradient(135deg, var(--secundario) 0%, #006699 100%);
+            color: var(--texto-blanco);
+        }
+        
+        .btn-secundario:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+
         .seccion-titulo {
             font-size: clamp(1.8rem, 4vw, 2.4rem);
             font-weight: 900;
@@ -186,9 +196,33 @@
         .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
 
-        /* HERO */
-        .hero { padding: 80px 0 60px; text-align: center; }
+        /* HERO - NUEVOS ESTILOS INTEGRADOS */
+        .hero { padding: 60px 0 60px; text-align: center; }
         .hero-banner { max-width: 850px; margin: 0 auto; }
+        
+        .hero-logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primario);
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
+        }
+
+        .hero-marca-superior {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--texto-blanco);
+        }
+
+        .hero-marca-superior span {
+            color: var(--primario);
+        }
+
         .hero-titulo { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-top: 20px; margin-bottom: 20px; text-transform: uppercase; }
         .hero-titulo span { background: linear-gradient(135deg, var(--primario) 30%, #ff8c00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 650px; margin: 0 auto 35px; }
@@ -309,17 +343,23 @@
         </div>
     </header>
 
-    <!-- HERO PRINCIPAL -->
+    <!-- HERO PRINCIPAL - CON LOGO Y MARCA SUPERIOR CENTRADOS -->
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
+                <!-- Logo principal en grande -->
+                <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
+                
+                <!-- Nombre de la marca arriba -->
+                <div class="hero-marca-superior">TOTO CALIENTE <span>INTERNACIONAL</span></div>
+
+                <!-- Badge de estado online -->
+                <div class="badge-estado" style="margin-bottom: 25px;"><span class="punto"></span> Todos los canales online</div>
+                
                 <h1 class="hero-titulo">Portal Oficial de Enlaces y <span>Verificación</span></h1>
                 
-                <!-- 1. CAMBIO DE TEXTO: ESTILO PUBLICITARIO Y EMOCIONANTE -->
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
                 
-                <!-- 2. NUEVO BLOQUE DE 6 BOTONES REDISEÑADO -->
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
@@ -354,7 +394,7 @@
         <div class="stats-grid">
             <div class="tarjeta stat-card">
                 <i class="fas fa-users"></i>
-                <div class="stat-numero" id="contadorOnline">60000</div>
+                <div class="stat-numero" id="contadorOnline">60,000</div>
                 <div class="stat-label">Conectados Ahora</div>
             </div>
             <div class="tarjeta stat-card">
@@ -434,7 +474,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -444,7 +484,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -454,7 +494,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -464,7 +504,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -474,7 +514,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -484,7 +524,7 @@
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
@@ -515,8 +555,8 @@
         </div>
     </section>
 
-    <!-- Pie de página -->
-<footer>
+    <!-- PIE DE PÁGINA -->
+    <footer>
         <div>
             <img src="no_bg_image.png" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
         </div>
@@ -536,18 +576,14 @@
         setInterval(() => {
             const contador = document.getElementById('contadorOnline');
             if (contador) {
-                // Quitamos la coma para poder hacer la matemática
-                let actual = parseInt(contador.innerText.replace(',', ''));
+                let actual = parseInt(contador.innerText.replace(/,/g, ''));
                 
-                // Genera una variación de subir o bajar entre 1 y 15 personas
                 const variacion = Math.floor(Math.random() * 30) - 15; 
                 actual = actual + variacion;
                 
-                // Límites de seguridad para que no se salga del rango de las 60 mil
                 if(actual < 60000) actual = 60250;
                 if(actual > 61500) actual = 60780;
                 
-                // Volvemos a ponerle la coma para que se vea estético (Ej: 60,425)
                 contador.innerText = actual.toLocaleString('en-US');
             }
         }, 4000);
