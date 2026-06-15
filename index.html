@@ -160,12 +160,13 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: sticky; top: 0; z-index: 100; padding: 15px 0;
+            position: sticky; top: 0; z-index: 100; padding: 12px 0;
         }
 
         header .contenedor { display: flex; align-items: center; justify-content: space-between; }
-        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--texto-blanco); }
-        .brand-nombre { font-weight: 900; font-size: 1.2rem; }
+        .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--texto-blanco); }
+        .brand-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--primario); }
+        .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
 
         /* HERO */
@@ -282,6 +283,8 @@
     <header>
         <div class="contenedor">
             <a href="#" class="brand">
+                <!-- LOGO DE TU REPOSITORIO -->
+                <img src="no_bg_image.png" alt="Logo" class="brand-logo">
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
             <div class="badge-estado"><span class="punto"></span> Red Activa</div>
@@ -297,7 +300,7 @@
                 <p class="hero-descripcion">Accede de forma segura y directa a toda nuestra red masiva de contenidos. Filtra y busca tus canales usando el indexador en tiempo real abajo.</p>
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
-                        <i class="fab fa-telegram-plane"></i> Canal Principal Telegram
+                        <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
                     </a>
                     <a href="#buscador" class="btn btn-outline">Buscar Canales</a>
                 </div>
@@ -331,7 +334,7 @@
         <div class="contenedor">
             <div style="text-align: center;">
                 <h2 class="seccion-titulo">Buscador Oficial de <span>Canales</span></h2>
-                <p class="seccion-subtitulo" style="margin: 0 auto 40px;">Escribe una palabra clave (ej. Películas, Música, Respaldo) para encontrar el acceso directo.</p>
+                <p class="seccion-subtitulo" style="margin: 0 auto 40px;">Escribe una palabra clave para encontrar el acceso directo de forma inmediata.</p>
             </div>
 
             <div class="buscador-contenedor">
@@ -344,31 +347,34 @@
             <!-- Contenedor de Canales -->
             <div class="lista-canales" id="listaCanales">
                 
+                <!-- CANAL 1 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">Canal Principal Puente (Acceso General)</span></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE PUENTE</span></div>
                     </div>
                     <span class="canal-categoria-tag">Oficial</span>
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
+                <!-- CANAL 2 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box">HD</div>
-                        <div><span class="canal-nombre-texto">Películas y Series Streaming Internacional</span></div>
+                        <div class="canal-icon-box">⭐</div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
                     </div>
-                    <span class="canal-categoria-tag">Entretenimiento</span>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
+                    <span class="canal-categoria-tag">Exclusivo</span>
+                    <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
+                <!-- CANAL 3 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box">🛡️</div>
-                        <div><span class="canal-nombre-texto">Canal Respaldo Seguro #1 (Espejo)</span></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
                     </div>
-                    <span class="canal-categoria-tag">Respaldo</span>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
+                    <span class="canal-categoria-tag">Web Oficial</span>
+                    <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
             </div>
@@ -388,7 +394,7 @@
                     <div class="respaldo-info">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <div class="respaldo-nombre">Canal Oficial Puente (Principal)</div>
+                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE (Canal Principal)</div>
                             <div class="respaldo-status"><span class="punto"></span> Online</div>
                         </div>
                     </div>
