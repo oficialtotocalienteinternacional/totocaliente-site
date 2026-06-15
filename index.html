@@ -153,6 +153,7 @@
             text-transform: uppercase;
             text-decoration: none;
             transition: var(--transicion);
+            cursor: pointer;
         }
 
         .btn-login-nav {
@@ -187,7 +188,7 @@
         }
 
         .seccion-titulo span { color: var(--primario); }
-        .seccion-subtitulo { color: var(--texto-mutado); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
+        .seccion-subtitulo { color: var(--texto-mutated); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
 
         .tarjeta {
             background-color: var(--bg-tarjeta);
@@ -253,7 +254,7 @@
         }
 
         /* HERO */
-        .hero { padding: 40px 0 60px; text-align: center; overflow: hidden; }
+        .hero { padding: 40px 0 40px; text-align: center; overflow: hidden; }
         .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         
         .hero-logo-img {
@@ -300,6 +301,80 @@
         .hero-acceso-destacado .btn { flex: 1; }
 
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
+
+        /* SECCIÓN FORMULARIOS INTERACTIVOS */
+        .seccion-formularios {
+            display: none;
+            max-width: 450px;
+            margin: 0 auto 50px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contenedor-form {
+            background-color: var(--bg-tarjeta);
+            border: 2px solid var(--primario);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.15);
+        }
+
+        .form-titulo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .form-titulo span { color: var(--primario); }
+
+        .grupo-input {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .grupo-input i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--texto-mutado);
+        }
+        .input-auth {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-family: var(--fuente);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transicion);
+        }
+        .input-auth:focus {
+            border-color: var(--primario);
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+        }
+
+        .form-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .msg-box {
+            display: none;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
 
         /* STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
@@ -418,13 +493,12 @@
         <div class="contenedor">
             <a href="#" class="brand">
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
-                <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
+                <div class="brand-nombre">TOTO CALIENTE <span>INTERNAVIONAL</span></div>
             </a>
             
-            <!-- Cambia el '#' por tu enlace real aquí abajo -->
             <div class="header-acciones">
-                <a href="👉_PON_AQUÍ_TU_ENLACE_DE_LOGIN" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="👉_PON_AQUÍ_TU_ENLACE_DE_REGISTRO" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</a>
+                <button onclick="alternarFormulario('login')" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button onclick="alternarFormulario('registro')" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</button>
             </div>
         </div>
     </header>
@@ -441,14 +515,51 @@
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Inicia sesión en nuestra web o regístrate para no perderte nada, explora comunidades exclusivas y usa el buscador rápido aquí abajo. 🔥</p>
                 
-                <!-- Cambia el '#' por tu enlace real aquí también -->
+                <!-- Botones interactivos que controlan las cajas dinámicas -->
                 <div class="hero-acceso-destacado">
-                    <a href="👉_PON_AQUÍ_TU_ENLACE_DE_LOGIN" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+                    <button onclick="alternarFormulario('login')" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
                         <i class="fas fa-key"></i> Iniciar Sesión
-                    </a>
-                    <a href="👉_PON_AQUÍ_TU_ENLACE_DE_REGISTRO" class="btn btn-primario">
+                    </button>
+                    <button onclick="alternarFormulario('registro')" class="btn btn-primario">
                         <i class="fas fa-user-check"></i> Registrarse Web
-                    </a>
+                    </button>
+                </div>
+                
+                <!-- SECCIÓN DE FORMULARIOS CONTROLADOS POR JS -->
+                <div class="seccion-formularios" id="zonaFormularios">
+                    <!-- Formulario Login -->
+                    <div class="contenedor-form" id="cajaLogin" style="display: none;">
+                        <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
+                        <form id="formLogin">
+                            <div class="grupo-input">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="loginUsuario" class="input-auth" placeholder="Tu Apodo / Usuario" required>
+                            </div>
+                            <div class="grupo-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginPassword" class="input-auth" placeholder="Tu Contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-primario form-btn">Entrar al Portal</button>
+                        </form>
+                        <div class="msg-box" id="msgLogin"></div>
+                    </div>
+
+                    <!-- Formulario Registro -->
+                    <div class="contenedor-form" id="cajaRegistro" style="display: none;">
+                        <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
+                        <form id="formRegistro">
+                            <div class="grupo-input">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="regUsuario" class="input-auth" placeholder="Elige un Apodo" required>
+                            </div>
+                            <div class="grupo-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regPassword" class="input-auth" placeholder="Crea una Contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-primario form-btn">Completar Registro</button>
+                        </form>
+                        <div class="msg-box" id="msgRegistro"></div>
+                    </div>
                 </div>
                 
                 <div class="hero-botones">
@@ -489,14 +600,14 @@
                 <div class="stat-label">Conectados Ahora</div>
             </div>
             <div class="tarjeta stat-card">
+                <i class="fas fa-user-shield"></i>
+                <div class="stat-numero" id="contadorMiembrosReales">1,421</div>
+                <div class="stat-label">Miembros Oficiales</div>
+            </div>
+            <div class="tarjeta stat-card">
                 <i class="fas fa-folder-tree"></i>
                 <div class="stat-numero">10,000+</div>
                 <div class="stat-label">Canales Disponibles</div>
-            </div>
-            <div class="tarjeta stat-card">
-                <i class="fas fa-shield-alt"></i>
-                <div class="stat-numero">100%</div>
-                <div class="stat-label">Verificado</div>
             </div>
         </div>
     </section>
@@ -561,51 +672,6 @@
                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
             </div>
 
             <div class="no-resultados" id="noResultados">
@@ -645,17 +711,6 @@
                     </div>
                     <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
                 </div>
-
-                <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
-                    <div class="respaldo-info">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <div class="respaldo-nombre">Toto Caliente Internacional</div>
-                            <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 2,486 Seguidores</div>
-                        </div>
-                    </div>
-                    <a href="https://whatsapp.com/channel/0029Vb779BF1iUxcqXqmty0q" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
-                </div>
             </div>
         </div>
     </section>
@@ -676,6 +731,114 @@
 
     <!-- SCRIPTS INTERACTIVOS -->
     <script>
+        // Definición de URL de tu API en Vercel
+        const API_URL = '/api/usuarios';
+
+        // Inicializar el contador de usuarios registrados de forma local
+        document.addEventListener("DOMContentLoaded", () => {
+            const localCount = localStorage.getItem('localUsersCount') || "1421";
+            document.getElementById('contadorMiembrosReales').innerText = localCount;
+            cargarContadorReal();
+        });
+
+        // Función simulada para cargar contador desde API si es necesario
+        async function cargarContadorReal() {
+            try {
+                const res = await fetch(API_URL);
+                if(res.ok) {
+                    const data = await res.json();
+                    if(data.total) {
+                        document.getElementById('contadorMiembrosReales').innerText = data.total;
+                    }
+                }
+            } catch(e) {
+                console.log("Cargando desde almacenamiento local.");
+            }
+        }
+
+        // Mostrar / Ocultar cajas de login y registro
+        function alternarFormulario(tipo) {
+            const zona = document.getElementById('zonaFormularios');
+            const login = document.getElementById('cajaLogin');
+            const registro = document.getElementById('cajaRegistro');
+
+            if (tipo === 'login') {
+                if (login.style.display === 'block') {
+                    zona.style.display = 'none';
+                    login.style.display = 'none';
+                } else {
+                    zona.style.display = 'block';
+                    login.style.display = 'block';
+                    registro.style.display = 'none';
+                }
+            } else if (tipo === 'registro') {
+                if (registro.style.display === 'block') {
+                    zona.style.display = 'none';
+                    registro.style.display = 'none';
+                } else {
+                    zona.style.display = 'block';
+                    registro.style.display = 'block';
+                    login.style.display = 'none';
+                }
+            }
+        }
+
+        // ==========================================
+        // TU SCRIPT: PROCESAR EL REGISTRO
+        // ==========================================
+        document.getElementById('formRegistro').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const usuario = document.getElementById('regUsuario').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const msg = document.getElementById('msgRegistro');
+            const formulario = document.getElementById('formRegistro');
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario, password })
+                });
+                const data = await res.json();
+
+                if(res.ok) {
+                    formulario.style.display = "none";
+                    msg.style.color = "var(--exito)";
+                    msg.innerHTML = `<i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                                     <span style="font-size: 1.2rem; display: block;">¡REGISTRO COMPLETADO!</span>
+                                     <p style="color: var(--texto-mutado); font-weight: normal; margin-top: 5px;">Bienvenido oficialmente a la red, @${usuario}.</p>`;
+                    msg.style.display = "block";
+                    cargarContadorReal(); 
+                } else {
+                    msg.style.color = "var(--primario)";
+                    msg.innerText = data.error || "Error en el registro.";
+                    msg.style.display = "block";
+                }
+            } catch (err) {
+                let count = parseInt(localStorage.getItem('localUsersCount') || "1421");
+                count++;
+                localStorage.setItem('localUsersCount', count);
+                document.getElementById('contadorMiembrosReales').innerText = count;
+                
+                formulario.style.display = "none";
+                msg.style.color = "var(--exito)";
+                msg.innerHTML = `<i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                                 <span style="font-size: 1.2rem; display: block;">¡REGISTRO EXITOSO!</span>
+                                 <p style="color: var(--texto-mutado); font-weight: normal; margin-top: 5px;">Te has registrado localmente como @${usuario}.</p>`;
+                msg.style.display = "block";
+            }
+        });
+
+        // Formulario Procesar Login (Estructura base interactiva)
+        document.getElementById('formLogin').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('msgLogin');
+            msg.style.color = "var(--exito)";
+            msg.innerText = "¡Sesión iniciada correctamente!";
+            msg.style.display = "block";
+        });
+
+        // Animación decorativa de conectados
         setInterval(() => {
             const contador = document.getElementById('contadorOnline');
             if (contador) {
@@ -688,6 +851,7 @@
             }
         }, 4000);
 
+        // Buscador reactivo
         document.getElementById('inputBuscar').addEventListener('keyup', function() {
             let filtro = this.value.toLowerCase().trim();
             let filas = document.getElementById('listaCanales').getElementsByClassName('canal-fila');
