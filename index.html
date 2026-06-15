@@ -215,17 +215,60 @@
         .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
 
-        /* HERO - REDISEÑO DE CENTRADO ABSOLUTO */
+        /* HERO - REDISEÑO DE CENTRADO ABSOLUTO CON EFECTO CIRCULAR */
         .hero { padding: 60px 0 60px; text-align: center; overflow: hidden; }
         .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         
+        /* Contenedor especial para el llamado redondo animado */
+        .hero-logo-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        /* EFECTO DE MOVIMIENTO CIRCULAR Y RESPLANDOR REDONDO */
+        .hero-logo-glow {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, var(--primario), #ffaa00, transparent);
+            animation: giroCircular 2s linear infinite;
+            z-index: 1;
+            padding: 4px; /* Grosor de la llama redonda */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Efecto de sombra difuminada trasera para dar volumen */
+        .hero-logo-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+            z-index: 0;
+        }
+
         .hero-logo-img {
             width: 130px;
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primario);
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
+            border: 2px solid rgba(11, 11, 14, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animación para el giro de la llama circular */
+        @keyframes giroCircular {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Título con corrección de desbordamiento y centrado simétrico completo */
@@ -376,13 +419,17 @@
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <!-- 1. Logo principal arriba al centro -->
-                <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
                 
-                <!-- 2. Badge de estado justo abajo del logo -->
+                <!-- Contenedor con efecto redondo animado (Llama en movimiento circular) -->
+                <div class="hero-logo-wrapper">
+                    <div class="hero-logo-glow"></div>
+                    <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
+                </div>
+                
+                <!-- Badge de estado justo abajo del logo -->
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
-                <!-- 3. Título Corregido: Perfectamente Centrado y Simétrico -->
+                <!-- Título: Perfectamente Centrado y Simétrico -->
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
