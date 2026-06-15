@@ -168,6 +168,8 @@
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
+            margin-top: 15px;
+            margin-bottom: 25px;
         }
 
         .badge-estado .punto {
@@ -196,33 +198,37 @@
         .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
 
-        /* HERO - ESTILOS LIMPIOS */
+        /* HERO - AJUSTES DE CENTRADO Y ESCALA LINEAL */
         .hero { padding: 60px 0 60px; text-align: center; }
-        .hero-banner { max-width: 950px; margin: 0 auto; }
+        .hero-banner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
         
         .hero-logo-img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--primario);
-            margin-bottom: 15px;
             box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
         }
 
+        /* Título completamente derecho, grande y en una sola línea */
         .hero-titulo { 
-            font-size: clamp(2.5rem, 6.5vw, 4.8rem); 
+            font-size: clamp(2.2rem, 5.2vw, 5rem); 
             font-weight: 900; 
-            line-height: 1.1; 
-            margin-top: 20px; 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
+            line-height: 1.2; 
+            margin-top: 15px;
+            margin-bottom: 25px; 
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: -1px;
+            width: 100%;
+            text-align: center;
         }
         .hero-titulo span { 
             color: var(--primario);
         }
         
-        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 650px; margin: 0 auto 35px; }
+        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; }
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
         /* STATS */
@@ -319,10 +325,15 @@
         .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
         .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
 
+        @media (max-width: 992px) {
+            .hero-titulo { white-space: normal; font-size: 3.5rem; }
+        }
+
         @media (max-width: 768px) {
             .hero-botones .btn { width: 100%; }
             .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
             .canal-fila { flex-direction: column; gap: 12px; text-align: center; }
+            .hero-titulo { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -343,14 +354,14 @@
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <!-- Logo principal -->
+                <!-- 1. Logo principal arriba al centro -->
                 <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
                 
-                <!-- Badge de estado online -->
-                <div class="badge-estado" style="margin-bottom: 25px;"><span class="punto"></span> Todos los canales online</div>
+                <!-- 2. Badge de estado justo abajo del logo -->
+                <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
-                <!-- TÍTULO PRINCIPAL ÚNICO -->
-                <h1 class="hero-titulo">TOTO CALIENTE <br><span>INTERNACIONAL</span></h1>
+                <!-- 3. Título Grande, Derecho y Centrado en una Sola Línea -->
+                <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
                 
