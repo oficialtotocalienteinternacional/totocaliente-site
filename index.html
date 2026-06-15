@@ -170,6 +170,7 @@
         .btn-registro-nav {
             background: var(--texto-blanco);
             color: var(--bg-principal);
+            border: none;
         }
 
         .btn-registro-nav:hover {
@@ -188,7 +189,7 @@
         }
 
         .seccion-titulo span { color: var(--primario); }
-        .seccion-subtitulo { color: var(--texto-mutated); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
+        .seccion-subtitulo { color: var(--texto-mutado); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
 
         .tarjeta {
             background-color: var(--bg-tarjeta);
@@ -305,6 +306,7 @@
         /* SECCIÓN FORMULARIOS INTERACTIVOS */
         .seccion-formularios {
             display: none;
+            width: 100%;
             max-width: 450px;
             margin: 0 auto 50px;
             animation: fadeIn 0.4s ease forwards;
@@ -493,7 +495,7 @@
         <div class="contenedor">
             <a href="#" class="brand">
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
-                <div class="brand-nombre">TOTO CALIENTE <span>INTERNAVIONAL</span></div>
+                <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
             
             <div class="header-acciones">
@@ -530,7 +532,7 @@
                     <!-- Formulario Login -->
                     <div class="contenedor-form" id="cajaLogin" style="display: none;">
                         <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
-                        <form id="formLogin">
+                        <form id="formLogin" onsubmit="procesarAuth(event, 'login')">
                             <div class="grupo-input">
                                 <i class="fas fa-user"></i>
                                 <input type="text" id="loginUsuario" class="input-auth" placeholder="Tu Apodo / Usuario" required>
@@ -547,7 +549,7 @@
                     <!-- Formulario Registro -->
                     <div class="contenedor-form" id="cajaRegistro" style="display: none;">
                         <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
-                        <form id="formRegistro">
+                        <form id="formRegistro" onsubmit="procesarAuth(event, 'registro')">
                             <div class="grupo-input">
                                 <i class="fas fa-user"></i>
                                 <input type="text" id="regUsuario" class="input-auth" placeholder="Elige un Apodo" required>
@@ -584,7 +586,7 @@
                     </a>
 
                     <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
-                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
+                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i> X
                     </a>
                 </div>
             </div>
@@ -623,7 +625,7 @@
             <div class="buscador-contenedor">
                 <div class="buscador-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="inputBuscar" class="buscador-control" placeholder="Escribe para buscar canales oficiales...">
+                    <input type="text" id="inputBuscar" class="buscador-control" placeholder="Escribe para buscar canales oficiales..." oninput="filtrarCanales()">
                 </div>
             </div>
 
@@ -667,7 +669,7 @@
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA</span></div>
                     </div>
                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
@@ -725,149 +727,81 @@
     </footer>
 
     <!-- BOTÓN FLOTANTE -->
-    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante">
+    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante" title="Unirse al Telegram Puente">
         <i class="fab fa-telegram-plane"></i>
     </a>
 
-    <!-- SCRIPTS INTERACTIVOS -->
+    <!-- SCRIPT DE INTERACTIVIDAD -->
     <script>
-        // Definición de URL de tu API en Vercel
-        const API_URL = '/api/usuarios';
-
-        // Inicializar el contador de usuarios registrados de forma local
-        document.addEventListener("DOMContentLoaded", () => {
-            const localCount = localStorage.getItem('localUsersCount') || "1421";
-            document.getElementById('contadorMiembrosReales').innerText = localCount;
-            cargarContadorReal();
-        });
-
-        // Función simulada para cargar contador desde API si es necesario
-        async function cargarContadorReal() {
-            try {
-                const res = await fetch(API_URL);
-                if(res.ok) {
-                    const data = await res.json();
-                    if(data.total) {
-                        document.getElementById('contadorMiembrosReales').innerText = data.total;
-                    }
-                }
-            } catch(e) {
-                console.log("Cargando desde almacenamiento local.");
-            }
-        }
-
-        // Mostrar / Ocultar cajas de login y registro
+        // Función para mostrar/ocultar y alternar entre los formularios de Login y Registro
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
-            const login = document.getElementById('cajaLogin');
-            const registro = document.getElementById('cajaRegistro');
+            const cajaLogin = document.getElementById('cajaLogin');
+            const cajaRegistro = document.getElementById('cajaRegistro');
 
             if (tipo === 'login') {
-                if (login.style.display === 'block') {
+                if (cajaLogin.style.display === 'block') {
                     zona.style.display = 'none';
-                    login.style.display = 'none';
+                    cajaLogin.style.display = 'none';
                 } else {
                     zona.style.display = 'block';
-                    login.style.display = 'block';
-                    registro.style.display = 'none';
+                    cajaLogin.style.display = 'block';
+                    cajaRegistro.style.display = 'none';
+                    cajaLogin.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else if (tipo === 'registro') {
-                if (registro.style.display === 'block') {
+                if (cajaRegistro.style.display === 'block') {
                     zona.style.display = 'none';
-                    registro.style.display = 'none';
+                    cajaRegistro.style.display = 'none';
                 } else {
                     zona.style.display = 'block';
-                    registro.style.display = 'block';
-                    login.style.display = 'none';
+                    cajaRegistro.style.display = 'block';
+                    cajaLogin.style.display = 'none';
+                    cajaRegistro.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         }
 
-        // ==========================================
-        // TU SCRIPT: PROCESAR EL REGISTRO
-        // ==========================================
-        document.getElementById('formRegistro').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const usuario = document.getElementById('regUsuario').value.trim();
-            const password = document.getElementById('regPassword').value;
-            const msg = document.getElementById('msgRegistro');
-            const formulario = document.getElementById('formRegistro');
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ usuario, password })
-                });
-                const data = await res.json();
-
-                if(res.ok) {
-                    formulario.style.display = "none";
-                    msg.style.color = "var(--exito)";
-                    msg.innerHTML = `<i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                                     <span style="font-size: 1.2rem; display: block;">¡REGISTRO COMPLETADO!</span>
-                                     <p style="color: var(--texto-mutado); font-weight: normal; margin-top: 5px;">Bienvenido oficialmente a la red, @${usuario}.</p>`;
-                    msg.style.display = "block";
-                    cargarContadorReal(); 
-                } else {
-                    msg.style.color = "var(--primario)";
-                    msg.innerText = data.error || "Error en el registro.";
-                    msg.style.display = "block";
-                }
-            } catch (err) {
-                let count = parseInt(localStorage.getItem('localUsersCount') || "1421");
-                count++;
-                localStorage.setItem('localUsersCount', count);
-                document.getElementById('contadorMiembrosReales').innerText = count;
-                
-                formulario.style.display = "none";
-                msg.style.color = "var(--exito)";
-                msg.innerHTML = `<i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                                 <span style="font-size: 1.2rem; display: block;">¡REGISTRO EXITOSO!</span>
-                                 <p style="color: var(--texto-mutado); font-weight: normal; margin-top: 5px;">Te has registrado localmente como @${usuario}.</p>`;
-                msg.style.display = "block";
-            }
-        });
-
-        // Formulario Procesar Login (Estructura base interactiva)
-        document.getElementById('formLogin').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const msg = document.getElementById('msgLogin');
-            msg.style.color = "var(--exito)";
-            msg.innerText = "¡Sesión iniciada correctamente!";
-            msg.style.display = "block";
-        });
-
-        // Animación decorativa de conectados
-        setInterval(() => {
-            const contador = document.getElementById('contadorOnline');
-            if (contador) {
-                let actual = parseInt(contador.innerText.replace(/,/g, ''));
-                const variacion = Math.floor(Math.random() * 30) - 15; 
-                actual = actual + variacion;
-                if(actual < 60000) actual = 60250;
-                if(actual > 61500) actual = 60780;
-                contador.innerText = actual.toLocaleString('en-US');
-            }
-        }, 4000);
-
-        // Buscador reactivo
-        document.getElementById('inputBuscar').addEventListener('keyup', function() {
-            let filtro = this.value.toLowerCase().trim();
-            let filas = document.getElementById('listaCanales').getElementsByClassName('canal-fila');
-            let vacio = true;
+        // Función simulada para procesar el envío de formularios de autenticación
+        function procesarAuth(event, tipo) {
+            event.preventDefault();
+            const msgBox = tipo === 'login' ? document.getElementById('msgLogin') : document.getElementById('msgRegistro');
+            msgBox.style.display = 'block';
             
-            for (let i = 0; i < filas.length; i++) {
-                let texto = filas[i].textContent || filas[i].innerText;
-                if (texto.toLowerCase().indexOf(filtro) > -1) {
-                    filas[i].style.display = "flex";
-                    vacio = false;
-                } else {
-                    filas[i].style.display = "none";
-                }
+            if (tipo === 'login') {
+                msgBox.style.color = 'var(--exito)';
+                msgBox.innerText = '¡Inicio de sesión exitoso! Redireccionando...';
+            } else {
+                msgBox.style.color = 'var(--secundario-hover)';
+                msgBox.innerText = '¡Cuenta creada con éxito! Revisa tu bandeja.';
             }
-            document.getElementById('noResultados').style.display = vacio ? "block" : "none";
-        });
+        }
+
+        // Función en tiempo real para el motor de búsqueda de canales
+        function filtrarCanales() {
+            const query = document.getElementById('inputBuscar').value.toLowerCase();
+            const filas = document.querySelectorAll('#listaCanales .canal-fila');
+            const noResultados = document.getElementById('noResultados');
+            let encontrados = 0;
+
+            filas.forEach(fila => {
+                const nombre = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
+                const categoria = fila.querySelector('.canal-categoria-tag').innerText.toLowerCase();
+                
+                if (nombre.includes(query) || categoria.includes(query)) {
+                    fila.style.display = 'flex';
+                    encontrados++;
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            if (encontrados === 0) {
+                noResultados.style.display = 'block';
+            } else {
+                noResultados.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
