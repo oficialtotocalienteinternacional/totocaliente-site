@@ -69,14 +69,14 @@
         .btn-registro-nav { background: var(--texto-blanco); color: var(--bg-principal); border: none; }
         .btn-registro-nav:hover { background: #e0e0e0; }
 
-        /* NUEVA PASTILLA DE SESIÓN INICIADA (IGUAL A TU CAPTURA 2) */
+        /* PASTILLA DE SESIÓN */
         .user-logged-pastilla { display: none; align-items: center; gap: 8px; background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%); padding: 8px 18px; border-radius: 50px; border: none; color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 69, 0, 0.2); }
         .user-logged-pastilla i { font-size: 0.75rem; opacity: 0.8; }
 
         /* HERO */
         .hero { padding: 30px 0 20px; text-align: center; }
         .hero-banner { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-        .hero-logo-center { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; }
+        .hero-logo-img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; }
         
         .badge-estado { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 230, 118, 0.1); color: var(--exito); padding: 5px 12px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; border: 1px solid rgba(0, 230, 118, 0.2); }
         .badge-estado .punto { width: 6px; height: 6px; background-color: var(--exito); border-radius: 50%; }
@@ -96,18 +96,13 @@
         .input-auth:focus { border-color: var(--primario); }
         .form-btn { width: 100%; margin-top: 5px; }
 
-        /* CAJA DE ÉXITO NARANJA EXACTA A LAS IMÁGENES */
         .caja-exito-final { display: none; background: rgba(20, 20, 25, 0.95); border: 2px solid var(--primario); border-radius: 16px; padding: 35px 25px; width: 100%; max-width: 440px; margin: 0 auto 25px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.15); }
         .icono-exito { color: var(--exito); font-size: 2rem; margin-bottom: 15px; }
         .titulo-exito { color: var(--exito); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
 
-        /* BOTONES DE REDES SOCIALES (POSICIÓN EXACTA) */
+        /* BOTONES DE REDES SOCIALES */
         .hero-botones { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-bottom: 35px; }
         .hero-botones .btn { font-size: 0.72rem; padding: 10px 16px; border-radius: 6px; }
-        .btn-social-tg { background: #ff4500; color: #fff; }
-        .btn-social-tg:hover { background: #e03d00; }
-        .btn-social-ig { border-color: #e1306c; color: #fff; }
-        .btn-social-tt { border-color: #00f2fe; color: #fff; }
 
         /* TARJETAS DE ESTADÍSTICAS */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto 50px; }
@@ -131,25 +126,30 @@
         .canal-info-basica { display: flex; align-items: center; gap: 12px; }
         .canal-icon-box { color: var(--primario); font-size: 0.9rem; }
         .canal-nombre-texto { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3px; }
-        .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.1); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
-        .btn-unirse-mini { padding: 6px 14px; font-size: 0.65rem; border-radius: 4px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; font-weight: 700; text-transform: uppercase; }
+        .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.1); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+        .btn-unirse-mini { padding: 6px 14px; font-size: 0.65rem; border-radius: 4px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; font-weight: 700; text-transform: uppercase; transition: var(--transicion); }
+        .btn-unirse-mini:hover { background: #fff; color: #000; }
         .canal-fila:hover { border-color: rgba(255, 69, 0, 0.3); background: var(--bg-tarjeta-hover); }
 
-        /* TARJETAS DE RESPALDO ABAJO */
-        .respaldos-lista { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 640px; margin: 0 auto; }
-        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background-color: var(--bg-tarjeta); border-radius: 10px; border: 1px solid rgba(255,255,255,0.02); }
+        /* RESPALDOS */
+        .respaldos { padding: 30px 0; }
+        .respaldos-lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto; }
+        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background-color: var(--bg-tarjeta); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .respaldo-info { display: flex; align-items: center; gap: 12px; }
-        .respaldo-info i { font-size: 1.2rem; }
+        .respaldo-info i { font-size: 1.4rem; color: #0088cc; }
+        .respaldo-item style i.fa-whatsapp { color: #25d366; }
         .respaldo-nombre { font-size: 0.78rem; font-weight: 700; }
-        .respaldo-status { font-size: 0.65rem; color: var(--texto-mutado); }
-        .btn-respaldo-go { padding: 6px 14px; font-size: 0.65rem; border-radius: 6px; text-decoration: none; font-weight: 700; }
-
-        footer { background-color: #07070a; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.01); margin-top: 40px; font-size: 0.75rem; color: var(--texto-mutated); }
+        .respaldo-status { font-size: 0.68rem; color: var(--texto-mutado); display: flex; align-items: center; gap: 5px; }
+        .respaldo-status .punto { width: 5px; height: 5px; background-color: #00e676; border-radius: 50%; display: inline-block; }
+        
+        footer { background-color: #07070a; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.01); margin-top: 40px; font-size: 0.75rem; color: var(--texto-mutado); }
         .telegram-flotante { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; z-index: 999; }
 
+        @media (max-width: 900px) {
+            .respaldos-lista { grid-template-columns: 1fr; max-width: 640px; }
+        }
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .respaldos-lista { grid-template-columns: 1fr; }
             .hero-titulo, .hero-titulo span { font-size: 1.8rem; }
         }
     </style>
@@ -161,16 +161,14 @@
         <div class="contenedor">
             <a href="#" class="brand">
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
-                <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
+                <div class="brand-nombre">TOTO CALIENTE <span>INTERNANIONAL</span></div>
             </a>
             
-            <!-- Estado Invitado -->
             <div class="header-acciones" id="accionesInvitado">
                 <button onclick="alternarFormulario('login')" class="btn-acceso-nav btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button onclick="alternarFormulario('registro')" class="btn-acceso-nav btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</button>
             </div>
 
-            <!-- Estado Logueado (Pastilla Ovalada Naranja de tu Captura) -->
             <button class="user-logged-pastilla" id="pastillaSesion" onclick="cerrarSesion()">
                 <i class="fas fa-user"></i> <span id="pastillaNombre">@sreridianocorrea</span>
             </button>
@@ -181,16 +179,16 @@
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <img src="no_bg_image.png" alt="Logo Central" class="hero-logo-center">
+                <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
+                
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
-                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Inicia sesión en nuestra web o regístrate para no perderte nada, explora comunidades exclusivas y usa el buscador rápido aquí abajo. 🔥</p>
                 
-
-                <!-- FORMULARIOS DESPLEGABLES -->
+                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
+                
+                <!-- FORMULARIOS -->
                 <div class="seccion-formularios" id="zonaFormularios">
-                    <!-- Login -->
                     <div class="contenedor-form" id="cajaLogin" style="display: none;">
                         <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
                         <form onsubmit="ejecutarAccion(event, 'login')">
@@ -206,7 +204,6 @@
                         </form>
                     </div>
 
-                    <!-- Registro -->
                     <div class="contenedor-form" id="cajaRegistro" style="display: none;">
                         <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
                         <form onsubmit="ejecutarAccion(event, 'registro')">
@@ -223,8 +220,7 @@
                     </div>
                 </div>
 
-
-                <!-- INTERFAZ DE ÉXITO INTEGRADA (IGUAL A IMAGE_9E3FB0.PNG) -->
+                <!-- PANTALLA ÉXITO -->
                 <div class="caja-exito-final" id="pantallaExito">
                     <div class="icono-exito"><i class="fas fa-check-circle"></i></div>
                     <div class="titulo-exito">¡REGISTRO EXITOSO!</div>
@@ -232,20 +228,37 @@
                     <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%; font-size:0.7rem; padding:12px;">ACCEDER A CANALES VIP</button>
                 </div>
 
-
-                <!-- BOTONES SOCIALES (UBICACIÓN CORRECTA) -->
+                <!-- BOTONES REDES SOCIALES -->
                 <div class="hero-botones">
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-social-tg"><i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE</a>
-                    <a href="#buscador" class="btn btn-outline"><i class="fas fa-search"></i> BUSCAR CANALES</a>
-                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline btn-social-ig"><i class="fab fa-instagram"></i> INSTAGRAM</a>
-                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline btn-social-tt"><i class="fab fa-tiktok"></i> TIKTOK</a>
-                </div>
+                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
+                        <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
+                    </a>
+                    
+                    <a href="#buscador" class="btn btn-outline">
+                        <i class="fas fa-search"></i> Buscar Canales
+                    </a>
 
+                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;">
+                        <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
+                    </a>
+
+                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
+                        <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
+                    </a>
+
+                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
+                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
+                    </a>
+
+                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
+                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TARJETAS DE ESTADÍSTICAS (SITUADAS ABAJO DE LOS BOTONES SOCIALES) -->
+    <!-- ESTADÍSTICAS -->
     <section class="contenedor">
         <div class="stats-grid">
             <div class="stat-card">
@@ -266,7 +279,7 @@
         </div>
     </section>
 
-    <!-- BUSCADOR -->
+    <!-- BUSCADOR Y LISTA COMPLETA DE 10 CANALES -->
     <section class="buscador-seccion" id="buscador">
         <div class="contenedor">
             <h2 class="buscador-titulo">Buscador Oficial de Canales</h2>
@@ -280,47 +293,152 @@
             </div>
 
             <div class="lista-canales" id="listaCanales">
+                <!-- CANAL 1 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                        <i class="fab fa-telegram-plane canal-icon-box"></i>
-                        <span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL</span>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL</span></div>
                     </div>
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
+
+                <!-- CANAL 2 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                        <i class="fab fa-telegram-plane canal-icon-box"></i>
-                        <span class="canal-nombre-texto">TOTO CALIENTE PUENTE</span>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE PUENTE</span></div>
                     </div>
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
+
+                <!-- CANAL 3 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
+                    </div>
+                    <span class="canal-categoria-tag">PROMOCION</span>
+                    <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
+                </div>
+
+                <!-- CANAL 4 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
+                    </div>
+                    <span class="canal-categoria-tag">Web Oficial</span>
+                    <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
+                </div>
+
+                <!-- CANAL 5 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 6 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 7 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 8 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 9 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 10 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
             </div>
 
-            <!-- RESPALDOS INFERIORES -->
-            <div class="respaldos-lista">
-                <div class="respaldo-item">
-                    <div class="respaldo-info">
-                        <i class="fab fa-telegram" style="color:#0088cc;"></i>
-                        <div>
-                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE</div>
-                            <div class="respaldo-status">Online</div>
-                        </div>
-                    </div>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-respaldo-go btn-secundario">UNIRTE</a>
+            <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
+            <section class="respaldos">
+                <div style="text-align: center; margin-bottom: 35px;">
+                    <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
+                    <p style="color: var(--texto-mutado); font-size: 0.9rem;">Mantente conectado ante cualquier caída uniéndote a nuestras redes alternativas oficiales.</p>
                 </div>
-                <div class="respaldo-item">
-                    <div class="respaldo-info">
-                        <i class="fab fa-whatsapp" style="color:#25d366;"></i>
-                        <div>
-                            <div class="respaldo-nombre">WhatsApp Channel</div>
-                            <div class="respaldo-status" style="color:#25d366;">Activo</div>
+                
+                <div class="respaldos-lista">
+                    <!-- COLUMNA 1: TELEGRAM -->
+                    <div class="respaldo-item">
+                        <div class="respaldo-info">
+                            <i class="fab fa-telegram" style="color: #0088cc;"></i>
+                            <div>
+                                <div class="respaldo-nombre">TOTO CALIENTE PUENTE</div>
+                                <div class="respaldo-status"><span class="punto"></span> Online</div>
+                            </div>
                         </div>
+                        <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
-                    <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn-respaldo-go btn-whatsapp">UNIRTE</a>
+
+                    <!-- COLUMNA 2: WHATSAPP CANAL 1 -->
+                    <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
+                        <div class="respaldo-info">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            <div>
+                                <div class="respaldo-nombre">Toto Caliente Internacional</div>
+                                <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 1,647 Seguidores</div>
+                            </div>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
+                    </div>
+
+                    <!-- COLUMNA 3: WHATSAPP CANAL 2 -->
+                    <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
+                        <div class="respaldo-info">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            <div>
+                                <div class="respaldo-nombre">Toto Caliente Internacional</div>
+                                <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 2,486 Seguidores</div>
+                            </div>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb779BF1iUxcqXqmty0q" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
+                    </div>
                 </div>
-            </div>
+            </section>
 
         </div>
     </section>
@@ -335,7 +453,6 @@
     <script>
         let usuarioActual = "";
 
-        // Si el usuario quiere interactuar directo con los botones del header
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
             const cajaLogin = document.getElementById('cajaLogin');
@@ -354,30 +471,24 @@
             zona.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Al enviar datos, salta al cuadro de éxito central (Imagen 1)
         function ejecutarAccion(event, tipo) {
             event.preventDefault();
             const apodo = tipo === 'login' ? document.getElementById('loginUser').value : document.getElementById('regUser').value;
             usuarioActual = apodo.startsWith('@') ? apodo : '@' + apodo;
 
             document.getElementById('zonaFormularios').style.display = 'none';
-            
-            // Mostrar tarjeta de éxito tal cual la primera captura
             document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
             document.getElementById('pantallaExito').style.display = 'block';
         }
 
-        // Al dar clic en "ACCEDER A CANALES VIP" pasa al estado logueado (Imagen 2)
         function confirmarIngresoFinal() {
             document.getElementById('pantallaExito').style.display = 'none';
-            
-            // Oculta login/registro del header y activa la pastilla ovalada con el @usuario
             document.getElementById('accionesInvitado').style.display = 'none';
+            
             const pastilla = document.getElementById('pastillaSesion');
             pastilla.style.display = 'flex';
             document.getElementById('pastillaNombre').innerText = usuarioActual;
 
-            // Actualiza el marcador oficial a 1,422
             document.getElementById('numMiembros').innerText = "1,422";
         }
 
