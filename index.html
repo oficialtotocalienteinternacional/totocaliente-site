@@ -128,6 +128,17 @@
             box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
         }
 
+        /* Botón personalizado verde para WhatsApp */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #1ebd58 100%);
+            color: var(--texto-blanco);
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
         .seccion-titulo {
             font-size: clamp(1.8rem, 4vw, 2.4rem);
             font-weight: 900;
@@ -306,13 +317,20 @@
 
         .no-resultados { text-align: center; padding: 40px; color: var(--texto-mutado); font-weight: 600; display: none; }
 
-        /* RESPALDOS */
+        /* RESPALDOS Y MULTICOLUMNAS */
         .respaldos { padding: 60px 0 100px; }
-        .respaldos-lista { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto; }
+        .respaldos-lista { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
         .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 30px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transition: var(--transicion); flex-wrap: wrap; gap: 15px; }
-        .respaldo-item:hover { border-color: rgba(0, 136, 204, 0.3); background-color: var(--bg-tarjeta-hover); transform: translateX(5px); }
+        .respaldo-item:hover { border-color: rgba(0, 136, 204, 0.3); background-color: var(--bg-tarjeta-hover); transform: translateY(-3px); }
         .respaldo-info { display: flex; align-items: center; gap: 15px; }
-        .respaldo-info i { font-size: 1.5rem; color: var(--secundario); }
+        .respaldo-info i { font-size: 1.8rem; color: var(--secundario); }
+        .respaldo-info i.fa-whatsapp { color: #25d366; }
         .respaldo-nombre { font-weight: 700; font-size: 1.1rem; }
         .respaldo-status { font-size: 0.8rem; color: var(--exito); display: flex; align-items: center; gap: 5px; }
 
@@ -540,19 +558,49 @@
         </div>
     </section>
 
-    <!-- RESPALDOS RÁPIDOS -->
+    <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
     <section class="respaldos">
         <div class="contenedor">
+            <div style="text-align: center; margin-bottom: 35px;">
+                <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
+                <p style="color: var(--texto-mutado); font-size: 0.9rem;">Mantente conectado ante cualquier caída uniéndote a nuestras redes alternativas oficiales.</p>
+            </div>
+            
             <div class="respaldos-lista">
+                <!-- COLUMNA 1: TELEGRAM -->
                 <div class="respaldo-item">
                     <div class="respaldo-info">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE </div>
+                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE</div>
                             <div class="respaldo-status"><span class="punto"></span> Online</div>
                         </div>
                     </div>
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">UNIRTE</a>
+                </div>
+
+                <!-- COLUMNA 2: WHATSAPP CANAL 1 -->
+                <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
+                    <div class="respaldo-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <div class="respaldo-nombre">Toto Caliente Internacional</div>
+                            <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 1,647 Seguidores</div>
+                        </div>
+                    </div>
+                    <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
+                </div>
+
+                <!-- COLUMNA 3: WHATSAPP CANAL 2 -->
+                <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
+                    <div class="respaldo-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <div class="respaldo-nombre">Toto Caliente Internacional</div>
+                            <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 2,486 Seguidores</div>
+                        </div>
+                    </div>
+                    <a href="https://whatsapp.com/channel/0029Vb779BF1iUxcqXqmty0q" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
                 </div>
             </div>
         </div>
