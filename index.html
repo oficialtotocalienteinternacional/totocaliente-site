@@ -145,6 +145,38 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
+        /* NUEVOS ESTILOS PARA ACCESO (LOGIN/REGISTRO) */
+        .btn-acceso {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+
+        .btn-login-nav {
+            color: var(--texto-blanco);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-login-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--texto-blanco);
+        }
+
+        .btn-registro-nav {
+            background: var(--texto-blanco);
+            color: var(--bg-principal);
+        }
+
+        .btn-registro-nav:hover {
+            background: #e0e0e0;
+            transform: translateY(-1px);
+        }
+
         .seccion-titulo {
             font-size: clamp(1.8rem, 4vw, 2.4rem);
             font-weight: 900;
@@ -214,9 +246,15 @@
         .brand-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--primario); }
         .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
+        
+        .header-acciones {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
         /* HERO - REDISEÑO DE CENTRADO ABSOLUTO */
-        .hero { padding: 60px 0 60px; text-align: center; overflow: hidden; }
+        .hero { padding: 40px 0 60px; text-align: center; overflow: hidden; }
         .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         
         .hero-logo-img {
@@ -247,7 +285,23 @@
             display: inline-block;
         }
         
-        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutated); max-width: 700px; margin: 0 auto 35px; text-align: center; }
+        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; text-align: center; }
+        
+        /* Bloque exclusivo para Acceso Web destacado */
+        .hero-acceso-destacado {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 35px;
+            padding: 15px;
+            background: rgba(255, 69, 0, 0.03);
+            border: 1px dashed rgba(255, 69, 0, 0.2);
+            border-radius: 16px;
+        }
+        .hero-acceso-destacado .btn { flex: 1; }
+
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
 
         /* STATS */
@@ -352,6 +406,8 @@
         .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
 
         @media (max-width: 768px) {
+            .header-acciones { display: none; } /* Oculto en nav móvil para evitar amontonamiento */
+            .hero-acceso-destacado { flex-direction: column; width: 100%; padding: 10px; }
             .hero-botones .btn { width: 100%; }
             .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
             .canal-fila { flex-direction: column; gap: 12px; text-align: center; }
@@ -368,7 +424,12 @@
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
-            <div class="badge-estado"><span class="punto"></span> Red Activa</div>
+            
+            <!-- Nuevos botones de acceso en cabecera para computadoras -->
+            <div class="header-acciones">
+                <a href="#login" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="#registro" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</a>
+            </div>
         </div>
     </header>
 
@@ -385,7 +446,17 @@
                 <!-- 3. Título Corregido: Perfectamente Centrado y Simétrico -->
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
-                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
+                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Inicia sesión en nuestra web o regístrate para no perderte nada, explora comunidades exclusivas y usa el buscador rápido aquí abajo. 🔥</p>
+                
+                <!-- Bloque móvil/global visible para Registrarse y Loguearse en la Web -->
+                <div class="hero-acceso-destacado">
+                    <a href="#login" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+                        <i class="fas fa-key"></i> Iniciar Sesión
+                    </a>
+                    <a href="#registro" class="btn btn-primario">
+                        <i class="fas fa-user-check"></i> Registrarse Web
+                    </a>
+                </div>
                 
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
