@@ -9,31 +9,17 @@
   
   TÉRMINOS DE COPYRIGHT:
   © 2026 SR ERIDANIO CORREA. Todos los derechos reservados.
-  
-  Este código fuente, diseño, estructura e ideas son propiedad intelectual 
-  exclusiva de su creador. Queda estrictamente prohibida la reproducción, 
-  copy, distribución o modificación total o parcial de este código sin 
-  el consentimiento previo y por escrito del autor.
 ==========================================================================
 -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO CALIENTE INTERNACIONAL | Portal Oficial de la Comunidad</title>
+    <title>TOTO CALIENTE INTERNACIONAL | Portal Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Vercel Speed Insights -->
-    <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-    
     <style>
-        /* ==========================================================================
-           VARIABLES Y CONFIGURACIÓN BASE
-           ========================================================================== */
         :root {
             --bg-principal: #0b0b0e;
             --bg-tarjeta: #141419;
@@ -41,7 +27,6 @@
             --primario: #ff4500;
             --primario-hover: #ff6324;
             --secundario: #0088cc;
-            --secundario-hover: #00a2f3;
             --exito: #00e676;
             --texto-blanco: #ffffff;
             --texto-mutado: #a0a0b0;
@@ -51,440 +36,119 @@
             --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body {
-            font-family: var(--fuente);
-            background-color: var(--bg-principal);
-            color: var(--texto-blanco);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 90% 10%, rgba(255, 69, 0, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 10% 80%, rgba(0, 136, 204, 0.06) 0%, transparent 45%);
+            font-family: var(--fuente); background-color: var(--bg-principal); color: var(--texto-blanco);
+            line-height: 1.6; overflow-x: hidden;
+            background-image: radial-gradient(circle at 90% 10%, rgba(255, 69, 0, 0.08) 0%, transparent 45%), radial-gradient(circle at 10% 80%, rgba(0, 136, 204, 0.06) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-principal); }
-        ::-webkit-scrollbar-thumb { background: #252530; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primario); }
-
-        .contenedor {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .contenedor { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* BOTONES */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: var(--transicion);
-            cursor: pointer;
-            border: none;
-        }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; transition: var(--transicion); cursor: pointer; border: none; }
+        .btn-primario { background: linear-gradient(135deg, var(--primario) 0%, #d42f00 100%); color: var(--texto-blanco); box-shadow: 0 4px 20px rgba(255, 69, 0, 0.3); }
+        .btn-primario:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5); }
+        .btn-outline { background: transparent; color: var(--texto-blanco); border: 2px solid rgba(255,255,255,0.15); }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--texto-blanco); transform: translateY(-2px); }
+        .btn-secundario { background: linear-gradient(135deg, var(--secundario) 0%, #006699 100%); color: var(--texto-blanco); }
+        .btn-whatsapp { background: linear-gradient(135deg, #25d366 0%, #1ebd58 100%); color: var(--texto-blanco); }
 
-        .btn-primario {
-            background: linear-gradient(135deg, var(--primario) 0%, #d42f00 100%);
-            color: var(--texto-blanco);
-            box-shadow: 0 4px 20px rgba(255, 69, 0, 0.3);
-        }
-
-        .btn-primario:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5);
-            background: linear-gradient(135deg, var(--primario-hover) 0%, var(--primario) 100%);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--texto-blanco);
-            border: 2px solid rgba(255,255,255,0.15);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--texto-blanco);
-            transform: translateY(-2px);
-        }
-
-        .btn-secundario {
-            background: linear-gradient(135deg, var(--secundario) 0%, #006699 100%);
-            color: var(--texto-blanco);
-        }
-        
-        .btn-secundario:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25d366 0%, #1ebd58 100%);
-            color: var(--texto-blanco);
-            text-decoration: none;
-        }
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        /* ESTILOS ACCESO (LOGIN/REGISTRO) */
-        .btn-acceso {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: var(--transicion);
-            cursor: pointer;
-        }
-
-        .btn-login-nav {
-            color: var(--texto-blanco);
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-login-nav:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--texto-blanco);
-        }
-
-        .btn-registro-nav {
-            background: var(--texto-blanco);
-            color: var(--bg-principal);
-            border: none;
-        }
-
-        .btn-registro-nav:hover {
-            background: #e0e0e0;
-            transform: translateY(-1px);
-        }
-
-        .seccion-titulo {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .seccion-titulo span { color: var(--primario); }
-        .seccion-subtitulo { color: var(--texto-mutado); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
-
-        .tarjeta {
-            background-color: var(--bg-tarjeta);
-            border: 1px solid var(--borde);
-            border-radius: 20px;
-            padding: 30px;
-            transition: var(--transicion);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tarjeta:hover {
-            transform: translateY(-5px);
-            border-color: var(--borde-hover);
-            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.05);
-        }
-
-        .badge-estado {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--exito);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 15px;
-            margin-bottom: 25px;
-        }
-
-        .badge-estado .punto {
-            width: 8px; height: 8px; background-color: var(--exito); border-radius: 50%;
-            animation: pulso 2s infinite;
-        }
-
-        @keyframes pulso {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
-        }
-
-        /* HEADER */
-        header {
-            background-color: rgba(11, 11, 14, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: sticky; top: 0; z-index: 100; padding: 12px 0;
-        }
-
+        /* HEADER & ACCESOS */
+        header { background-color: rgba(11, 11, 14, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: sticky; top: 0; z-index: 100; padding: 12px 0; }
         header .contenedor { display: flex; align-items: center; justify-content: space-between; }
         .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--texto-blanco); }
-        .brand-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--primario); }
-        .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
+        .brand-logo { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--primario); }
+        .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; }
         .brand-nombre span { color: var(--primario); }
         
-        .header-acciones {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .header-acciones { display: flex; align-items: center; gap: 12px; }
+        .btn-acceso { padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transicion); }
+        .btn-login-nav { color: var(--texto-blanco); background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .btn-registro-nav { background: var(--texto-blanco); color: var(--bg-principal); border: none; }
+
+        /* PANEL DE USUARIO LOGUEADO */
+        .user-logged-nav { display: none; align-items: center; gap: 12px; background: rgba(255, 69, 0, 0.1); padding: 6px 14px; border-radius: 50px; border: 1px solid rgba(255, 69, 0, 0.2); }
+        .user-avatar { width: 28px; height: 28px; background: var(--primario); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
+        .btn-logout { background: transparent; border: none; color: var(--texto-mutado); cursor: pointer; font-size: 0.9rem; margin-left: 8px; }
+        .btn-logout:hover { color: var(--primario); }
 
         /* HERO */
-        .hero { padding: 40px 0 40px; text-align: center; overflow: hidden; }
-        .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+        .hero { padding: 40px 0; text-align: center; }
+        .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .hero-logo-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--primario); box-shadow: 0 0 25px rgba(255, 69, 0, 0.4); }
         
-        .hero-logo-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primario);
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
-        }
+        .badge-estado { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 230, 118, 0.1); color: var(--exito); padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin: 15px 0; }
+        .badge-estado .punto { width: 8px; height: 8px; background-color: var(--exito); border-radius: 50%; animation: pulso 2s infinite; }
+        @keyframes pulso { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); } }
 
-        .hero-titulo { 
-            font-size: clamp(2rem, 4.5vw, 4.5rem); 
-            font-weight: 900; 
-            line-height: 1.2; 
-            margin-top: 15px;
-            margin-bottom: 25px; 
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            width: 100%;
-            text-align: center;
-            display: block;
-            word-wrap: break-word;
-        }
-        .hero-titulo span { 
-            color: var(--primario);
-            display: inline-block;
-        }
+        .hero-titulo { font-size: clamp(2rem, 4.5vw, 4.5rem); font-weight: 900; margin-bottom: 25px; text-transform: uppercase; }
+        .hero-titulo span { color: var(--primario); }
+        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; }
         
-        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; text-align: center; }
-        
-        .hero-acceso-destacado {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            max-width: 500px;
-            margin-bottom: 35px;
-            padding: 15px;
-            background: rgba(255, 69, 0, 0.03);
-            border: 1px dashed rgba(255, 69, 0, 0.2);
-            border-radius: 16px;
-        }
+        /* ZONA DE CONTROL DE ACCESO */
+        .hero-acceso-destacado { display: flex; justify-content: center; gap: 15px; width: 100%; max-width: 500px; margin-bottom: 35px; padding: 15px; background: rgba(255, 69, 0, 0.03); border: 1px dashed rgba(255, 69, 0, 0.2); border-radius: 16px; }
         .hero-acceso-destacado .btn { flex: 1; }
-
         .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
 
-        /* SECCIÓN FORMULARIOS INTERACTIVOS */
-        .seccion-formularios {
-            display: none;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto 50px;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .contenedor-form {
-            background-color: var(--bg-tarjeta);
-            border: 2px solid var(--primario);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.15);
-        }
-
-        .form-titulo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
+        /* FORMULARIOS DINÁMICOS */
+        .seccion-formularios { display: none; width: 100%; max-width: 450px; margin: 0 auto 35px; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .contenedor-form { background-color: var(--bg-tarjeta); border: 2px solid var(--primario); border-radius: 20px; padding: 30px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.15); position: relative; }
+        .form-titulo { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
         .form-titulo span { color: var(--primario); }
+        
+        .grupo-input { position: relative; margin-bottom: 15px; text-align: left; }
+        .grupo-input i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--texto-mutado); }
+        .input-auth { width: 100%; padding: 14px 15px 14px 45px; background: #0b0b0e; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #fff; font-family: var(--fuente); font-size: 0.95rem; outline: none; }
+        .input-auth:focus { border-color: var(--primario); }
+        .form-btn { width: 100%; margin-top: 10px; }
 
-        .grupo-input {
-            position: relative;
-            margin-bottom: 15px;
-        }
-        .grupo-input i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--texto-mutado);
-        }
-        .input-auth {
-            width: 100%;
-            padding: 14px 15px 14px 45px;
-            background: #0b0b0e;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: #fff;
-            font-family: var(--fuente);
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transicion);
-        }
-        .input-auth:focus {
-            border-color: var(--primario);
-            box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
-        }
+        /* NUEVO: CUADRO DE ÉXITO REAL */
+        .caja-exito-final { display: none; background: #141419; border: 2px solid var(--primario); border-radius: 20px; padding: 40px 30px; max-width: 450px; margin: 0 auto 35px; box-shadow: 0 0 35px rgba(255, 69, 0, 0.2); animation: fadeIn 0.4s ease; }
+        .icono-exito { width: 60px; height: 60px; background: rgba(0, 230, 118, 0.1); color: var(--exito); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 20px; }
 
-        .form-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .msg-box {
-            display: none;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        /* STATS */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
-        .stat-card { text-align: center; padding: 35px 20px; }
+        /* SECCIONES COMPLEMENTARIAS */
+        .tarjeta { background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 20px; padding: 30px; transition: var(--transicion); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 40px 0 80px; }
+        .stat-card { text-align: center; }
         .stat-card i { font-size: 2rem; color: var(--primario); margin-bottom: 15px; }
-        .stat-numero { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
+        .stat-numero { font-size: 2.2rem; font-weight: 900; }
         .stat-label { font-size: 0.85rem; font-weight: 700; color: var(--texto-mutado); text-transform: uppercase; }
 
         /* BUSCADOR */
-        .buscador-seccion { padding: 60px 0; }
-        .buscador-contenedor { max-width: 800px; margin: 0 auto 40px; position: relative; }
+        .buscador-seccion { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.02); }
+        .buscador-contenedor { max-width: 800px; margin: 0 auto 40px; }
+        .buscador-control { width: 100%; padding: 20px 20px 20px 60px; background-color: var(--bg-tarjeta); border: 2px solid var(--borde); border-radius: 16px; color: #fff; font-family: var(--fuente); font-size: 1.1rem; outline: none; }
         .buscador-input-wrapper { position: relative; display: flex; align-items: center; }
         .buscador-input-wrapper i { position: absolute; left: 25px; color: var(--texto-mutado); font-size: 1.3rem; }
         
-        .buscador-control {
-            width: 100%; padding: 20px 20px 20px 60px;
-            background-color: var(--bg-tarjeta);
-            border: 2px solid var(--borde);
-            border-radius: 16px; color: var(--texto-blanco);
-            font-family: var(--fuente); font-size: 1.1rem; font-weight: 600;
-            transition: var(--transicion); outline: none;
-        }
-
-        .buscador-control:focus {
-            border-color: var(--primario);
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.15);
-            background-color: var(--bg-tarjeta-hover);
-        }
-
-        .lista-canales {
-            display: grid; grid-template-columns: 1fr; gap: 12px;
-            max-width: 900px; margin: 0 auto;
-            max-height: 600px; overflow-y: auto; padding-right: 10px;
-        }
-
-        .canal-fila {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 24px; background: rgba(20, 20, 25, 0.6);
-            border: 1px solid rgba(255,255,255,0.03); border-radius: 12px;
-            transition: var(--transicion);
-        }
-
-        .canal-fila:hover {
-            background: var(--bg-tarjeta-hover);
-            border-color: rgba(255, 69, 0, 0.25);
-            transform: translateX(4px);
-        }
-
+        .lista-canales { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 900px; margin: 0 auto; }
+        .canal-fila { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: rgba(20, 20, 25, 0.6); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; }
         .canal-info-basica { display: flex; align-items: center; gap: 15px; }
-        .canal-icon-box {
-            width: 40px; height: 40px; background: rgba(255, 69, 0, 0.1);
-            color: var(--primario); border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-weight: 700;
-        }
-        .canal-nombre-texto { font-weight: 700; font-size: 1.05rem; }
-        .canal-categoria-tag {
-            font-size: 0.75rem; background: rgba(0, 136, 204, 0.15);
-            color: var(--secundario-hover); padding: 3px 10px; border-radius: 50px; font-weight: 700;
-        }
-
-        .btn-unirse-mini {
-            padding: 8px 18px; font-size: 0.8rem; border-radius: 8px;
-            background: transparent; color: var(--texto-blanco);
-            border: 1px solid var(--borde); text-decoration: none;
-            font-weight: 700; text-transform: uppercase; transition: var(--transicion);
-        }
-
-        .canal-fila:hover .btn-unirse-mini {
-            background: var(--primario); border-color: var(--primario);
-            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.2);
-        }
-
-        .no-resultados { text-align: center; padding: 40px; color: var(--texto-mutado); font-weight: 600; display: none; }
+        .canal-icon-box { width: 40px; height: 40px; background: rgba(255, 69, 0, 0.1); color: var(--primario); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .canal-categoria-tag { font-size: 0.75rem; background: rgba(0, 136, 204, 0.15); color: #00a2f3; padding: 3px 10px; border-radius: 50px; font-weight: 700; }
+        .btn-unirse-mini { padding: 8px 18px; font-size: 0.8rem; border-radius: 8px; background: transparent; color: #fff; border: 1px solid var(--borde); text-decoration: none; font-weight: 700; text-transform: uppercase; }
+        .canal-fila:hover { border-color: var(--primario); background: var(--bg-tarjeta-hover); }
+        .canal-fila:hover .btn-unirse-mini { background: var(--primario); }
 
         /* RESPALDOS */
-        .respaldos { padding: 60px 0 100px; }
-        .respaldos-lista { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
-        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 30px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transition: var(--transicion); flex-wrap: wrap; gap: 15px; }
-        .respaldo-item:hover { border-color: rgba(0, 136, 204, 0.3); background-color: var(--bg-tarjeta-hover); transform: translateY(-3px); }
+        .respaldos { padding: 40px 0 80px; }
+        .respaldos-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 30px; background-color: var(--bg-tarjeta); border-radius: 16px; }
         .respaldo-info { display: flex; align-items: center; gap: 15px; }
         .respaldo-info i { font-size: 1.8rem; color: var(--secundario); }
-        .respaldo-info i.fa-whatsapp { color: #25d366; }
-        .respaldo-nombre { font-weight: 700; font-size: 1.1rem; }
-        .respaldo-status { font-size: 0.8rem; color: var(--exito); display: flex; align-items: center; gap: 5px; }
-
-        /* FOOTER */
-        footer { background-color: #07070a; border-top: 1px solid rgba(255, 255, 255, 0.03); padding: 40px 0; text-align: center; }
-        .footer-logo-img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primario); margin-bottom: 15px; box-shadow: 0 0 15px rgba(255, 69, 0, 0.3); }
-        .footer-logo { font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 15px; }
-        .footer-logo span { color: var(--primario); }
-
-        /* BOTÓN FLOTANTE */
-        .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
-        .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
+        
+        footer { background-color: #07070a; padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); }
+        .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; }
 
         @media (max-width: 768px) {
             .header-acciones { display: none; }
-            .hero-acceso-destacado { flex-direction: column; width: 100%; padding: 10px; }
+            .hero-acceso-destacado { flex-direction: column; }
             .hero-botones .btn { width: 100%; }
-            .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
             .canal-fila { flex-direction: column; gap: 12px; text-align: center; }
-            .hero-titulo { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -498,9 +162,17 @@
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
             
-            <div class="header-acciones">
+            <!-- Bloque Desconectado -->
+            <div class="header-acciones" id="accionesInvitado">
                 <button onclick="alternarFormulario('login')" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button onclick="alternarFormulario('registro')" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</button>
+            </div>
+
+            <!-- Bloque Conectado -->
+            <div class="user-logged-nav" id="accionesUsuario">
+                <div class="user-avatar" id="avatarLetra">U</div>
+                <span id="navNombreUser" style="font-weight: 700; font-size: 0.9rem;"></span>
+                <button onclick="cerrarSesion()" class="btn-logout" title="Cerrar Sesión"><i class="fas fa-power-off"></i></button>
             </div>
         </div>
     </header>
@@ -510,84 +182,70 @@
         <div class="contenedor">
             <div class="hero-banner">
                 <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
-                
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
-                
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Inicia sesión en nuestra web o regístrate para no perderte nada, explora comunidades exclusivas y usa el buscador rápido aquí abajo. 🔥</p>
                 
-                <!-- Botones interactivos que controlan las cajas dinámicas -->
-                <div class="hero-acceso-destacado">
-                    <button onclick="alternarFormulario('login')" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+                <!-- Botonera de Acceso Interactivo -->
+                <div class="hero-acceso-destacado" id="bloqueBotonesAcceso">
+                    <button onclick="alternarFormulario('login')" class="btn btn-outline" style="padding: 12px; font-size: 0.85rem;">
                         <i class="fas fa-key"></i> Iniciar Sesión
                     </button>
-                    <button onclick="alternarFormulario('registro')" class="btn btn-primario">
+                    <button onclick="alternarFormulario('registro')" class="btn btn-primario" style="padding: 12px; font-size: 0.85rem;">
                         <i class="fas fa-user-check"></i> Registrarse Web
                     </button>
                 </div>
-                
-                <!-- SECCIÓN DE FORMULARIOS CONTROLADOS POR JS -->
+
+                <!-- SECCIÓN DINÁMICA DE FORMULARIOS -->
                 <div class="seccion-formularios" id="zonaFormularios">
                     <!-- Formulario Login -->
                     <div class="contenedor-form" id="cajaLogin" style="display: none;">
                         <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
-                        <form id="formLogin" onsubmit="procesarAuth(event, 'login')">
+                        <form onsubmit="ejecutarAccion(event, 'login')">
                             <div class="grupo-input">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="loginUsuario" class="input-auth" placeholder="Tu Apodo / Usuario" required>
+                                <input type="text" id="loginUser" class="input-auth" placeholder="Tu Apodo / Usuario" required>
                             </div>
                             <div class="grupo-input">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" id="loginPassword" class="input-auth" placeholder="Tu Contraseña" required>
+                                <input type="password" class="input-auth" placeholder="Tu Contraseña" required>
                             </div>
                             <button type="submit" class="btn btn-primario form-btn">Entrar al Portal</button>
                         </form>
-                        <div class="msg-box" id="msgLogin"></div>
                     </div>
 
                     <!-- Formulario Registro -->
                     <div class="contenedor-form" id="cajaRegistro" style="display: none;">
                         <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
-                        <form id="formRegistro" onsubmit="procesarAuth(event, 'registro')">
+                        <form onsubmit="ejecutarAccion(event, 'registro')">
                             <div class="grupo-input">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="regUsuario" class="input-auth" placeholder="Elige un Apodo" required>
+                                <input type="text" id="regUser" class="input-auth" placeholder="Elige un Apodo (Ej: sreridianocorrea)" required>
                             </div>
                             <div class="grupo-input">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" id="regPassword" class="input-auth" placeholder="Crea una Contraseña" required>
+                                <input type="password" class="input-auth" placeholder="Crea una Contraseña" required>
                             </div>
                             <button type="submit" class="btn btn-primario form-btn">Completar Registro</button>
                         </form>
-                        <div class="msg-box" id="msgRegistro"></div>
                     </div>
                 </div>
+
+                <!-- ESTA ES LA PARTE QUE FALTABA: CUADRO DE ÉXITO VISUAL -->
+                <div class="caja-exito-final" id="pantallaExito">
+                    <div class="icono-exito"><i class="fas fa-check"></i></div>
+                    <h3 style="font-size: 1.5rem; font-weight:900; text-transform:uppercase; margin-bottom:10px; color:var(--exito);">¡REGISTRO EXITOSO!</h3>
+                    <p style="color: var(--texto-mutado); font-size: 1rem; margin-bottom: 20px;">Te has registrado correctamente como <span id="nombreUsuarioCreado" style="color:#fff; font-weight:700;"></span>.</p>
+                    <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%;">Acceder a Canales VIP</button>
+                </div>
                 
+                <!-- Redes Sociales -->
                 <div class="hero-botones">
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
-                        <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
-                    </a>
-                    
-                    <a href="#buscador" class="btn btn-outline">
-                        <i class="fas fa-search"></i> Buscar Canales
-                    </a>
-
-                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;">
-                        <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
-                    </a>
-
-                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
-                        <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
-                    </a>
-
-                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
-                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
-                    </a>
-
-                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
-                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i> X
-                    </a>
+                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario"><i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE</a>
+                    <a href="#buscador" class="btn btn-outline"><i class="fas fa-search"></i> Buscar Canales</a>
+                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;"><i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram</a>
+                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;"><i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok</a>
                 </div>
             </div>
         </div>
@@ -598,12 +256,12 @@
         <div class="stats-grid">
             <div class="tarjeta stat-card">
                 <i class="fas fa-users"></i>
-                <div class="stat-numero" id="contadorOnline">60,000</div>
+                <div class="stat-numero">60,006</div>
                 <div class="stat-label">Conectados Ahora</div>
             </div>
             <div class="tarjeta stat-card">
                 <i class="fas fa-user-shield"></i>
-                <div class="stat-numero" id="contadorMiembrosReales">1,421</div>
+                <div class="stat-numero" id="numMiembros">1,421</div>
                 <div class="stat-label">Miembros Oficiales</div>
             </div>
             <div class="tarjeta stat-card">
@@ -614,21 +272,19 @@
         </div>
     </section>
 
-    <!-- MOTOR DE BÚSQUEDA DE CANALES -->
+    <!-- BUSCADOR -->
     <section class="buscador-seccion" id="buscador">
         <div class="contenedor">
             <div style="text-align: center;">
                 <h2 class="seccion-titulo">Buscador Oficial de <span>Canales</span></h2>
                 <p class="seccion-subtitulo" style="margin: 0 auto 40px;">Escribe una palabra clave para encontrar el acceso directo de forma inmediata.</p>
             </div>
-
             <div class="buscador-contenedor">
                 <div class="buscador-input-wrapper">
                     <i class="fas fa-search"></i>
                     <input type="text" id="inputBuscar" class="buscador-control" placeholder="Escribe para buscar canales oficiales..." oninput="filtrarCanales()">
                 </div>
             </div>
-
             <div class="lista-canales" id="listaCanales">
                 <div class="canal-fila">
                     <div class="canal-info-basica">
@@ -638,7 +294,6 @@
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
-
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -647,38 +302,6 @@
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
-
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
-                    </div>
-                    <span class="canal-categoria-tag">PROMOCION</span>
-                    <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
-                </div>
-
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
-                    </div>
-                    <span class="canal-categoria-tag">Web Oficial</span>
-                    <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
-                </div>
-
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA</span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-            </div>
-
-            <div class="no-resultados" id="noResultados">
-                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--primario); margin-bottom: 10px; display: block;"></i>
-                No se encontraron canales.
             </div>
         </div>
     </section>
@@ -686,11 +309,6 @@
     <!-- RESPALDOS RÁPIDOS -->
     <section class="respaldos">
         <div class="contenedor">
-            <div style="text-align: center; margin-bottom: 35px;">
-                <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
-                <p style="color: var(--texto-mutado); font-size: 0.9rem;">Mantente conectado ante cualquier caída uniéndote a nuestras redes alternativas oficiales.</p>
-            </div>
-            
             <div class="respaldos-lista">
                 <div class="respaldo-item">
                     <div class="respaldo-info">
@@ -700,44 +318,39 @@
                             <div class="respaldo-status"><span class="punto"></span> Online</div>
                         </div>
                     </div>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">UNIRTE</a>
+                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario" style="padding:8px 18px; font-size:0.8rem;">UNIRTE</a>
                 </div>
-
-                <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
+                <div class="respaldo-item">
                     <div class="respaldo-info">
-                        <i class="fab fa-whatsapp"></i>
+                        <i class="fab fa-whatsapp" style="color:#25d366;"></i>
                         <div>
-                            <div class="respaldo-nombre">Toto Caliente Internacional</div>
-                            <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 1,647 Seguidores</div>
+                            <div class="respaldo-nombre">WhatsApp Channel</div>
+                            <div class="respaldo-status" style="color:#25d366;"><span class="punto" style="background:#25d366;"></span> Activo</div>
                         </div>
                     </div>
-                    <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
+                    <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp" style="padding:8px 18px; font-size:0.8rem; text-decoration:none;">UNIRTE</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
-        <div>
-            <img src="no_bg_image.png" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
-        </div>
-        <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
-        <p style="font-size: 14px; color: #888; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
+        <p>&copy; 2026 <span style="color:var(--primario); font-weight:700;">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE -->
-    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante" title="Unirse al Telegram Puente">
-        <i class="fab fa-telegram-plane"></i>
-    </a>
+    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante"><i class="fab fa-telegram-plane"></i></a>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <!-- LÓGICA DE INTERACTIVIDAD AVANZADA (LOGRA PASAR DE ETAPA) -->
     <script>
-        // Función para mostrar/ocultar y alternar entre los formularios de Login y Registro
+        let usuarioActual = "";
+
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
             const cajaLogin = document.getElementById('cajaLogin');
             const cajaRegistro = document.getElementById('cajaRegistro');
+            const pantallaExito = document.getElementById('pantallaExito');
+
+            pantallaExito.style.display = 'none'; // Resetea pantalla intermedia de éxito
 
             if (tipo === 'login') {
                 if (cajaLogin.style.display === 'block') {
@@ -747,7 +360,6 @@
                     zona.style.display = 'block';
                     cajaLogin.style.display = 'block';
                     cajaRegistro.style.display = 'none';
-                    cajaLogin.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else if (tipo === 'registro') {
                 if (cajaRegistro.style.display === 'block') {
@@ -757,50 +369,64 @@
                     zona.style.display = 'block';
                     cajaRegistro.style.display = 'block';
                     cajaLogin.style.display = 'none';
-                    cajaRegistro.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         }
 
-        // Función simulada para procesar el envío de formularios de autenticación
-        function procesarAuth(event, tipo) {
+        // Procesa la acción y salta a la pantalla de ÉXITO de la captura 1
+        function ejecutarAccion(event, tipo) {
             event.preventDefault();
-            const msgBox = tipo === 'login' ? document.getElementById('msgLogin') : document.getElementById('msgRegistro');
-            msgBox.style.display = 'block';
             
-            if (tipo === 'login') {
-                msgBox.style.color = 'var(--exito)';
-                msgBox.innerText = '¡Inicio de sesión exitoso! Redireccionando...';
-            } else {
-                msgBox.style.color = 'var(--secundario-hover)';
-                msgBox.innerText = '¡Cuenta creada con éxito! Revisa tu bandeja.';
-            }
+            // Capturamos el apodo ingresado
+            const apodo = tipo === 'login' ? document.getElementById('loginUser').value : document.getElementById('regUser').value;
+            usuarioActual = apodo.startsWith('@') ? apodo : '@' + apodo;
+
+            // Ocultamos las cajas de entrada de datos
+            document.getElementById('zonaFormularios').style.display = 'none';
+            document.getElementById('bloqueBotonesAcceso').style.display = 'none';
+
+            // Mostramos de inmediato la caja estética naranja de la imagen
+            const pantallaExito = document.getElementById('pantallaExito');
+            document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
+            pantallaExito.style.display = 'block';
+            pantallaExito.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Función en tiempo real para el motor de búsqueda de canales
+        // Al hacer clic en el botón verde/naranja del cuadro de éxito, completa la sesión en el header
+        function confirmarIngresoFinal() {
+            document.getElementById('pantallaExito').style.display = 'none';
+            
+            // Cambiar Header a modo "Logueado"
+            document.getElementById('accionesInvitado').style.display = 'none';
+            const accionesUsuario = document.getElementById('accionesUsuario');
+            accionesUsuario.style.display = 'flex';
+            
+            // Setear datos en el navbar
+            document.getElementById('navNombreUser').innerText = usuarioActual;
+            document.getElementById('avatarLetra').innerText = usuarioActual.charAt(1).toUpperCase();
+
+            // Incrementar dinámicamente el contador de miembros del portal de forma visual
+            const numMiembros = document.getElementById('numMiembros');
+            numMiembros.innerText = "1,422";
+            numMiembros.style.color = "var(--exito)";
+        }
+
+        function cerrarSesion() {
+            document.getElementById('accionesUsuario').style.display = 'none';
+            document.getElementById('accionesInvitado').style.display = 'flex';
+            document.getElementById('bloqueBotonesAcceso').style.display = 'flex';
+            document.getElementById('numMiembros').innerText = "1,421";
+            document.getElementById('numMiembros').style.color = "#fff";
+            usuarioActual = "";
+        }
+
         function filtrarCanales() {
             const query = document.getElementById('inputBuscar').value.toLowerCase();
             const filas = document.querySelectorAll('#listaCanales .canal-fila');
-            const noResultados = document.getElementById('noResultados');
-            let encontrados = 0;
-
             filas.forEach(fila => {
-                const nombre = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
-                const categoria = fila.querySelector('.canal-categoria-tag').innerText.toLowerCase();
-                
-                if (nombre.includes(query) || categoria.includes(query)) {
-                    fila.style.display = 'flex';
-                    encontrados++;
-                } else {
-                    fila.style.display = 'none';
-                }
+                const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
+                fila.style.display = texto.includes(query) ? 'flex' : 'none';
             });
-
-            if (encontrados === 0) {
-                noResultados.style.display = 'block';
-            } else {
-                noResultados.style.display = 'none';
-            }
         }
     </script>
 </body>
