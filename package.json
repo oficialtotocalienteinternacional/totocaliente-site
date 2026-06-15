@@ -1,0 +1,16 @@
+{
+  "name": "totocaliente-site",
+  "version": "1.0.0",
+  "description": "TOTO CALIENTE INTERNACIONAL - Portal Oficial de la Comunidad",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static HTML'",
+    "test": "echo 'No tests configured'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
