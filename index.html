@@ -297,12 +297,35 @@
             <div class="hero-banner">
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 <h1 class="hero-titulo">Portal Oficial de Enlaces y <span>Verificación</span></h1>
-                <p class="hero-descripcion">Accede de forma segura y directa a toda nuestra red masiva de contenidos. Filtra y busca tus canales usando el indexador en tiempo real abajo.</p>
+                
+                <!-- 1. CAMBIO DE TEXTO: ESTILO PUBLICITARIO Y EMOCIONANTE -->
+                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
+                
+                <!-- 2. NUEVO BLOQUE DE 6 BOTONES REDISEÑADO -->
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
                     </a>
-                    <a href="#buscador" class="btn btn-outline">Buscar Canales</a>
+                    
+                    <a href="#buscador" class="btn btn-outline">
+                        <i class="fas fa-search"></i> Buscar Canales
+                    </a>
+
+                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;">
+                        <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
+                    </a>
+
+                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
+                        <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
+                    </a>
+
+                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
+                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
+                    </a>
+
+                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
+                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
+                    </a>
                 </div>
             </div>
         </div>
@@ -319,7 +342,7 @@
             <div class="tarjeta stat-card">
                 <i class="fas fa-folder-tree"></i>
                 <div class="stat-numero">10,000+</div>
-                <div class="stat-label">Canales Indexados</div>
+                <div class="stat-label">Canales Disponibles</div>
             </div>
             <div class="tarjeta stat-card">
                 <i class="fas fa-shield-alt"></i>
@@ -360,7 +383,7 @@
                 <!-- CANAL 2 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box">⭐</div>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
                     </div>
                     <span class="canal-categoria-tag">Exclusivo</span>
@@ -370,11 +393,21 @@
                 <!-- CANAL 3 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box">🛡️</div>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
                     </div>
                     <span class="canal-categoria-tag">Web Oficial</span>
                     <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
+                </div>
+
+                <!-- CANAL 4 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
 
             </div>
@@ -394,11 +427,11 @@
                     <div class="respaldo-info">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE (Canal Principal)</div>
+                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE </div>
                             <div class="respaldo-status"><span class="punto"></span> Online</div>
                         </div>
                     </div>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">Conectar</a>
+                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">UNIRTE</a>
                 </div>
             </div>
         </div>
@@ -419,15 +452,23 @@
 
     <!-- SCRIPTS INTERACTIVOS -->
     <script>
-        // Simulación dinámica de conectados
+        // Simulación dinámica de conectados en el rango de 60,000
         setInterval(() => {
             const contador = document.getElementById('contadorOnline');
             if (contador) {
-                const variacion = Math.floor(Math.random() * 10) - 5; 
-                let actual = parseInt(contador.innerText) + variacion;
-                if(actual < 100) actual = 130;
-                if(actual > 200) actual = 150;
-                contador.innerText = actual;
+                // Quitamos la coma para poder hacer la matemática
+                let actual = parseInt(contador.innerText.replace(',', ''));
+                
+                // Genera una variación de subir o bajar entre 1 y 15 personas
+                const variacion = Math.floor(Math.random() * 30) - 15; 
+                actual = actual + variacion;
+                
+                // Límites de seguridad para que no se salga del rango de las 60 mil
+                if(actual < 60000) actual = 60250;
+                if(actual > 61500) actual = 60780;
+                
+                // Volvemos a ponerle la coma para que se vea estético (Ej: 60,425)
+                contador.innerText = actual.toLocaleString('en-US');
             }
         }, 4000);
 
