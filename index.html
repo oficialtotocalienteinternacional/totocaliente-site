@@ -134,7 +134,6 @@
             box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
         }
 
-        /* Botón personalizado verde para WhatsApp */
         .btn-whatsapp {
             background: linear-gradient(135deg, #25d366 0%, #1ebd58 100%);
             color: var(--texto-blanco);
@@ -145,7 +144,7 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
-        /* NUEVOS ESTILOS PARA ACCESO (LOGIN/REGISTRO) */
+        /* ESTILOS ACCESO (LOGIN/REGISTRO) */
         .btn-acceso {
             padding: 10px 20px;
             border-radius: 8px;
@@ -253,7 +252,7 @@
             gap: 12px;
         }
 
-        /* HERO - REDISEÑO DE CENTRADO ABSOLUTO */
+        /* HERO */
         .hero { padding: 40px 0 60px; text-align: center; overflow: hidden; }
         .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         
@@ -266,7 +265,6 @@
             box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
         }
 
-        /* Título con corrección de desbordamiento y centrado simétrico completo */
         .hero-titulo { 
             font-size: clamp(2rem, 4.5vw, 4.5rem); 
             font-weight: 900; 
@@ -287,7 +285,6 @@
         
         .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; text-align: center; }
         
-        /* Bloque exclusivo para Acceso Web destacado */
         .hero-acceso-destacado {
             display: flex;
             justify-content: center;
@@ -311,7 +308,7 @@
         .stat-numero { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
         .stat-label { font-size: 0.85rem; font-weight: 700; color: var(--texto-mutado); text-transform: uppercase; }
 
-        /* MOTOR DE BÚSQUEDA */
+        /* BUSCADOR */
         .buscador-seccion { padding: 60px 0; }
         .buscador-contenedor { max-width: 800px; margin: 0 auto 40px; position: relative; }
         .buscador-input-wrapper { position: relative; display: flex; align-items: center; }
@@ -377,7 +374,7 @@
 
         .no-resultados { text-align: center; padding: 40px; color: var(--texto-mutado); font-weight: 600; display: none; }
 
-        /* RESPALDOS Y MULTICOLUMNAS */
+        /* RESPALDOS */
         .respaldos { padding: 60px 0 100px; }
         .respaldos-lista { 
             display: grid; 
@@ -399,14 +396,13 @@
         .footer-logo-img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primario); margin-bottom: 15px; box-shadow: 0 0 15px rgba(255, 69, 0, 0.3); }
         .footer-logo { font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 15px; }
         .footer-logo span { color: var(--primario); }
-        .footer-copyright { font-size: 0.85rem; color: #555565; }
 
         /* BOTÓN FLOTANTE */
         .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
         .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
 
         @media (max-width: 768px) {
-            .header-acciones { display: none; } /* Oculto en nav móvil para evitar amontonamiento */
+            .header-acciones { display: none; }
             .hero-acceso-destacado { flex-direction: column; width: 100%; padding: 10px; }
             .hero-botones .btn { width: 100%; }
             .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
@@ -425,10 +421,10 @@
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
             
-            <!-- Nuevos botones de acceso en cabecera para computadoras -->
+            <!-- Cambia el '#' por tu enlace real aquí abajo -->
             <div class="header-acciones">
-                <a href="#login" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="#registro" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</a>
+                <a href="👉_PON_AQUÍ_TU_ENLACE_DE_LOGIN" class="btn-acceso btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="👉_PON_AQUÍ_TU_ENLACE_DE_REGISTRO" class="btn-acceso btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</a>
             </div>
         </div>
     </header>
@@ -437,23 +433,20 @@
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <!-- 1. Logo principal arriba al centro -->
                 <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
                 
-                <!-- 2. Badge de estado justo abajo del logo -->
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
-                <!-- 3. Título Corregido: Perfectamente Centrado y Simétrico -->
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Inicia sesión en nuestra web o regístrate para no perderte nada, explora comunidades exclusivas y usa el buscador rápido aquí abajo. 🔥</p>
                 
-                <!-- Bloque móvil/global visible para Registrarse y Loguearse en la Web -->
+                <!-- Cambia el '#' por tu enlace real aquí también -->
                 <div class="hero-acceso-destacado">
-                    <a href="#login" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+                    <a href="👉_PON_AQUÍ_TU_ENLACE_DE_LOGIN" class="btn btn-primario" style="background: linear-gradient(135deg, #333 0%, #111 100%); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
                         <i class="fas fa-key"></i> Iniciar Sesión
                     </a>
-                    <a href="#registro" class="btn btn-primario">
+                    <a href="👉_PON_AQUÍ_TU_ENLACE_DE_REGISTRO" class="btn btn-primario">
                         <i class="fas fa-user-check"></i> Registrarse Web
                     </a>
                 </div>
@@ -523,10 +516,7 @@
                 </div>
             </div>
 
-            <!-- Contenedor de Canales -->
             <div class="lista-canales" id="listaCanales">
-                
-                <!-- CANAL 1 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -536,7 +526,6 @@
                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 2 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -546,7 +535,6 @@
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 3 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -556,7 +544,6 @@
                     <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 4 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -566,7 +553,6 @@
                     <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 5 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -576,7 +562,6 @@
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
-                <!-- CANAL 6 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -586,7 +571,6 @@
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
-                <!-- CANAL 7 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -596,7 +580,6 @@
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
-                <!-- CANAL 8 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -606,7 +589,6 @@
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
-                <!-- CANAL 9 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -616,7 +598,6 @@
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
-                <!-- CANAL 10 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -625,7 +606,6 @@
                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
-                
             </div>
 
             <div class="no-resultados" id="noResultados">
@@ -635,7 +615,7 @@
         </div>
     </section>
 
-    <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
+    <!-- RESPALDOS RÁPIDOS -->
     <section class="respaldos">
         <div class="contenedor">
             <div style="text-align: center; margin-bottom: 35px;">
@@ -644,7 +624,6 @@
             </div>
             
             <div class="respaldos-lista">
-                <!-- COLUMNA 1: TELEGRAM -->
                 <div class="respaldo-item">
                     <div class="respaldo-info">
                         <i class="fab fa-telegram"></i>
@@ -656,7 +635,6 @@
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">UNIRTE</a>
                 </div>
 
-                <!-- COLUMNA 2: WHATSAPP CANAL 1 -->
                 <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                     <div class="respaldo-info">
                         <i class="fab fa-whatsapp"></i>
@@ -668,7 +646,6 @@
                     <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp">UNIRTE</a>
                 </div>
 
-                <!-- COLUMNA 3: WHATSAPP CANAL 2 -->
                 <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                     <div class="respaldo-info">
                         <i class="fab fa-whatsapp"></i>
@@ -690,7 +667,6 @@
         </div>
         <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
         <p style="font-size: 14px; color: #888; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
-        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.2); margin-top: 10px;">Asegúrate siempre de ingresar mediante nuestros enlaces oficiales verificados.</p>
     </footer>
 
     <!-- BOTÓN FLOTANTE -->
@@ -700,23 +676,18 @@
 
     <!-- SCRIPTS INTERACTIVOS -->
     <script>
-        // Simulación dinámica de conectados en el rango de 60,000
         setInterval(() => {
             const contador = document.getElementById('contadorOnline');
             if (contador) {
                 let actual = parseInt(contador.innerText.replace(/,/g, ''));
-                
                 const variacion = Math.floor(Math.random() * 30) - 15; 
                 actual = actual + variacion;
-                
                 if(actual < 60000) actual = 60250;
                 if(actual > 61500) actual = 60780;
-                
                 contador.innerText = actual.toLocaleString('en-US');
             }
         }, 4000);
 
-        // Sistema buscador interactivo
         document.getElementById('inputBuscar').addEventListener('keyup', function() {
             let filtro = this.value.toLowerCase().trim();
             let filas = document.getElementById('listaCanales').getElementsByClassName('canal-fila');
