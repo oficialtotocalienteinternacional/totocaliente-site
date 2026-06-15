@@ -3,495 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO CALIENTE INTERNACIONAL | Portal Oficial de la Comunidad</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>TOTO CALIENTE - Directorio Oficial</title>
+    <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Vercel Web Analytics -->
-    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================================================
-           VARIABLES Y CONFIGURACIÓN BASE
-           ========================================================================== */
         :root {
-            --bg-principal: #0b0b0e;
-            --bg-tarjeta: #141419;
-            --bg-tarjeta-hover: #1c1c24;
+            --fondo-oscuro: #0a0e17;
+            --tarjeta-fondo: #121824;
+            --tarjeta-borde: rgba(255, 255, 255, 0.05);
             --primario: #ff4500;
-            --primario-hover: #ff6324;
+            --primario-hover: #ff571a;
             --secundario: #0088cc;
             --secundario-hover: #00a2f3;
-            --exito: #00e676;
             --texto-blanco: #ffffff;
-            --texto-mutado: #a0a0b0;
-            --borde: rgba(255, 69, 0, 0.15);
-            --borde-hover: rgba(255, 69, 0, 0.4);
-            --fuente: 'Montserrat', sans-serif;
-            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --texto-gris: #8a99ad;
+            --en-linea: #00e676;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: var(--fuente);
-            background-color: var(--bg-principal);
+            background-color: var(--fondo-oscuro);
             color: var(--texto-blanco);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 90% 10%, rgba(255, 69, 0, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 10% 80%, rgba(0, 136, 204, 0.06) 0%, transparent 45%);
-            background-attachment: fixed;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-principal); }
-        ::-webkit-scrollbar-thumb { background: #252530; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primario); }
-
-        .contenedor {
-            width: 100%;
+        /* Contenedor Principal */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 2rem 1rem;
         }
 
-        /* BOTONES */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: var(--transicion);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primario {
-            background: linear-gradient(135deg, var(--primario) 0%, #d42f00 100%);
-            color: var(--texto-blanco);
-            box-shadow: 0 4px 20px rgba(255, 69, 0, 0.3);
-        }
-
-        .btn-primario:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5);
-            background: linear-gradient(135deg, var(--primario-hover) 0%, var(--primario) 100%);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--texto-blanco);
-            border: 2px solid rgba(255,255,255,0.15);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--texto-blanco);
-            transform: translateY(-2px);
-        }
-
-        .seccion-titulo {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
+        /* Encabezado / Header */
+        header {
+            text-align: center;
+            margin-bottom: 3.5rem;
             position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
             display: inline-block;
         }
 
-        .seccion-titulo span { color: var(--primario); }
-        .seccion-subtitulo { color: var(--texto-mutado); font-size: 1rem; margin-bottom: 40px; max-width: 600px; }
-
-        .tarjeta {
-            background-color: var(--bg-tarjeta);
-            border: 1px solid var(--borde);
-            border-radius: 20px;
-            padding: 30px;
-            transition: var(--transicion);
-            position: relative;
-            overflow: hidden;
+        .logo-icon {
+            font-size: 3.5rem;
+            color: var(--primario);
+            filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6));
+            animation: pulse 2s infinite;
         }
 
-        .tarjeta:hover {
-            transform: translateY(-5px);
-            border-color: var(--borde-hover);
-            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.05);
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.9)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); }
         }
 
-        .badge-estado {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--exito);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ffffff, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
-        .badge-estado .punto {
-            width: 8px; height: 8px; background-color: var(--exito); border-radius: 50%;
-            animation: pulso 2s infinite;
+        .tagline {
+            color: var(--texto-gris);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        @keyframes pulso {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        /* Sección de Canales */
+        .seccion-titulo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* HEADER */
-        header {
-            background-color: rgba(11, 11, 14, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: sticky; top: 0; z-index: 100; padding: 12px 0;
+        .seccion-titulo i {
+            color: var(--primario);
         }
 
-        header .contenedor { display: flex; align-items: center; justify-content: space-between; }
-        .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--texto-blanco); }
-        .brand-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--primario); }
-        .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
-        .brand-nombre span { color: var(--primario); }
-
-        /* HERO */
-        .hero { padding: 80px 0 60px; text-align: center; }
-        .hero-banner { max-width: 850px; margin: 0 auto; }
-        .hero-titulo { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-top: 20px; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-titulo span { background: linear-gradient(135deg, var(--primario) 30%, #ff8c00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 650px; margin: 0 auto 35px; }
-        .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-
-        /* STATS */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
-        .stat-card { text-align: center; padding: 35px 20px; }
-        .stat-card i { font-size: 2rem; color: var(--primario); margin-bottom: 15px; }
-        .stat-numero { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
-        .stat-label { font-size: 0.85rem; font-weight: 700; color: var(--texto-mutado); text-transform: uppercase; }
-
-        /* MOTOR DE BÚSQUEDA */
-        .buscador-seccion { padding: 60px 0; }
-        .buscador-contenedor { max-width: 800px; margin: 0 auto 40px; position: relative; }
-        .buscador-input-wrapper { position: relative; display: flex; align-items: center; }
-        .buscador-input-wrapper i { position: absolute; left: 25px; color: var(--texto-mutado); font-size: 1.3rem; }
-        
-        .buscador-control {
-            width: 100%; padding: 20px 20px 20px 60px;
-            background-color: var(--bg-tarjeta);
-            border: 2px solid var(--borde);
-            border-radius: 16px; color: var(--texto-blanco);
-            font-family: var(--fuente); font-size: 1.1rem; font-weight: 600;
-            transition: var(--transicion); outline: none;
+        .canales-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3.5rem;
         }
 
-        .buscador-control:focus {
-            border-color: var(--primario);
-            box-shadow: 0 0 25px rgba(255, 69, 0, 0.15);
-            background-color: var(--bg-tarjeta-hover);
-        }
-
-        .lista-canales {
-            display: grid; grid-template-columns: 1fr; gap: 12px;
-            max-width: 900px; margin: 0 auto;
-            max-height: 600px; overflow-y: auto; padding-right: 10px;
-        }
-
+        /* Filas de Canales */
         .canal-fila {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 24px; background: rgba(20, 20, 25, 0.6);
-            border: 1px solid rgba(255,255,255,0.03); border-radius: 12px;
-            transition: var(--transicion);
+            background-color: var(--tarjeta-fondo);
+            border: 1px solid var(--tarjeta-borde);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: inherit;
         }
 
         .canal-fila:hover {
-            background: var(--bg-tarjeta-hover);
-            border-color: rgba(255, 69, 0, 0.25);
-            transform: translateX(4px);
+            transform: translateY(-2px);
+            border-color: rgba(255, 69, 0, 0.3);
+            background-color: #161f30;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .canal-info-basica { display: flex; align-items: center; gap: 15px; }
-        .canal-icon-box {
-            width: 40px; height: 40px; background: rgba(255, 69, 0, 0.1);
-            color: var(--primario); border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-weight: 700;
-        }
-        .canal-nombre-texto { font-weight: 700; font-size: 1.05rem; }
-        .canal-categoria-tag {
-            font-size: 0.75rem; background: rgba(0, 136, 204, 0.15);
-            color: var(--secundario-hover); padding: 3px 10px; border-radius: 50px; font-weight: 700;
+        .canal-info {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex: 1;
         }
 
+        .canal-icono-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .canal-icono {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, rgba(255, 69, 0, 0.2) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primario);
+            font-size: 1.4rem;
+            border: 1px solid rgba(255, 69, 0, 0.2);
+        }
+
+        .canal-icono.blue {
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.1) 0%, rgba(0, 136, 204, 0.2) 100%);
+            color: var(--secundario);
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--en-linea);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            border: 2px solid var(--tarjeta-fondo);
+        }
+
+        .canal-detalles h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            transition: color 0.3s;
+        }
+
+        .canal-fila:hover .canal-detalles h3 {
+            color: var(--primario);
+        }
+
+        .canal-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--texto-gris);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .meta-item.online {
+            color: var(--en-linea);
+            font-weight: 500;
+        }
+
+        /* Botones de acción mini */
         .btn-unirse-mini {
-            padding: 8px 18px; font-size: 0.8rem; border-radius: 8px;
-            background: transparent; color: var(--texto-blanco);
-            border: 1px solid var(--borde); text-decoration: none;
-            font-weight: 700; text-transform: uppercase; transition: var(--transicion);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: var(--primario);
+            border: 2px solid rgba(255, 69, 0, 0.4);
+            text-align: center;
+            white-space: nowrap;
         }
 
-        .canal-fila:hover .btn-unirse-mini {
-            background: var(--primario); border-color: var(--primario);
-            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.2);
+        /* CORRECCIÓN: Hover global para las filas de canales normales */
+        .canal-fila:hover .btn-unirse-mini,
+        .btn-unirse-mini:hover {
+            background: linear-gradient(135deg, var(--primario) 0%, #d42f00 100%) !important;
+            border-color: var(--primario) !important;
+            color: var(--texto-blanco) !important;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+            transform: scale(1.05);
         }
 
-        .no-resultados { text-align: center; padding: 40px; color: var(--texto-mutado); font-weight: 600; display: none; }
+        /* CORRECCIÓN ADICIONAL: Diseño destacado y fijo para el botón "Comprar Ahora" */
+        .btn-comprar-brillante {
+            background: linear-gradient(135deg, #ff4500 0%, #ff2a00 100%) !important;
+            border-color: #ff4500 !important;
+            color: var(--texto-blanco) !important;
+            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+        }
 
-        /* RESPALDOS */
-        .respaldos { padding: 60px 0 100px; }
-        .respaldos-lista { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto; }
-        .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 30px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transition: var(--transicion); flex-wrap: wrap; gap: 15px; }
-        .respaldo-item:hover { border-color: rgba(0, 136, 204, 0.3); background-color: var(--bg-tarjeta-hover); transform: translateX(5px); }
-        .respaldo-info { display: flex; align-items: center; gap: 15px; }
-        .respaldo-info i { font-size: 1.5rem; color: var(--secundario); }
-        .respaldo-nombre { font-weight: 700; font-size: 1.1rem; }
-        .respaldo-status { font-size: 0.8rem; color: var(--exito); display: flex; align-items: center; gap: 5px; }
+        .btn-comprar-brillante:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 6px 18px rgba(255, 69, 0, 0.5) !important;
+        }
 
-        /* FOOTER */
-        footer { background-color: #07070a; border-top: 1px solid rgba(255, 255, 255, 0.03); padding: 40px 0; text-align: center; }
-        .footer-logo { font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 15px; }
-        .footer-logo span { color: var(--primario); }
-        .footer-copyright { font-size: 0.85rem; color: #555565; }
 
-        /* BOTÓN FLOTANTE */
-        .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
-        .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
+        /* Grid de Respaldos Rápidos */
+        .respaldos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 4rem;
+        }
 
+        .respaldo-item {
+            background-color: var(--tarjeta-fondo);
+            border: 1px solid var(--tarjeta-borde);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .respaldo-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 136, 204, 0.3);
+            background-color: #161f30;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CORRECCIÓN: Botón Secundario base y su comportamiento Hover */
+        .btn-secundario {
+            background: transparent;
+            color: var(--secundario-hover);
+            border: 2px solid rgba(0, 136, 204, 0.4);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        /* Cuando pasas el mouse por encima de la tarjeta de respaldo, el botón reacciona */
+        .respaldo-item:hover .btn-secundario,
+        .btn-secundario:hover {
+            background: linear-gradient(135deg, var(--secundario-hover) 0%, var(--secundario) 100%) !important;
+            border-color: var(--secundario-hover) !important;
+            color: var(--texto-blanco) !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 162, 243, 0.4);
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--tarjeta-borde);
+            color: var(--texto-gris);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand {
+            color: var(--primario);
+            font-weight: 600;
+        }
+
+        /* Responsivo */
         @media (max-width: 768px) {
-            .hero-botones .btn { width: 100%; }
-            .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
-            .canal-fila { flex-direction: column; gap: 12px; text-align: center; }
+            h1 { font-size: 2.2rem; }
+            .canal-fila { flex-direction: column; text-align: center; gap: 1.2rem; padding: 1.5rem; }
+            .canal-info { flex-direction: column; gap: 0.8rem; }
+            .canal-meta { justify-content: center; }
+            .btn-unirse-mini { width: 100%; }
+            .respaldos-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="contenedor">
-            <a href="#" class="brand">
-                <!-- LOGO DE TU REPOSITORIO -->
-                <img src="no_bg_image.png" alt="Logo" class="brand-logo">
-                <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
-            </a>
-            <div class="badge-estado"><span class="punto"></span> Red Activa</div>
-        </div>
-    </header>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <div class="logo-container">
+                <i class="fa-solid fa-fire logo-icon"></i>
+            </div>
+            <h1>TOTO CALIENTE</h1>
+            <p class="tagline">Bienvenido al ecosistema oficial. Accede de forma segura a todos nuestros canales oficiales y herramientas autorizadas.</p>
+        </header>
 
-    <!-- HERO PRINCIPAL -->
-    <section class="hero">
-        <div class="contenedor">
-            <div class="hero-banner">
-                <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
-                <h1 class="hero-titulo">Portal Oficial de Enlaces y <span>Verificación</span></h1>
+        <!-- Red de Canales Principales -->
+        <section>
+            <h2 class="seccion-titulo"><i class="fa-solid fa-circle-nodes"></i> Canales de la Red</h2>
+            <div class="canales-lista">
                 
-                <!-- 1. CAMBIO DE TEXTO: ESTILO PUBLICITARIO Y EMOCIONANTE -->
-                <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
-                
-                <!-- 2. NUEVO BLOQUE DE 6 BOTONES REDISEÑADO -->
-                <div class="hero-botones">
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
-                        <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
-                    </a>
-                    
-                    <a href="#buscador" class="btn btn-outline">
-                        <i class="fas fa-search"></i> Buscar Canales
-                    </a>
-
-                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;">
-                        <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
-                    </a>
-
-                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
-                        <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
-                    </a>
-
-                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
-                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
-                    </a>
-
-                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
-                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESTADÍSTICAS -->
-    <section class="contenedor">
-        <div class="stats-grid">
-        <div class="tarjeta stat-card">
-                <i class="fas fa-users"></i>
-                <div class="stat-numero" id="contadorOnline">60,420</div>
-                <div class="stat-label">Conectados Ahora</div>
-            </div>
-            <div class="tarjeta stat-card">
-                <i class="fas fa-folder-tree"></i>
-                <div class="stat-numero">10,000+</div>
-                <div class="stat-label">Canales Disponibles</div>
-            </div>
-            <div class="tarjeta stat-card">
-                <i class="fas fa-shield-alt"></i>
-                <div class="stat-numero">100%</div>
-                <div class="stat-label">Verificado</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MOTOR DE BÚSQUEDA DE CANALES -->
-    <section class="buscador-seccion" id="buscador">
-        <div class="contenedor">
-            <div style="text-align: center;">
-                <h2 class="seccion-titulo">Buscador Oficial de <span>Canales</span></h2>
-                <p class="seccion-subtitulo" style="margin: 0 auto 40px;">Escribe una palabra clave para encontrar el acceso directo de forma inmediata.</p>
-            </div>
-
-            <div class="buscador-contenedor">
-                <div class="buscador-input-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="inputBuscar" class="buscador-control" placeholder="Escribe para buscar canales oficiales...">
-                </div>
-            </div>
-
-            <!-- Contenedor de Canales -->
-            <div class="lista-canales" id="listaCanales">
-                
-                <!-- CANAL 1 -->
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">TOTO CALIENTE PUENTE</span></div>
-                    </div>
-                    <span class="canal-categoria-tag">OFICIAL</span>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
-                </div>
-
-                <!-- CANAL 2 -->
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
-                    </div>
-                    <span class="canal-categoria-tag">CANAL SECUNDARIO</span>
-                    <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
-                </div>
-
-                <!-- CANAL 3 -->
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
-                    </div>
-                    <span class="canal-categoria-tag">Web Oficial</span>
-                    <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
-                </div>
-                
-                <!-- CANAL 4 -->
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                        <div class="canal-icon-box">💎</div> <!-- Un emoji como un diamante o fuego para resaltar -->
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span> <!-- Fondo verde para resaltar el tag -->
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-            </div>
-
-            <div class="no-resultados" id="noResultados">
-                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--primario); margin-bottom: 10px; display: block;"></i>
-                No se encontraron canales.
-            </div>
-        </div>
-    </section>
-
-    <!-- RESPALDOS RÁPIDOS -->
-    <section class="respaldos">
-        <div class="contenedor">
-            <div class="respaldos-lista">
-                <div class="respaldo-item">
-                    <div class="respaldo-info">
-                        <i class="fab fa-telegram"></i>
-                        <div>
-                            <div class="respaldo-nombre">TOTO CALIENTE PUENTE  Canal Principal</div>
-                            <div class="respaldo-status"><span class="punto"></span> Online</div>
+                <!-- Fila 1 -->
+                <a href="https://t.me/+fN8vVq_gO00wZGUx" target="_blank" class="canal-fila">
+                    <div class="canal-info">
+                        <div class="canal-icono-wrapper">
+                            <div class="canal-icono"><i class="fa-brands fa-telegram"></i></div>
+                            <div class="status-dot"></div>
+                        </div>
+                        <div class="canal-detalles">
+                            <h3>TOTO CALIENTE RESPALDO</h3>
+                            <div class="canal-meta">
+                                <span class="meta-item online"><i class="fa-solid fa-circle"></i> Online</span>
+                                <span class="meta-item"><i class="fa-solid fa-shield-halved"></i> Oficial</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario">UNIRTE</a>
-                </div>
+                    <div class="btn-unirse-mini">Unirme</div>
+                </a>
+
+                <!-- Fila 2 -->
+                <a href="https://t.me/+P3OonAAnj09hM2Qx" target="_blank" class="canal-fila">
+                    <div class="canal-info">
+                        <div class="canal-icono-wrapper">
+                            <div class="canal-icono"><i class="fa-brands fa-telegram"></i></div>
+                            <div class="status-dot"></div>
+                        </div>
+                        <div class="canal-detalles">
+                            <h3>TOTO CALIENTE CHAT PREMIUM</h3>
+                            <div class="canal-meta">
+                                <span class="meta-item online"><i class="fa-solid fa-circle"></i> Online</span>
+                                <span class="meta-item"><i class="fa-solid fa-shield-halved"></i> Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-unirse-mini">Unirme</div>
+                </a>
+
+                <!-- Fila 3 -->
+                <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="canal-fila">
+                    <div class="canal-info">
+                        <div class="canal-icono-wrapper">
+                            <div class="canal-icono"><i class="fa-solid fa-robot"></i></div>
+                            <div class="status-dot"></div>
+                        </div>
+                        <div class="canal-detalles">
+                            <h3>PUBLICATE AQUÍ CON NUESTRO BOT</h3>
+                            <div class="canal-meta">
+                                <span class="meta-item online"><i class="fa-solid fa-circle"></i> Activo</span>
+                                <span class="meta-item"><i class="fa-solid fa-bolt"></i> Automático</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botón Destacado de Compra -->
+                    <div class="btn-unirse-mini btn-comprar-brillante">Comprar Ahora</div>
+                </a>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="contenedor">
-            <div class="footer-logo">TOTO CALIENTE <span>INTERNACIONAL</span></div>
-            <p class="footer-copyright">&copy; 2026 TOTO CALIENTE INTERNACIONAL. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- BOTÓN FLOTANTE -->
-    <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante">
-        <i class="fab fa-telegram-plane"></i>
-    </a>
-
-    <!-- SCRIPTS INTERACTIVOS -->
-    <script>
-        // Simulación dinámica de conectados en el rango de 60,000
-        setInterval(() => {
-            const contador = document.getElementById('contadorOnline');
-            if (contador) {
-                // Quitamos la coma para poder hacer la matemática
-                let actual = parseInt(contador.innerText.replace(',', ''));
+        <!-- Red de Respaldos Rápidos -->
+        <section>
+            <h2 class="seccion-titulo"><i class="fa-solid fa-bolt"></i> Respaldos Rápidos</h2>
+            <div class="respaldos-grid">
                 
-                // Genera una variación de subir o bajar entre 1 y 15 personas
-                const variacion = Math.floor(Math.random() * 30) - 15; 
-                actual = actual + variacion;
-                
-                // Límites de seguridad para que no se salga del rango de las 60 mil
-                if(actual < 60000) actual = 60250;
-                if(actual > 61500) actual = 60780;
-                
-                // Volvemos a ponerle la coma para que se vea estético (Ej: 60,425)
-                contador.innerText = actual.toLocaleString('en-US');
-            }
-        }, 4000);
+                <!-- Tarjeta Respaldo 1 -->
+                <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="respaldo-item">
+                    <div class="canal-info">
+                        <div class="canal-icono-wrapper">
+                            <div class="canal-icono blue"><i class="fa-solid fa-paper-plane"></i></div>
+                        </div>
+                        <div class="canal-detalles">
+                            <h3>TOTO CALIENTE PUENTE</h3>
+                            <span class="meta-item online" style="font-size: 0.8rem;"><i class="fa-solid fa-circle"></i> Online</span>
+                        </div>
+                    </div>
+                    <div class="btn-secundario">Unirte</div>
+                </a>
 
-        // Sistema buscador interactivo
-        document.getElementById('inputBuscar').addEventListener('keyup', function() {
-            let filtro = this.value.toLowerCase().trim();
-            let filas = document.getElementById('listaCanales').getElementsByClassName('canal-fila');
-            let vacio = true;
-            
-            for (let i = 0; i < filas.length; i++) {
-                let texto = filas[i].textContent || filas[i].innerText;
-                if (texto.toLowerCase().indexOf(filtro) > -1) {
-                    filas[i].style.display = "flex";
-                    vacio = false;
-                } else {
-                    filas[i].style.display = "none";
-                }
-            }
-            document.getElementById('noResultados').style.display = vacio ? "block" : "none";
-        });
-    </script>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer>
+            <div style="margin-bottom: 1rem; opacity: 0.7;">
+                <i class="fa-solid fa-fire" style="font-size: 1.8rem; color: var(--primario); filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.5));"></i>
+            </div>
+            <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE</span>. Todos los derechos reservados.</p>
+            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.2);">Asegúrate siempre de ingresar mediante nuestros enlaces oficiales verificados.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
