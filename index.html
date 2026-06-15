@@ -198,9 +198,9 @@
         .brand-nombre { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -0.3px; }
         .brand-nombre span { color: var(--primario); }
 
-        /* HERO - AJUSTES DE CENTRADO Y ESCALA LINEAL */
-        .hero { padding: 60px 0 60px; text-align: center; }
-        .hero-banner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        /* HERO - REDISEÑO DE CENTRADO ABSOLUTO */
+        .hero { padding: 60px 0 60px; text-align: center; overflow: hidden; }
+        .hero-banner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         
         .hero-logo-img {
             width: 130px;
@@ -211,25 +211,27 @@
             box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
         }
 
-        /* Título completamente derecho, grande y en una sola línea */
+        /* Título con corrección de desbordamiento y centrado simétrico completo */
         .hero-titulo { 
-            font-size: clamp(2.2rem, 5.2vw, 5rem); 
+            font-size: clamp(2rem, 4.5vw, 4.5rem); 
             font-weight: 900; 
             line-height: 1.2; 
             margin-top: 15px;
             margin-bottom: 25px; 
             text-transform: uppercase;
-            white-space: nowrap;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             width: 100%;
             text-align: center;
+            display: block;
+            word-wrap: break-word;
         }
         .hero-titulo span { 
             color: var(--primario);
+            display: inline-block;
         }
         
-        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; }
-        .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .hero-descripcion { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--texto-mutado); max-width: 700px; margin: 0 auto 35px; text-align: center; }
+        .hero-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
 
         /* STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
@@ -325,10 +327,6 @@
         .telegram-flotante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--secundario) 0%, #0077b5 100%); color: var(--texto-blanco); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4); z-index: 999; transition: var(--transicion); }
         .telegram-flotante:hover { transform: scale(1.1) rotate(10deg); }
 
-        @media (max-width: 992px) {
-            .hero-titulo { white-space: normal; font-size: 3.5rem; }
-        }
-
         @media (max-width: 768px) {
             .hero-botones .btn { width: 100%; }
             .respaldo-item { text-align: center; justify-content: center; flex-direction: column; }
@@ -360,7 +358,7 @@
                 <!-- 2. Badge de estado justo abajo del logo -->
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
-                <!-- 3. Título Grande, Derecho y Centrado en una Sola Línea -->
+                <!-- 3. Título Corregido: Perfectamente Centrado y Simétrico -->
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
