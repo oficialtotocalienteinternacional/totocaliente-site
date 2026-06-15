@@ -1,0 +1,13 @@
+/* PERSONAS */
+    Creador, Desarrollador e Ideas: SR ERIDANIO CORREA (TOTO CALIENTE INTERNACIONAL IN.)
+    Contacto: totocalienteinternacionalbooking@hotmail.com
+    Ubicación: COLOMBIA
+
+/* SITIO WEB */
+    Estándares: HTML5, CSS3
+    Componentes: Integración Web Analytics
+
+/* COPYRIGHT */
+    © 2026 SR ERIDANIO CORREA. Todos los derechos reservados.
+    Las ideas, lógica de indexación y maquetación de este portal están 
+    protegidas por derechos de autor.
