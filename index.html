@@ -37,13 +37,10 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-          body {
-          font-family: var(--fuente);
-          background-color: #000;
-          color: var(--texto-blanco);
-          line-height: 1.6;
-          overflow-x: hidden;
-          position: relative;
+        body {
+            font-family: var(--fuente); background-color: var(--bg-principal); color: var(--texto-blanco);
+            line-height: 1.6; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 20%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
         }
 
         .contenedor { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -155,88 +152,6 @@
             .stats-grid { grid-template-columns: 1fr; }
             .hero-titulo, .hero-titulo span { font-size: 1.8rem; }
         }
-      
-/* =====================================
-   FUEGO ANIMADO TOTO CALIENTE
-===================================== */
-
-body::before{
-content:"";
-position:fixed;
-top:-20%;
-left:-20%;
-width:140%;
-height:140%;
-z-index:-2;
-pointer-events:none;
-
-background:
-radial-gradient(circle at 10% 20%, rgba(255,120,0,.95), transparent 20%),
-radial-gradient(circle at 90% 20%, rgba(255,80,0,.95), transparent 20%),
-radial-gradient(circle at 20% 80%, rgba(255,140,0,.95), transparent 20%),
-radial-gradient(circle at 85% 75%, rgba(255,60,0,.95), transparent 20%),
-radial-gradient(circle at 50% 50%, rgba(255,100,0,.8), transparent 45%);
-
-filter:blur(120px);
-
-animation:fuegoTCI 12s infinite alternate ease-in-out;
-}
-
-body::after{
-content:"";
-position:fixed;
-inset:0;
-z-index:-1;
-pointer-events:none;
-
-background:
-radial-gradient(
-circle at center,
-rgba(255,120,0,.15),
-rgba(255,69,0,.08),
-transparent 75%
-);
-
-animation:brilloTCI 4s infinite ease-in-out;
-}
-
-@keyframes fuegoTCI{
-
-0%{
-transform:translate(-40px,-30px) scale(1);
-}
-
-25%{
-transform:translate(30px,20px) scale(1.1);
-}
-
-50%{
-transform:translate(-20px,40px) scale(1.2);
-}
-
-75%{
-transform:translate(40px,-20px) scale(1.15);
-}
-
-100%{
-transform:translate(-30px,30px) scale(1.3);
-}
-}
-
-@keyframes brilloTCI{
-
-0%{
-opacity:.4;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:.4;
-}
-}
     </style>
 </head>
 <body>
@@ -538,16 +453,6 @@ opacity:.4;
     <script>
         let usuarioActual = "";
 
-        // Comprobar automáticamente si el usuario ya está logueado al cargar la página
-        document.addEventListener("DOMContentLoaded", () => {
-            const usuarioGuardado = localStorage.getItem("usuarioLogueado");
-            if (usuarioGuardado) {
-                usuarioActual = usuarioGuardado;
-                confirmarIngresoFinal(); 
-            }
-            verificarNotificaciones();
-        });
-
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
             const cajaLogin = document.getElementById('cajaLogin');
@@ -577,9 +482,6 @@ opacity:.4;
         }
 
         function confirmarIngresoFinal() {
-            // Guardar al usuario en el almacenamiento del navegador
-            localStorage.setItem("usuarioLogueado", usuarioActual);
-
             document.getElementById('pantallaExito').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'none';
             
@@ -591,9 +493,6 @@ opacity:.4;
         }
 
         function cerrarSesion() {
-            // Eliminar al usuario del almacenamiento del navegador al salir
-            localStorage.removeItem("usuarioLogueado");
-
             document.getElementById('pastillaSesion').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'flex';
             document.getElementById('numMiembros').innerText = "1,421";
@@ -607,39 +506,6 @@ opacity:.4;
                 const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
                 fila.style.display = texto.includes(query) ? 'flex' : 'none';
             });
-        }
-
-        // Consultar el endpoint de la API para enviar alertas flotantes ante cambios de enlaces
-        async function verificarNotificaciones() {
-            try {
-                const respuesta = await fetch('/api/novedades');
-                const datos = await respuesta.json();
-                
-                if (datos.nuevaNotificacion) {
-                    const ultimaVista = localStorage.getItem("ultimaNotificacionVistas");
-                    
-                    if (ultimaVista !== datos.idNotificacion) {
-                        mostrarAlertaFlotante(datos.mensaje, datos.enlace);
-                        localStorage.setItem("ultimaNotificacionVistas", datos.idNotificacion);
-                    }
-                }
-            } catch (error) {
-                console.error("Error leyendo notificaciones en el portal:", error);
-            }
-        }
-
-        function mostrarAlertaFlotante(mensaje, enlace) {
-            const alerta = document.createElement("div");
-            alerta.style = "position: fixed; bottom: 80px; right: 20px; background: #ff4500; color: white; padding: 16px; border-radius: 12px; z-index: 99999; box-shadow: 0px 8px 24px rgba(0,0,0,0.6); font-family: 'Montserrat', sans-serif; max-width: 320px; border: 1px solid rgba(255,255,255,0.2);";
-            alerta.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px;">
-                    <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fas fa-bell"></i> ¡AVISO IMPORTANTE!</strong>
-                    <button onclick="this.parentElement.parentElement.remove()" style="background: transparent; border: none; color: white; cursor: pointer; font-weight: bold; font-size: 1rem; opacity: 0.7;">&times;</button>
-                </div>
-                <p style="margin: 0 0 10px 0; font-size: 0.78rem; line-height: 1.4; color: #fff; opacity: 0.95;">${mensaje}</p>
-                <a href="${enlace}" target="_blank" style="display: inline-block; background: #fff; color: #0b0b0e; text-decoration: none; font-weight: 700; font-size: 0.7rem; padding: 6px 12px; border-radius: 4px; text-transform: uppercase;">Ir al Enlace</a>
-            `;
-            document.body.appendChild(alerta);
         }
     </script>
 </body>
