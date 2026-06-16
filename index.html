@@ -37,10 +37,13 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body {
-            font-family: var(--fuente); background-color: var(--bg-principal); color: var(--texto-blanco);
-            line-height: 1.6; overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 20%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
+          body {
+          font-family: var(--fuente);
+          background-color: #000;
+          color: var(--texto-blanco);
+          line-height: 1.6;
+          overflow-x: hidden;
+          position: relative;
         }
 
         .contenedor { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -152,6 +155,88 @@
             .stats-grid { grid-template-columns: 1fr; }
             .hero-titulo, .hero-titulo span { font-size: 1.8rem; }
         }
+      
+/* =====================================
+   FUEGO ANIMADO TOTO CALIENTE
+===================================== */
+
+body::before{
+content:"";
+position:fixed;
+top:-20%;
+left:-20%;
+width:140%;
+height:140%;
+z-index:-2;
+pointer-events:none;
+
+background:
+radial-gradient(circle at 10% 20%, rgba(255,120,0,.95), transparent 20%),
+radial-gradient(circle at 90% 20%, rgba(255,80,0,.95), transparent 20%),
+radial-gradient(circle at 20% 80%, rgba(255,140,0,.95), transparent 20%),
+radial-gradient(circle at 85% 75%, rgba(255,60,0,.95), transparent 20%),
+radial-gradient(circle at 50% 50%, rgba(255,100,0,.8), transparent 45%);
+
+filter:blur(120px);
+
+animation:fuegoTCI 12s infinite alternate ease-in-out;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+
+background:
+radial-gradient(
+circle at center,
+rgba(255,120,0,.15),
+rgba(255,69,0,.08),
+transparent 75%
+);
+
+animation:brilloTCI 4s infinite ease-in-out;
+}
+
+@keyframes fuegoTCI{
+
+0%{
+transform:translate(-40px,-30px) scale(1);
+}
+
+25%{
+transform:translate(30px,20px) scale(1.1);
+}
+
+50%{
+transform:translate(-20px,40px) scale(1.2);
+}
+
+75%{
+transform:translate(40px,-20px) scale(1.15);
+}
+
+100%{
+transform:translate(-30px,30px) scale(1.3);
+}
+}
+
+@keyframes brilloTCI{
+
+0%{
+opacity:.4;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:.4;
+}
+}
     </style>
 </head>
 <body>
