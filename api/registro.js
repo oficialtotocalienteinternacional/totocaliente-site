@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-// Tu enlace de conexión con el usuario y contraseña que me pasaste
+// Tu enlace de conexión oficial con credenciales
 const uri = "mongodb+srv://totocalienteinternacionalbooking_db_user:5lcXpMT3yBXDrgAc@cluster0.1fzqg8u.mongodb.net/totocaliente?appName=Cluster0";
 let client;
 let clientPromise;
@@ -11,7 +11,8 @@ if (!global._mongoClientPromise) {
 }
 clientPromise = global._mongoClientPromise;
 
-export default async function handler(req, res) {
+// Cambiado a module.exports para que Vercel compile correctamente sin errores
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método no permitido' });
   }
@@ -27,16 +28,16 @@ export default async function handler(req, res) {
     const db = connection.db('totocaliente');
     const collection = db.collection('usuarios');
 
-    // Verificar si el usuario ya existe en Atlas para no duplicarlo
+    // Verificar duplicados
     const usuarioExiste = await collection.findOne({ usuario });
     if (usuarioExiste) {
       return res.status(400).json({ error: 'El apodo ya existe' });
     }
 
-    // Insertar el nuevo usuario en MongoDB Atlas
+    // Insertar en MongoDB Atlas
     await collection.insertOne({
       usuario,
-      password, 
+      password,
       fechaRegistro: new Date()
     });
 
@@ -45,4 +46,4 @@ export default async function handler(req, res) {
     console.error(error);
     return res.status(500).json({ error: 'Error interno del servidor' });
   }
-}
+};
