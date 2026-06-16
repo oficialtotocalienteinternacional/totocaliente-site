@@ -1,0 +1,10 @@
+```json
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/registro",
+      "destination": "/api/registro.js"
+    }
+  ]
+}
