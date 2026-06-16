@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-// Tu enlace de conexión corregido con las credenciales listas
+// Tu enlace de conexión con el usuario y contraseña que me pasaste
 const uri = "mongodb+srv://totocalienteinternacionalbooking_db_user:5lcXpMT3yBXDrgAc@cluster0.1fzqg8u.mongodb.net/totocaliente?appName=Cluster0";
 let client;
 let clientPromise;
@@ -27,16 +27,16 @@ export default async function handler(req, res) {
     const db = connection.db('totocaliente');
     const collection = db.collection('usuarios');
 
-    // Verificar si el usuario ya existe para evitar duplicados
+    // Verificar si el usuario ya existe en Atlas para no duplicarlo
     const usuarioExiste = await collection.findOne({ usuario });
     if (usuarioExiste) {
       return res.status(400).json({ error: 'El apodo ya existe' });
     }
 
-    // Insertar el nuevo documento en la colección de Atlas
+    // Insertar el nuevo usuario en MongoDB Atlas
     await collection.insertOne({
       usuario,
-      password, // En producción se recomienda encriptar, pero para tus pruebas sirve directo
+      password, 
       fechaRegistro: new Date()
     });
 
