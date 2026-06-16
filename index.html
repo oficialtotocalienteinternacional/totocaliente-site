@@ -453,6 +453,16 @@
     <script>
         let usuarioActual = "";
 
+        // Comprobar automáticamente si el usuario ya está logueado al cargar la página
+        document.addEventListener("DOMContentLoaded", () => {
+            const usuarioGuardado = localStorage.getItem("usuarioLogueado");
+            if (usuarioGuardado) {
+                usuarioActual = usuarioGuardado;
+                confirmarIngresoFinal(); 
+            }
+            verificarNotificaciones();
+        });
+
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
             const cajaLogin = document.getElementById('cajaLogin');
@@ -482,6 +492,9 @@
         }
 
         function confirmarIngresoFinal() {
+            // Guardar al usuario en el almacenamiento del navegador
+            localStorage.setItem("usuarioLogueado", usuarioActual);
+
             document.getElementById('pantallaExito').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'none';
             
@@ -493,6 +506,9 @@
         }
 
         function cerrarSesion() {
+            // Eliminar al usuario del almacenamiento del navegador al salir
+            localStorage.removeItem("usuarioLogueado");
+
             document.getElementById('pastillaSesion').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'flex';
             document.getElementById('numMiembros').innerText = "1,421";
@@ -506,6 +522,39 @@
                 const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
                 fila.style.display = texto.includes(query) ? 'flex' : 'none';
             });
+        }
+
+        // Consultar el endpoint de la API para enviar alertas flotantes ante cambios de enlaces
+        async function verificarNotificaciones() {
+            try {
+                const respuesta = await fetch('/api/novedades');
+                const datos = await respuesta.json();
+                
+                if (datos.nuevaNotificacion) {
+                    const ultimaVista = localStorage.getItem("ultimaNotificacionVistas");
+                    
+                    if (ultimaVista !== datos.idNotificacion) {
+                        mostrarAlertaFlotante(datos.mensaje, datos.enlace);
+                        localStorage.setItem("ultimaNotificacionVistas", datos.idNotificacion);
+                    }
+                }
+            } catch (error) {
+                console.error("Error leyendo notificaciones en el portal:", error);
+            }
+        }
+
+        function mostrarAlertaFlotante(mensaje, enlace) {
+            const alerta = document.createElement("div");
+            alerta.style = "position: fixed; bottom: 80px; right: 20px; background: #ff4500; color: white; padding: 16px; border-radius: 12px; z-index: 99999; box-shadow: 0px 8px 24px rgba(0,0,0,0.6); font-family: 'Montserrat', sans-serif; max-width: 320px; border: 1px solid rgba(255,255,255,0.2);";
+            alerta.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px;">
+                    <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fas fa-bell"></i> ¡AVISO IMPORTANTE!</strong>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: transparent; border: none; color: white; cursor: pointer; font-weight: bold; font-size: 1rem; opacity: 0.7;">&times;</button>
+                </div>
+                <p style="margin: 0 0 10px 0; font-size: 0.78rem; line-height: 1.4; color: #fff; opacity: 0.95;">${mensaje}</p>
+                <a href="${enlace}" target="_blank" style="display: inline-block; background: #fff; color: #0b0b0e; text-decoration: none; font-weight: 700; font-size: 0.7rem; padding: 6px 12px; border-radius: 4px; text-transform: uppercase;">Ir al Enlace</a>
+            `;
+            document.body.appendChild(alerta);
         }
     </script>
 </body>
