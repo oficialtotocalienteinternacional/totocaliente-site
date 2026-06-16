@@ -1,3 +1,4 @@
+const API_URL = '/api/registro';
 // 2. PROCESAR EL REGISTRO (Versión Mejorada Visualmente)
 document.getElementById('formRegistro').addEventListener('submit', async function(e) {
     e.preventDefault();
