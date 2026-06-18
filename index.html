@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* ============================================================
+           VARIABLES GLOBALES DE DISEÑO
+        ============================================================ */
         :root {
             --bg-principal: #0b0b0e;
             --bg-tarjeta: #141419;
@@ -42,7 +45,6 @@
             line-height: 1.6; overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 20%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
         }
-
         .contenedor { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* BOTONES GENÉRICOS */
@@ -61,31 +63,39 @@
         .brand-logo { width: 32px; height: 32px; border-radius: 50%; }
         .brand-nombre { font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .brand-nombre span { color: var(--primario); }
-        
         .header-acciones { display: flex; align-items: center; gap: 10px; }
         .btn-acceso-nav { padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transicion); }
         .btn-login-nav { color: var(--texto-blanco); background: rgba(255,255,255,0.05); border: 1px solid rgba(255, 255, 255, 0.15); }
         .btn-login-nav:hover { background: rgba(255,255,255,0.1); }
         .btn-registro-nav { background: var(--texto-blanco); color: var(--bg-principal); border: none; }
         .btn-registro-nav:hover { background: #e0e0e0; }
-
-        /* PASTILLA DE SESIÓN */
         .user-logged-pastilla { display: none; align-items: center; gap: 8px; background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%); padding: 8px 18px; border-radius: 50px; border: none; color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 69, 0, 0.2); }
         .user-logged-pastilla i { font-size: 0.75rem; opacity: 0.8; }
 
         /* HERO */
         .hero { padding: 30px 0 20px; text-align: center; }
         .hero-banner { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-        .hero-logo-img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; }
-        
+        .fire-logo-container {
+            position: relative; width: 150px; height: 150px;
+            margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #000; padding: 5px; overflow: hidden;
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.6);
+        }
+        .fire-logo-container::before {
+            content: ''; position: absolute; width: 160%; height: 160%;
+            background: conic-gradient(transparent, #ff0000, #ff4500, #ffaa00, #ffffff, #ffaa00, #ff4500, transparent 60%);
+            animation: rotateFire 3.5s linear infinite;
+            filter: blur(6px) contrast(12);
+        }
+        .hero-logo-img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; border-radius: 50%; background: #0b0b0e; }
+        @keyframes rotateFire { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .badge-estado { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 230, 118, 0.1); color: var(--exito); padding: 5px 12px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; border: 1px solid rgba(0, 230, 118, 0.2); }
         .badge-estado .punto { width: 6px; height: 6px; background-color: var(--exito); border-radius: 50%; }
-
         .hero-titulo { font-size: 2.6rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; letter-spacing: -0.5px; }
         .hero-titulo span { display: block; color: var(--primario); font-size: 2.6rem; }
         .hero-descripcion { font-size: 0.88rem; color: var(--texto-mutado); max-width: 620px; margin: 0 auto 25px; line-height: 1.5; }
-        
-        /* FORMULARIOS Y CAJA DE ÉXITO */
+
+        /* FORMULARIOS LOGIN/REGISTRO */
         .seccion-formularios { display: none; width: 100%; max-width: 440px; margin: 0 auto 25px; }
         .contenedor-form { background-color: var(--bg-tarjeta); border: 1.5px solid var(--borde); border-radius: 16px; padding: 25px; }
         .form-titulo { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
@@ -95,16 +105,15 @@
         .input-auth { width: 100%; padding: 12px 14px 12px 40px; background: #0b0b0e; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; color: #fff; font-family: var(--fuente); font-size: 0.88rem; outline: none; }
         .input-auth:focus { border-color: var(--primario); }
         .form-btn { width: 100%; margin-top: 5px; }
-
         .caja-exito-final { display: none; background: rgba(20, 20, 25, 0.95); border: 2px solid var(--primario); border-radius: 16px; padding: 35px 25px; width: 100%; max-width: 440px; margin: 0 auto 25px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.15); }
         .icono-exito { color: var(--exito); font-size: 2rem; margin-bottom: 15px; }
         .titulo-exito { color: var(--exito); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
 
-        /* BOTONES DE REDES SOCIALES */
+        /* BOTONES REDES SOCIALES */
         .hero-botones { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-bottom: 35px; }
         .hero-botones .btn { font-size: 0.72rem; padding: 10px 16px; border-radius: 6px; }
 
-        /* TARJETAS DE ESTADÍSTICAS */
+        /* ESTADÍSTICAS */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto 50px; }
         .stat-card { background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 20px 10px; text-align: center; }
         .stat-card i { font-size: 1.3rem; color: var(--primario); margin-bottom: 8px; }
@@ -119,17 +128,149 @@
         .buscador-input-wrapper { position: relative; display: flex; align-items: center; }
         .buscador-input-wrapper i { position: absolute; left: 18px; color: var(--texto-mutado); font-size: 1rem; }
         .buscador-control { width: 100%; padding: 14px 14px 14px 48px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; color: #fff; font-family: var(--fuente); font-size: 0.85rem; outline: none; }
-        
-        /* FILAS DE CANALES */
+
+        /* FILAS DE CANALES ACTIVOS */
         .lista-canales { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 640px; margin: 0 auto 40px; }
-        .canal-fila { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: rgba(20, 20, 25, 0.5); border: 1px solid rgba(255,255,255,0.02); border-radius: 8px; }
+        .canal-fila { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: rgba(20, 20, 25, 0.5); border: 1px solid rgba(255,255,255,0.02); border-radius: 8px; transition: var(--transicion); }
+        .canal-fila:hover { border-color: rgba(255, 69, 0, 0.3); background: var(--bg-tarjeta-hover); }
         .canal-info-basica { display: flex; align-items: center; gap: 12px; }
         .canal-icon-box { color: var(--primario); font-size: 0.9rem; }
         .canal-nombre-texto { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3px; }
         .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.1); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
-        .btn-unirse-mini { padding: 6px 14px; font-size: 0.65rem; border-radius: 4px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; font-weight: 700; text-transform: uppercase; transition: var(--transicion); }
+        .btn-unirse-mini { padding: 6px 14px; font-size: 0.65rem; border-radius: 4px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; font-weight: 700; text-transform: uppercase; transition: var(--transicion); cursor: pointer; }
         .btn-unirse-mini:hover { background: #fff; color: #000; }
-        .canal-fila:hover { border-color: rgba(255, 69, 0, 0.3); background: var(--bg-tarjeta-hover); }
+
+        /* FILAS "PRÓXIMAMENTE" */
+        .canal-fila.proximamente {
+            opacity: 0.45;
+            border-style: dashed;
+            border-color: rgba(255,255,255,0.06);
+        }
+        .canal-fila.proximamente:hover {
+            background: rgba(20, 20, 25, 0.5);
+            border-color: rgba(255, 69, 0, 0.2);
+        }
+        .canal-fila.proximamente .canal-icon-box { color: var(--texto-mutado); }
+        .canal-fila.proximamente .canal-nombre-texto { color: var(--texto-mutado); font-style: italic; }
+
+        .tag-proximamente {
+            font-size: 0.6rem; background: rgba(255,255,255,0.04);
+            color: var(--texto-mutado); padding: 3px 8px; border-radius: 4px;
+            font-weight: 700; text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.07); white-space: nowrap;
+        }
+
+        .btn-comprar-espacio {
+            padding: 6px 12px; font-size: 0.6rem; border-radius: 4px;
+            background: rgba(39, 174, 96, 0.15);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.4);
+            font-weight: 700; text-transform: uppercase;
+            cursor: pointer; transition: var(--transicion);
+            white-space: nowrap;
+        }
+        .btn-comprar-espacio:hover {
+            background: rgba(39, 174, 96, 0.3);
+            border-color: #27ae60;
+            opacity: 1;
+        }
+
+        /* MODAL DEL FORMULARIO DE PROMOTORES */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 500;
+            align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.activo { display: flex; }
+
+        .modal-caja {
+            background: #141419;
+            border: 1.5px solid rgba(255, 69, 0, 0.3);
+            border-radius: 20px;
+            padding: 32px 28px;
+            width: 100%; max-width: 460px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.15);
+            animation: modalEntrar 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes modalEntrar {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-cerrar {
+            position: absolute; top: 16px; right: 18px;
+            background: rgba(255,255,255,0.06);
+            border: none; color: var(--texto-mutado);
+            width: 30px; height: 30px; border-radius: 50%;
+            cursor: pointer; font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transicion);
+        }
+        .modal-cerrar:hover { background: rgba(255,69,0,0.2); color: #fff; }
+
+        .modal-header { margin-bottom: 22px; }
+        .modal-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(39, 174, 96, 0.1); color: #27ae60;
+            padding: 4px 10px; border-radius: 50px;
+            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+            border: 1px solid rgba(39, 174, 96, 0.2); margin-bottom: 10px;
+        }
+        .modal-titulo { font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; }
+        .modal-titulo span { color: var(--primario); }
+        .modal-subtitulo { font-size: 0.75rem; color: var(--texto-mutado); line-height: 1.5; }
+
+        .modal-grupo { margin-bottom: 14px; }
+        .modal-label {
+            display: block; font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; color: var(--texto-mutado);
+            margin-bottom: 6px; letter-spacing: 0.5px;
+        }
+        .modal-input, .modal-select, .modal-textarea {
+            width: 100%; padding: 11px 14px;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px; color: #fff;
+            font-family: var(--fuente); font-size: 0.82rem; outline: none;
+            transition: border-color 0.2s;
+        }
+        .modal-input:focus, .modal-select:focus, .modal-textarea:focus {
+            border-color: var(--primario);
+        }
+        .modal-select { appearance: none; cursor: pointer; }
+        .modal-select option { background: #141419; }
+        .modal-textarea { resize: vertical; min-height: 70px; }
+
+        .campo-error { border-color: #e74c3c !important; }
+        .msg-error {
+            display: none; font-size: 0.62rem; color: #e74c3c;
+            margin-top: 5px; font-weight: 700;
+            align-items: center; gap: 4px;
+        }
+        .msg-error.visible { display: flex; }
+        .campo-ok { border-color: #27ae60 !important; }
+
+        .modal-footer { display: flex; gap: 10px; margin-top: 20px; }
+        .modal-footer .btn { flex: 1; justify-content: center; font-size: 0.72rem; }
+        .btn-cancelar-modal {
+            background: rgba(255,255,255,0.05);
+            color: var(--texto-mutado);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px; border-radius: 8px; font-weight: 700;
+            font-size: 0.72rem; cursor: pointer; transition: var(--transicion);
+            text-transform: uppercase; font-family: var(--fuente);
+        }
+        .btn-cancelar-modal:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+        .modal-exito { display: none; text-align: center; padding: 10px 0; }
+        .modal-exito-icono { font-size: 2.5rem; color: #27ae60; margin-bottom: 12px; }
+        .modal-exito-titulo { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; color: #27ae60; margin-bottom: 8px; }
+        .modal-exito-texto { font-size: 0.78rem; color: var(--texto-mutado); line-height: 1.6; }
 
         /* RESPALDOS */
         .respaldos { padding: 30px 0; }
@@ -137,20 +278,28 @@
         .respaldo-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background-color: var(--bg-tarjeta); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .respaldo-info { display: flex; align-items: center; gap: 12px; }
         .respaldo-info i { font-size: 1.4rem; color: #0088cc; }
-        .respaldo-item style i.fa-whatsapp { color: #25d366; }
         .respaldo-nombre { font-size: 0.78rem; font-weight: 700; }
         .respaldo-status { font-size: 0.68rem; color: var(--texto-mutado); display: flex; align-items: center; gap: 5px; }
         .respaldo-status .punto { width: 5px; height: 5px; background-color: #00e676; border-radius: 50%; display: inline-block; }
-        
-        footer { background-color: #07070a; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.01); margin-top: 40px; font-size: 0.75rem; color: var(--texto-mutado); }
-        .telegram-flotante { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; z-index: 999; }
 
+        footer { background-color: #07070a; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.01); margin-top: 40px; font-size: 0.75rem; color: var(--texto-mutado); }
+        .telegram-flotante { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; z-index: 999; box-shadow: 0 4px 12px rgba(0,136,204,0.4); transition: var(--transicion); }
+        .telegram-flotante:hover { transform: scale(1.1); }
+
+        /* MEDIA QUERIES */
         @media (max-width: 900px) {
             .respaldos-lista { grid-template-columns: 1fr; max-width: 640px; }
         }
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: 1fr; }
             .hero-titulo, .hero-titulo span { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-botones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+            .hero-botones .btn:first-child { grid-column: 1 / -1; }
+            .hero-botones .btn { width: 100%; justify-content: center; font-size: 0.7rem; padding: 10px 8px; }
+            .modal-caja { padding: 24px 18px; }
+            .modal-footer { flex-direction: column; }
         }
     </style>
 </head>
@@ -160,15 +309,14 @@
     <header>
         <div class="contenedor">
             <a href="#" class="brand">
+                <!-- Se mantiene fija la imagen original sin el manejador onerror que la ocultaba -->
                 <img src="no_bg_image.png" alt="Logo" class="brand-logo">
-                <div class="brand-nombre">TOTO CALIENTE <span>INTERNANIONAL</span></div>
+                <div class="brand-nombre">TOTO CALIENTE <span>INTERNACIONAL</span></div>
             </a>
-            
             <div class="header-acciones" id="accionesInvitado">
                 <button onclick="alternarFormulario('login')" class="btn-acceso-nav btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button onclick="alternarFormulario('registro')" class="btn-acceso-nav btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</button>
             </div>
-
             <button class="user-logged-pastilla" id="pastillaSesion" onclick="cerrarSesion()">
                 <i class="fas fa-user"></i> <span id="pastillaNombre">@sreridianocorrea</span>
             </button>
@@ -179,15 +327,15 @@
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
-                
+                <div class="fire-logo-container">
+                    <!-- Se mantiene fija la imagen original de fondo animada sin la etiqueta onerror -->
+                    <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
+                </div>
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
-                
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
-                
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
-                
-                <!-- FORMULARIOS -->
+
+                <!-- FORMULARIOS LOGIN/REGISTRO -->
                 <div class="seccion-formularios" id="zonaFormularios">
                     <div class="contenedor-form" id="cajaLogin" style="display: none;">
                         <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
@@ -203,7 +351,6 @@
                             <button type="submit" class="btn btn-primario form-btn">Entrar al Portal</button>
                         </form>
                     </div>
-
                     <div class="contenedor-form" id="cajaRegistro" style="display: none;">
                         <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
                         <form onsubmit="ejecutarAccion(event, 'registro')">
@@ -220,7 +367,7 @@
                     </div>
                 </div>
 
-                <!-- PANTALLA ÉXITO -->
+                <!-- PANTALLA ÉXITO REGISTRO -->
                 <div class="caja-exito-final" id="pantallaExito">
                     <div class="icono-exito"><i class="fas fa-check-circle"></i></div>
                     <div class="titulo-exito">¡REGISTRO EXITOSO!</div>
@@ -233,26 +380,11 @@
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
                     </a>
-                    
-                    <a href="#buscador" class="btn btn-outline">
-                        <i class="fas fa-search"></i> Buscar Canales
-                    </a>
-
-                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;">
-                        <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
-                    </a>
-
-                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
-                        <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
-                    </a>
-
-                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
-                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
-                    </a>
-
-                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
-                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
-                    </a>
+                    <a href="#buscador" class="btn btn-outline"><i class="fas fa-search"></i> Buscar Canales</a>
+                    <a href="https://www.instagram.com/frasestotocaliente/" target="_blank" class="btn btn-outline" style="border-color: #e1306c;"><i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram</a>
+                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;"><i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok</a>
+                    <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;"><i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook</a>
+                    <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;"><i class="fab fa-x-twitter" style="color: #ffffff;"></i> X</a>
                 </div>
             </div>
         </div>
@@ -279,12 +411,11 @@
         </div>
     </section>
 
-    <!-- BUSCADOR Y LISTA COMPLETA DE 10 CANALES -->
+    <!-- BUSCADOR Y CANALES -->
     <section class="buscador-seccion" id="buscador">
         <div class="contenedor">
             <h2 class="buscador-titulo">Buscador Oficial de Canales</h2>
             <p class="buscador-subtitulo">Escribe una palabra clave para encontrar el acceso directo de forma inmediata.</p>
-            
             <div class="buscador-contenedor">
                 <div class="buscador-input-wrapper">
                     <i class="fas fa-search"></i>
@@ -293,7 +424,8 @@
             </div>
 
             <div class="lista-canales" id="listaCanales">
-                <!-- CANAL 1 -->
+
+                <!-- CANAL 1 — Activo -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -303,7 +435,7 @@
                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 2 -->
+                <!-- CANAL 2 — Activo -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -313,7 +445,7 @@
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 3 -->
+                <!-- CANAL 3 — Activo -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -323,7 +455,7 @@
                     <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 4 -->
+                <!-- CANAL 4 — Activo -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
@@ -333,76 +465,82 @@
                     <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                <!-- CANAL 5 -->
-                <div class="canal-fila">
+                <!-- FILAS 5-10 — "Próximamente" -->
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(5)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
-                
-                <!-- CANAL 6 -->
-                <div class="canal-fila">
+
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(6)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
-                
-                <!-- CANAL 7 -->
-                <div class="canal-fila">
+
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(7)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
-                
-                <!-- CANAL 8 -->
-                <div class="canal-fila">
+
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(8)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
-                
-                <!-- CANAL 9 -->
-                <div class="canal-fila">
+
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(9)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
-                
-                <!-- CANAL 10 -->
-                <div class="canal-fila">
+
+                <div class="canal-fila proximamente">
                     <div class="canal-info-basica">
-                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div class="canal-icon-box"><i class="fas fa-lock"></i></div>
+                        <div><span class="canal-nombre-texto">Espacio disponible</span></div>
                     </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                    <span class="tag-proximamente">Próximamente</span>
+                    <button class="btn-comprar-espacio" onclick="abrirModalPromotor(10)">
+                        <i class="fas fa-tag"></i> Comprar Espacio
+                    </button>
                 </div>
+
             </div>
 
-            <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
+            <!-- RESPALDOS -->
             <section class="respaldos">
                 <div style="text-align: center; margin-bottom: 35px;">
-                    <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
+                    <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span style="color: var(--primario);">Respaldo</span></h3>
                     <p style="color: var(--texto-mutado); font-size: 0.9rem;">Mantente conectado ante cualquier caída uniéndote a nuestras redes alternativas oficiales.</p>
                 </div>
-                
                 <div class="respaldos-lista">
-                    <!-- COLUMNA 1: TELEGRAM -->
                     <div class="respaldo-item">
                         <div class="respaldo-info">
                             <i class="fab fa-telegram" style="color: #0088cc;"></i>
@@ -413,8 +551,6 @@
                         </div>
                         <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
-
-                    <!-- COLUMNA 2: WHATSAPP CANAL 1 -->
                     <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                         <div class="respaldo-info">
                             <i class="fab fa-whatsapp" style="color: #25d366;"></i>
@@ -425,8 +561,6 @@
                         </div>
                         <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
-
-                    <!-- COLUMNA 3: WHATSAPP CANAL 2 -->
                     <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                         <div class="respaldo-info">
                             <i class="fab fa-whatsapp" style="color: #25d366;"></i>
@@ -443,9 +577,10 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- FOOTER -->
     <footer>
         <div>
+            <!-- Se quita el tag onerror del footer para mantener el logo visible de forma perenne -->
             <img src="no_bg_image.png" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
         </div>
         <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
@@ -455,7 +590,111 @@
 
     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante"><i class="fab fa-telegram-plane"></i></a>
 
-    <!-- CONTROLADORES SCRIPT -->
+    <!-- MODAL DEL FORMULARIO DE PROMOTORES -->
+    <div class="modal-overlay" id="modalPromotor">
+        <div class="modal-caja">
+
+            <button class="modal-cerrar" onclick="cerrarModal()"><i class="fas fa-times"></i></button>
+
+            <div id="modalFormulario">
+                <div class="modal-header">
+                    <div class="modal-badge"><i class="fas fa-tag"></i> Espacio Publicitario</div>
+                    <div class="modal-titulo">Comprar <span>Espacio #<span id="modalNumFila">5</span></span></div>
+                    <p class="modal-subtitulo">
+                        Completa el formulario y te contactaremos para confirmar el pago y activar tu canal en la plataforma.
+                    </p>
+                </div>
+
+                <form id="formPromotor" action="https://formspree.io/f/xqeoovky" method="POST" onsubmit="enviarFormulario(event)">
+
+                    <input type="hidden" name="Fila_numero" id="inputFilaOculto" value="5">
+                    <input type="hidden" name="_subject" value="🔥 Nuevo promotor interesado en TOTO CALIENTE">
+
+                    <div class="modal-grupo">
+                        <label class="modal-label" for="promotorNombre">
+                            <i class="fas fa-user" style="margin-right:5px; color:var(--primario);"></i>
+                            Nombre completo *
+                        </label>
+                        <input type="text" id="promotorNombre" name="Nombre_promotor"
+                            class="modal-input" placeholder="Tu nombre o apodo" required>
+                        <span class="msg-error"></span>
+                    </div>
+
+                    <div class="modal-grupo">
+                        <label class="modal-label" for="promotorCanal">
+                            <i class="fab fa-telegram-plane" style="margin-right:5px; color:var(--primario);"></i>
+                            Canal de Telegram / Streaming *
+                        </label>
+                        <input type="text" id="promotorCanal" name="Canal_o_streaming"
+                            class="modal-input" placeholder="Ej: @micanal o https://t.me/micanal" required>
+                        <span class="msg-error"></span>
+                    </div>
+
+                    <div class="modal-grupo">
+                        <label class="modal-label" for="promotorContacto">
+                            <i class="fas fa-comments" style="margin-right:5px; color:var(--primario);"></i>
+                            Tu contacto (Telegram o WhatsApp) *
+                        </label>
+                        <input type="text" id="promotorContacto" name="Contacto_promotor"
+                            class="modal-input" placeholder="Ej: @usuario_telegram o +1234567890" required>
+                        <span class="msg-error"></span>
+                    </div>
+
+                    <div class="modal-grupo">
+                        <label class="modal-label" for="promotorPago">
+                            <i class="fas fa-credit-card" style="margin-right:5px; color:var(--primario);"></i>
+                            Método de pago preferido *
+                        </label>
+                        <select id="promotorPago" name="Metodo_de_pago" class="modal-select" required>
+                            <option value="" disabled selected>Selecciona un método</option>
+                            <option value="Binance / Cripto (USDT)">Binance / Cripto (USDT)</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="Zelle">Zelle</option>
+                            <option value="Transferencia bancaria">Transferencia bancaria</option>
+                            <option value="MercadoPago">MercadoPago</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <span class="msg-error"></span>
+                    </div>
+
+                    <div class="modal-grupo">
+                        <label class="modal-label" for="promotorMensaje">
+                            <i class="fas fa-comment" style="margin-right:5px; color:var(--texto-mutado);"></i>
+                            Mensaje adicional (opcional)
+                        </label>
+                        <textarea id="promotorMensaje" name="Mensaje_adicional"
+                            class="modal-textarea" placeholder="¿Alguna pregunta o detalle extra?"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancelar-modal" onclick="cerrarModal()">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primario">
+                            <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-exito" id="modalExito">
+                <div class="modal-exito-icono"><i class="fas fa-check-circle"></i></div>
+                <div class="modal-exito-titulo">¡Solicitud enviada! 🔥</div>
+                <p class="modal-exito-texto">
+                    Recibimos tu información.<br>
+                    Te contactaremos pronto por <strong style="color:#fff;">Telegram o WhatsApp</strong>
+                    para confirmar el pago y activar tu espacio en la plataforma.
+                </p>
+                <button class="btn btn-primario" style="margin-top:20px; width:100%;" onclick="cerrarModal()">
+                    Cerrar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
     <script>
         let usuarioActual = "";
 
@@ -464,7 +703,6 @@
             const cajaLogin = document.getElementById('cajaLogin');
             const cajaRegistro = document.getElementById('cajaRegistro');
             document.getElementById('pantallaExito').style.display = 'none';
-
             if (tipo === 'login') {
                 zona.style.display = 'block';
                 cajaLogin.style.display = 'block';
@@ -481,7 +719,6 @@
             event.preventDefault();
             const apodo = tipo === 'login' ? document.getElementById('loginUser').value : document.getElementById('regUser').value;
             usuarioActual = apodo.startsWith('@') ? apodo : '@' + apodo;
-
             document.getElementById('zonaFormularios').style.display = 'none';
             document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
             document.getElementById('pantallaExito').style.display = 'block';
@@ -490,11 +727,9 @@
         function confirmarIngresoFinal() {
             document.getElementById('pantallaExito').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'none';
-            
             const pastilla = document.getElementById('pastillaSesion');
             pastilla.style.display = 'flex';
             document.getElementById('pastillaNombre').innerText = usuarioActual;
-
             document.getElementById('numMiembros').innerText = "1,422";
         }
 
@@ -509,10 +744,123 @@
             const query = document.getElementById('inputBuscar').value.toLowerCase();
             const filas = document.querySelectorAll('#listaCanales .canal-fila');
             filas.forEach(fila => {
-                const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
-                fila.style.display = texto.includes(query) ? 'flex' : 'none';
+                if (fila.classList.contains('proximamente')) {
+                    fila.style.display = query ? 'none' : 'flex';
+                    return;
+                }
+                const nombre = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
+                fila.style.display = nombre.includes(query) ? 'flex' : 'none';
             });
         }
+
+        function abrirModalPromotor(numFila) {
+            document.getElementById('modalNumFila').innerText = numFila;
+            document.getElementById('inputFilaOculto').value  = numFila;
+            document.getElementById('modalFormulario').style.display = 'block';
+            document.getElementById('modalExito').style.display = 'none';
+            document.getElementById('formPromotor').reset();
+            document.getElementById('modalPromotor').classList.add('activo');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalPromotor').classList.remove('activo');
+            document.body.style.overflow = '';
+        }
+
+        function validarCampo(campo) {
+            const grupo = campo.closest('.modal-grupo');
+            const msg   = grupo ? grupo.querySelector('.msg-error') : null;
+            let valido  = true;
+            let texto   = '';
+
+            if (!campo.value.trim()) {
+                valido = false;
+                texto  = 'Este campo es obligatorio';
+            }
+            if (valido && campo.id === 'promotorCanal') {
+                const val = campo.value.trim();
+                if (!val.startsWith('@') && !val.startsWith('http')) {
+                    valido = false;
+                    texto  = 'Escribe @usuario o una URL completa (https://...)';
+                }
+            }
+            if (valido && campo.id === 'promotorContacto') {
+                const val = campo.value.trim();
+                if (!val.startsWith('@') && !val.startsWith('+')) {
+                    valido = false;
+                    texto  = 'Escribe @usuario de Telegram o +número de WhatsApp';
+                }
+            }
+            campo.classList.toggle('campo-error', !valido);
+            campo.classList.toggle('campo-ok', valido && campo.value.trim() !== '');
+            if (msg) { msg.textContent = texto; msg.classList.toggle('visible', !valido); }
+            return valido;
+        }
+
+        function validarFormularioCompleto() {
+            const campos = [
+                document.getElementById('promotorNombre'),
+                document.getElementById('promotorCanal'),
+                document.getElementById('promotorContacto'),
+                document.getElementById('promotorPago')
+            ];
+            return campos.map(validarCampo).every(Boolean);
+        }
+
+        ['promotorNombre','promotorCanal','promotorContacto','promotorPago'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('blur',   () => validarCampo(el));
+                el.addEventListener('input',  () => { if (el.classList.contains('campo-error')) validarCampo(el); });
+                el.addEventListener('change', () => validarCampo(el));
+            }
+        });
+
+        async function enviarFormulario(event) {
+            event.preventDefault();
+            const form    = document.getElementById('formPromotor');
+            const btnEnviar = form.querySelector('button[type="submit"]');
+
+            btnEnviar.disabled = true;
+            btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            if (!validarFormularioCompleto()) {
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud';
+                return;
+            }
+
+            try {
+                const datos = new FormData(form);
+                const respuesta = await fetch(form.action, {
+                    method: 'POST',
+                    body: datos,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (respuesta.ok) {
+                    document.getElementById('modalFormulario').style.display = 'none';
+                    document.getElementById('modalExito').style.display      = 'block';
+                } else {
+                    alert('Hubo un problema al enviar. Por favor inténtalo de nuevo.');
+                    btnEnviar.disabled = false;
+                    btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud';
+                }
+            } catch (error) {
+                alert('Sin conexión. Revisa tu internet e inténtalo de nuevo.');
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud';
+            }
+        }
+
+        document.getElementById('modalPromotor').addEventListener('click', function(e) {
+            if (e.target === this) cerrarModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') cerrarModal();
+        });
     </script>
 </body>
 </html>
