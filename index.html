@@ -38,8 +38,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body {
-            font-family: var(--fuente);
-            background-color: var(--bg-principal); color: var(--texto-blanco);
+            font-family: var(--fuente); background-color: var(--bg-principal); color: var(--texto-blanco);
             line-height: 1.6; overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 20%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
         }
@@ -157,35 +156,38 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="contenedor">
             <a href="#" class="brand">
-                <img src="no_bg_image.jpg" alt="Logo" class="brand-logo">
+                <img src="no_bg_image.png" alt="Logo" class="brand-logo">
                 <div class="brand-nombre">TOTO CALIENTE <span>INTERNANIONAL</span></div>
             </a>
-     
+            
             <div class="header-acciones" id="accionesInvitado">
                 <button onclick="alternarFormulario('login')" class="btn-acceso-nav btn-login-nav"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button onclick="alternarFormulario('registro')" class="btn-acceso-nav btn-registro-nav"><i class="fas fa-user-plus"></i> Registrarse</button>
             </div>
 
             <button class="user-logged-pastilla" id="pastillaSesion" onclick="cerrarSesion()">
-                 <i class="fas fa-user"></i> <span id="pastillaNombre">@sreridianocorrea</span>
+                <i class="fas fa-user"></i> <span id="pastillaNombre">@sreridianocorrea</span>
             </button>
         </div>
     </header>
 
+    <!-- HERO PRINCIPAL -->
     <section class="hero">
         <div class="contenedor">
             <div class="hero-banner">
-                <img src="no_bg_image.jpg" alt="Logo Grande" class="hero-logo-img">
-          
+                <img src="no_bg_image.png" alt="Logo Grande" class="hero-logo-img">
+                
                 <div class="badge-estado"><span class="punto"></span> Todos los canales online</div>
                 
                 <h1 class="hero-titulo">TOTO CALIENTE <span>INTERNACIONAL</span></h1>
                 
                 <p class="hero-descripcion">¡Únete a la red más grande y activa del mundo! Acceso libre, directo y sin restricciones para todos. Explora todo nuestro contenido exclusivo y encuentra tus comunidades favoritas al instante usando nuestro buscador rápido aquí abajo. 🔥</p>
                 
+                <!-- FORMULARIOS -->
                 <div class="seccion-formularios" id="zonaFormularios">
                     <div class="contenedor-form" id="cajaLogin" style="display: none;">
                         <h3 class="form-titulo">Iniciar <span>Sesión</span></h3>
@@ -206,7 +208,7 @@
                         <h3 class="form-titulo">Crear <span>Cuenta</span></h3>
                         <form onsubmit="ejecutarAccion(event, 'registro')">
                             <div class="grupo-input">
-                                 <i class="fas fa-user"></i>
+                                <i class="fas fa-user"></i>
                                 <input type="text" id="regUser" class="input-auth" placeholder="Elige tu Apodo" required>
                             </div>
                             <div class="grupo-input">
@@ -218,6 +220,7 @@
                     </div>
                 </div>
 
+                <!-- PANTALLA ÉXITO -->
                 <div class="caja-exito-final" id="pantallaExito">
                     <div class="icono-exito"><i class="fas fa-check-circle"></i></div>
                     <div class="titulo-exito">¡REGISTRO EXITOSO!</div>
@@ -225,9 +228,10 @@
                     <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%; font-size:0.7rem; padding:12px;">ACCEDER A CANALES VIP</button>
                 </div>
 
+                <!-- BOTONES REDES SOCIALES -->
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
-                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
+                        <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
                     </a>
                     
                     <a href="#buscador" class="btn btn-outline">
@@ -238,12 +242,12 @@
                         <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
                     </a>
 
-                     <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
+                    <a href="https://www.tiktok.com/@toto.caliente" target="_blank" class="btn btn-outline" style="border-color: #00f2fe;">
                         <i class="fab fa-tiktok" style="color: #00f2fe;"></i> TikTok
                     </a>
 
                     <a href="https://www.facebook.com/TotoCalienteOficial" target="_blank" class="btn btn-outline" style="border-color: #1877f2;">
-                         <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
+                        <i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook
                     </a>
 
                     <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
@@ -254,31 +258,33 @@
         </div>
     </section>
 
+    <!-- ESTADÍSTICAS -->
     <section class="contenedor">
         <div class="stats-grid">
             <div class="stat-card">
-                 <i class="fas fa-users"></i>
+                <i class="fas fa-users"></i>
                 <div class="stat-numero">60,006</div>
                 <div class="stat-label">Conectados Ahora</div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-user-check"></i>
-                 <div class="stat-numero" id="numMiembros">1,421</div>
+                <div class="stat-numero" id="numMiembros">1,421</div>
                 <div class="stat-label">Miembros Oficiales</div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-server"></i>
                 <div class="stat-numero">10,000+</div>
-                 <div class="stat-label">Canales Disponibles</div>
+                <div class="stat-label">Canales Disponibles</div>
             </div>
         </div>
     </section>
 
+    <!-- BUSCADOR Y LISTA COMPLETA DE 10 CANALES -->
     <section class="buscador-seccion" id="buscador">
         <div class="contenedor">
             <h2 class="buscador-titulo">Buscador Oficial de Canales</h2>
-            <p class="buscador-subtitulo">Escribe una palabra clave para find el acceso directo de forma inmediata.</p>
-      
+            <p class="buscador-subtitulo">Escribe una palabra clave para encontrar el acceso directo de forma inmediata.</p>
+            
             <div class="buscador-contenedor">
                 <div class="buscador-input-wrapper">
                     <i class="fas fa-search"></i>
@@ -287,135 +293,149 @@
             </div>
 
             <div class="lista-canales" id="listaCanales">
+                <!-- CANAL 1 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL</span></div>
                     </div>
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
-                     <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
+                    <a href="https://t.me/totocalientemundial" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
+                <!-- CANAL 2 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">TOTO CALIENTE PUENTE</span></div>
                     </div>
                     <span class="canal-categoria-tag">CANAL OFICIAL</span>
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn-unirse-mini">Unirse</a>
-                 </div>
+                </div>
 
+                <!-- CANAL 3 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                         <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE EXCLUSIVO</span></div>
                     </div>
                     <span class="canal-categoria-tag">PROMOCION</span>
                     <a href="https://t.me/totocalienterespaldo" target="_blank" class="btn-unirse-mini">Unirse</a>
-                 </div>
+                </div>
 
+                <!-- CANAL 4 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                         <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
+                        <div><span class="canal-nombre-texto">TOTO CALIENTE INTERNACIONAL WEB</span></div>
                     </div>
                     <span class="canal-categoria-tag">Web Oficial</span>
                     <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn-unirse-mini">Unirse</a>
                 </div>
 
-                 <div class="canal-fila">
+                <!-- CANAL 5 -->
+                <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
-        
+                
+                <!-- CANAL 6 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                 </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                 </div>
-                
-                <div class="canal-fila">
-                    <div class="canal-info-basica">
-                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
                 
+                <!-- CANAL 7 -->
                 <div class="canal-fila">
                     <div class="canal-info-basica">
-                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
-                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
-                    </div>
-                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
-                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
-                </div>
-                
-                <div class="canal-fila">
-                     <div class="canal-info-basica">
                         <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                         <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                     </div>
-                     <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 8 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 9 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                    <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
+                </div>
+                
+                <!-- CANAL 10 -->
+                <div class="canal-fila">
+                    <div class="canal-info-basica">
+                        <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
+                    </div>
+                    <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
                     <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" class="btn-unirse-mini">Comprar Ahora</a>
                 </div>
             </div>
 
+            <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
             <section class="respaldos">
-                 <div style="text-align: center; margin-bottom: 35px;">
+                <div style="text-align: center; margin-bottom: 35px;">
                     <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
                     <p style="color: var(--texto-mutado); font-size: 0.9rem;">Mantente conectado ante cualquier caída uniéndote a nuestras redes alternativas oficiales.</p>
                 </div>
                 
                 <div class="respaldos-lista">
+                    <!-- COLUMNA 1: TELEGRAM -->
                     <div class="respaldo-item">
                         <div class="respaldo-info">
                             <i class="fab fa-telegram" style="color: #0088cc;"></i>
                             <div>
-                                 <div class="respaldo-nombre">TOTO CALIENTE PUENTE</div>
+                                <div class="respaldo-nombre">TOTO CALIENTE PUENTE</div>
                                 <div class="respaldo-status"><span class="punto"></span> Online</div>
                             </div>
-                         </div>
+                        </div>
                         <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-secundario" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
 
+                    <!-- COLUMNA 2: WHATSAPP CANAL 1 -->
                     <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                         <div class="respaldo-info">
-                             <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
                             <div>
                                 <div class="respaldo-nombre">Toto Caliente Internacional</div>
-                                 <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 1,647 Seguidores</div>
+                                <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 1,647 Seguidores</div>
                             </div>
                         </div>
-                         <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
+                        <a href="https://whatsapp.com/channel/0029VbCdy4p1noz3FH0Wn906" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
 
+                    <!-- COLUMNA 3: WHATSAPP CANAL 2 -->
                     <div class="respaldo-item" style="border-color: rgba(37, 211, 102, 0.15);">
                         <div class="respaldo-info">
-                             <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
                             <div>
                                 <div class="respaldo-nombre">Toto Caliente Internacional</div>
-                                 <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 2,486 Seguidores</div>
+                                <div class="respaldo-status" style="color: #25d366;"><span class="punto" style="background-color: #25d366;"></span> 2,486 Seguidores</div>
                             </div>
                         </div>
-                         <a href="https://whatsapp.com/channel/0029Vb779BF1iUxcqXqmty0q" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
+                        <a href="https://whatsapp.com/channel/0029Vb779BF1iUxcqXqmty0q" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem; padding:6px 14px;">UNIRTE</a>
                     </div>
                 </div>
             </section>
@@ -423,9 +443,10 @@
         </div>
     </section>
 
+    <!-- PIE DE PÁGINA -->
     <footer>
         <div>
-            <img src="no_bg_image.jpg" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
+            <img src="no_bg_image.png" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
         </div>
         <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
         <p style="font-size: 14px; color: #888; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
@@ -434,6 +455,7 @@
 
     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante"><i class="fab fa-telegram-plane"></i></a>
 
+    <!-- CONTROLADORES SCRIPT -->
     <script>
         let usuarioActual = "";
 
@@ -448,7 +470,7 @@
                 cajaLogin.style.display = 'block';
                 cajaRegistro.style.display = 'none';
             } else {
-                 zona.style.display = 'block';
+                zona.style.display = 'block';
                 cajaRegistro.style.display = 'block';
                 cajaLogin.style.display = 'none';
             }
@@ -459,6 +481,7 @@
             event.preventDefault();
             const apodo = tipo === 'login' ? document.getElementById('loginUser').value : document.getElementById('regUser').value;
             usuarioActual = apodo.startsWith('@') ? apodo : '@' + apodo;
+
             document.getElementById('zonaFormularios').style.display = 'none';
             document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
             document.getElementById('pantallaExito').style.display = 'block';
