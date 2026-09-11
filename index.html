@@ -39,6 +39,33 @@
     <meta name="twitter:title" content="TOTO CALIENTE INTERNACIONAL | Portal Oficial">
     <meta name="twitter:description" content="La comunidad más grande y activa. Acceso libre y directo. +18">
     <meta name="twitter:image" content="https://totocaliente-site.vercel.app/no_bg_image.png">
+
+    <!-- ============ ONESIGNAL PUSH NOTIFICATIONS ============ -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "TU-APP-ID",
+          allowLocalhostAsSecureOrigin: false,
+          notifyButton: {
+            enable: true,
+            size: "medium",
+            position: "bottom-left",
+            showCredit: false,
+            text: {
+              "tip.state.unsubscribed": "Activa las notificaciones para no perder los canales",
+              "tip.state.subscribed": "Notificaciones activadas",
+              "message.action.subscribed": "Gracias por suscribirte. Estaras protegido ante cualquier caida",
+              "dialog.main.title": "No pierdas acceso a los canales",
+              "dialog.main.button.subscribe": "ACTIVAR",
+              "dialog.main.button.unsubscribe": "Desactivar"
+            }
+          }
+        });
+      });
+    </script>
+    <!-- ============ FIN ONESIGNAL ============ -->
     <!-- ============ FIN SEO ============ -->
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
