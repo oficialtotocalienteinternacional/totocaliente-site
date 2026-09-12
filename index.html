@@ -153,6 +153,10 @@
         .icono-exito { color: var(--exito); font-size: 2rem; margin-bottom: 15px; }
         .titulo-exito { color: var(--exito); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
 
+        /* ESTILOS DE ÉXITO Y ERROR PARA FORMSPREE */
+        [data-fs-success] { display: none; color: var(--exito); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
+        [data-fs-error] { display: none; color: #ff3333; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
+
         /* BOTONES DE REDES SOCIALES */
         .hero-botones { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-bottom: 35px; }
         .hero-botones .btn { font-size: 0.72rem; padding: 10px 16px; border-radius: 6px; }
@@ -279,6 +283,25 @@
                     <div class="titulo-exito">¡REGISTRO EXITOSO!</div>
                     <p style="color: var(--texto-mutado); font-size: 0.78rem; margin-bottom: 18px;">Te has registrado correctamente como <br><strong id="nombreUsuarioCreado" style="color:#fff;">@sreridianocorrea</strong>.</p>
                     <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%; font-size:0.7rem; padding:12px;">ACCEDER A CANALES VIP</button>
+                </div>
+
+                <!-- FORMULARIO CAPTURA FORMSPREE CON CONEXIÓN AJAX REAL -->
+                <div style="width: 100%; max-width: 480px; margin: 0 auto 30px;">
+                    <div data-fs-success>✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.</div>
+                    <div data-fs-error>Ocurrió un error al procesar el correo. Inténtalo de nuevo.</div>
+                    
+                    <form id="formspree-leads" style="display: flex; gap: 8px;">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Ingresa tu correo para recibir respaldos" 
+                            required 
+                            data-fs-field
+                            class="input-auth" 
+                            style="margin-bottom: 0; padding-left: 15px;"
+                        >
+                        <button type="submit" data-fs-submit-btn class="btn btn-primario" style="white-space: nowrap;">SUSCRIBIRME</button>
+                    </form>
                 </div>
 
                 <!-- BOTONES REDES SOCIALES -->
@@ -508,7 +531,14 @@
 
     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante"><i class="fab fa-telegram-plane"></i></a>
 
-    <!-- CONTROLADORES SCRIPT -->
+    <!-- SCRIPT INICIALIZADOR DE FORMSPREE AJAX -->
+    <script>
+      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+      formspree('initForm', { formElement: '#formspree-leads', formId: 'moeqoqwr' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+    <!-- CONTROLADORES SCRIPT LOCALES -->
     <script>
         let usuarioActual = "";
 
