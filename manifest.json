@@ -1,0 +1,24 @@
+{
+  "name": "Portal de Noticias",
+  "short_name": "NoticiasApp",
+  "description": "Portal oficial de noticias y comunicados en tiempo real.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0e",
+  "theme_color": "#ff4500",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "no_bg_image.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "no_bg_image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
