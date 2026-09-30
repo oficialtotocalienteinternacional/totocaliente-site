@@ -16,6 +16,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOTO CALIENTE INTERNACIONAL | Portal Oficial de la Comunidad +18</title>
+    
+    <!-- ============ MANIFIESTO Y SERVICE WORKER (PWA) ============ -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ff4500">
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW registrado con éxito', reg))
+            .catch(err => console.log('Error al registrar SW', err));
+        });
+      }
+    </script>
+    <!-- ============ FIN PWA ============ -->
+
     <!-- ============ SEO / GOOGLE ============ -->
     <meta name="description" content="Portal oficial de TOTO CALIENTE INTERNACIONAL. Únete a la comunidad más grande y activa: canales verificados, acceso libre y directo, buscador rápido de comunidades. Contenido exclusivo para adultos (+18).">
     <meta name="keywords" content="toto caliente, toto caliente internacional, comunidad adultos, canales telegram, portal oficial, contenido exclusivo +18">
