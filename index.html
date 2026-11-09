@@ -105,7 +105,7 @@
             --secundario: #0088cc;
             --exito: #00e676;
             --texto-blanco: #ffffff;
-            --texto-mutado: #b5b5c5; /* Contraste optimizado para accesibilidad */
+            --texto-mutado: #c5c5d5; /* Contraste optimizado para accesibilidad WCAG */
             --borde: rgba(255, 69, 0, 0.15);
             --borde-hover: rgba(255, 69, 0, 0.4);
             --fuente: 'Montserrat', sans-serif;
@@ -200,13 +200,17 @@
         .buscador-input-wrapper i { position: absolute; left: 18px; color: var(--texto-mutado); font-size: 1rem; }
         .buscador-control { width: 100%; padding: 14px 14px 14px 48px; background-color: var(--bg-tarjeta); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; color: #fff; font-family: var(--fuente); font-size: 0.85rem; outline: none; }
         
-        /* FILAS DE CANALES */
+        /* FILAS DE CANALES CON CONTRASTE DE ALTA VISIBILIDAD */
         .lista-canales { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 640px; margin: 0 auto 40px; }
         .canal-fila { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: rgba(20, 20, 25, 0.5); border: 1px solid rgba(255,255,255,0.02); border-radius: 8px; }
         .canal-info-basica { display: flex; align-items: center; gap: 12px; }
         .canal-icon-box { color: var(--primario); font-size: 0.9rem; }
         .canal-nombre-texto { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3px; }
-        .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.1); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+        
+        /* TAGS DE CATEGORÍA Y COMPRAR (AJUSTE DE ALTO CONTRASTE) */
+        .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.15); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+        .canal-categoria-tag.tag-comprar { background: #00e676 !important; color: #0b0b0e !important; font-weight: 900; }
+        
         .btn-unirse-mini { padding: 6px 14px; font-size: 0.65rem; border-radius: 4px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; font-weight: 700; text-transform: uppercase; transition: var(--transicion); }
         .btn-unirse-mini:hover { background: #fff; color: #000; }
         .canal-fila:hover { border-color: rgba(255, 69, 0, 0.3); background: var(--bg-tarjeta-hover); }
@@ -235,7 +239,7 @@
 </head>
 <body>
 
-    <!-- HEADER CON ROLE Y ARIA DE ACCESIBILIDAD -->
+    <!-- HEADER -->
     <header role="banner">
         <div class="contenedor">
             <a href="#" class="brand" aria-label="Toto Caliente Internacional Inicio">
@@ -254,7 +258,6 @@
         </div>
     </header>
 
-    <!-- MAIN WRAPPER PARA COMPLIANCE DE ACCESIBILIDAD -->
     <main>
         <!-- HERO PRINCIPAL -->
         <section class="hero" aria-label="Sección principal de bienvenida">
@@ -309,7 +312,7 @@
                         <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%; font-size:0.7rem; padding:12px;">ACCEDER A CANALES VIP</button>
                     </div>
 
-                    <!-- FORMULARIO CAPTURA FORMSPREE CON ARIA LABELS -->
+                    <!-- FORMULARIO CAPTURA FORMSPREE -->
                     <div style="width: 100%; max-width: 480px; margin: 0 auto 30px;">
                         <div data-fs-success>✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.</div>
                         <div data-fs-error>Ocurrió un error al procesar el correo. Inténtalo de nuevo.</div>
@@ -369,7 +372,7 @@
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-user-check"></i>
-                    <div class="stat-numero" id="numMiembros">Cargando...</div>
+                    <div class="stat-numero" id="numMiembros">1,421</div>
                     <div class="stat-label">Miembros Oficiales</div>
                 </div>
                 <div class="stat-card">
@@ -380,7 +383,7 @@
             </div>
         </section>
 
-        <!-- BUSCADOR Y LISTA COMPLETA DE 10 CANALES -->
+        <!-- BUSCADOR Y LISTA COMPLETA DE CANALES -->
         <section class="buscador-seccion" id="buscador" aria-label="Buscador de canales oficiales">
             <div class="contenedor">
                 <h2 class="buscador-titulo">Buscador Oficial de Canales</h2>
@@ -445,7 +448,7 @@
                             <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                             <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                         </div>
-                        <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                        <span class="canal-categoria-tag tag-comprar">COMPRAR</span>
                         <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" rel="noopener noreferrer" class="btn-unirse-mini" aria-label="Comprar esta fila promocional">Comprar Ahora</a>
                     </div>
                     
@@ -454,7 +457,7 @@
                             <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                             <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                         </div>
-                        <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                        <span class="canal-categoria-tag tag-comprar">COMPRAR</span>
                         <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" rel="noopener noreferrer" class="btn-unirse-mini" aria-label="Comprar esta fila promocional">Comprar Ahora</a>
                     </div>
                     
@@ -463,7 +466,7 @@
                             <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                             <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                         </div>
-                        <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                        <span class="canal-categoria-tag tag-comprar">COMPRAR</span>
                         <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" rel="noopener noreferrer" class="btn-unirse-mini" aria-label="Comprar esta fila promocional">Comprar Ahora</a>
                     </div>
                     
@@ -472,7 +475,7 @@
                             <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                             <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                         </div>
-                        <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                        <span class="canal-categoria-tag tag-comprar">COMPRAR</span>
                         <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" rel="noopener noreferrer" class="btn-unirse-mini" aria-label="Comprar esta fila promocional">Comprar Ahora</a>
                     </div>
                     
@@ -481,12 +484,12 @@
                             <div class="canal-icon-box"><i class="fab fa-telegram-plane"></i></div>
                             <div><span class="canal-nombre-texto">COMPRAR ESTA FILA </span></div>
                         </div>
-                        <span class="canal-categoria-tag" style="background: #27ae60;">COMPRAR</span>
+                        <span class="canal-categoria-tag tag-comprar">COMPRAR</span>
                         <a href="https://t.me/Promocionatetotocaliente_bot" target="_blank" rel="noopener noreferrer" class="btn-unirse-mini" aria-label="Comprar esta fila promocional">Comprar Ahora</a>
                     </div>
                 </div>
 
-                <!-- RESPALDOS RÁPIDOS Y CANALES DE WHATSAPP -->
+                <!-- RESPALDOS RÁPIDOS -->
                 <section class="respaldos" aria-label="Canales de respaldo alternativos">
                     <div style="text-align: center; margin-bottom: 35px;">
                         <h3 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">Canales de <span>Respaldo</span></h3>
@@ -539,13 +542,13 @@
             <img src="no_bg_image.png" alt="Logo de pie de página Toto Caliente" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;" width="65" height="65">
         </div>
         <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
-        <p style="font-size: 14px; color: #b5b5c5; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
-        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 10px;">Asegúrate siempre de ingresar mediante nuestros enlaces oficiales verificados.</p>
+        <p style="font-size: 14px; color: #c5c5d5; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
+        <p style="font-size: 0.8rem; color: #c5c5d5; margin-top: 10px;">Asegúrate siempre de ingresar mediante nuestros enlaces oficiales verificados.</p>
         
         <!-- Enlaces legales -->
         <p style="margin-top: 15px;">
-            <a href="#" onclick="openLegalModal(); return false;" style="color: #ccc; text-decoration: underline; margin: 0 8px;">Aviso Legal</a> | 
-            <a href="#" onclick="openLegalModal(); return false;" style="color: #ccc; text-decoration: underline; margin: 0 8px;">Política de Privacidad y Cookies</a>
+            <a href="#" onclick="openLegalModal(); return false;" style="color: #ffffff; text-decoration: underline; margin: 0 8px;">Aviso Legal</a> | 
+            <a href="#" onclick="openLegalModal(); return false;" style="color: #ffffff; text-decoration: underline; margin: 0 8px;">Política de Privacidad y Cookies</a>
         </p>
     </footer>
 
@@ -587,16 +590,13 @@
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
-    <!-- CONTROLADORES SCRIPT CON PERSISTENCIA Y BASE DE DATOS GLOBAL DE CONTEO EN VIVO -->
+    <!-- CONTROLADORES SCRIPT CON SISTEMA LOCAL OPTIMIZADO (SIN ERROR 404) -->
     <script>
         let usuarioActual = "";
-        
-        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/6618e7e31522f37474a58b29"; 
-        const JSONBIN_KEY = "$2a$10$wT0lX34Z3zG2Z1H5f9WlOuN3zK.X0sM3mIe1kI5f9WlOuN3zK.X0s";
 
         document.addEventListener('DOMContentLoaded', () => {
             verificarSesionGuardada();
-            obtenerEstadisticasGlobales();
+            cargarConteoMiembrosLocal();
             simularUsuariosConectados();
             verificarBannerCookies();
         });
@@ -658,7 +658,7 @@
             document.getElementById('pantallaExito').style.display = 'block';
 
             if (tipo === 'registro') {
-                incrementarConteoGlobal();
+                incrementarConteoMiembrosLocal();
             }
         }
 
@@ -687,47 +687,18 @@
             mostrarEstadoInvitado();
         }
 
-        async function obtenerEstadisticasGlobales() {
+        // SISTEMA LOCAL DE CONTEO SIN SOLICITUDES DE RED FALLIDAS
+        function cargarConteoMiembrosLocal() {
+            const local = localStorage.getItem('toto_total_miembros') || '1421';
             const elMiembros = document.getElementById('numMiembros');
-            try {
-                const respuesta = await fetch(JSONBIN_URL + '/latest', {
-                    headers: { 'X-Access-Key': JSONBIN_KEY }
-                });
-                if (respuesta.ok) {
-                    const datos = await respuesta.json();
-                    const total = datos.record.total_miembros || 1421;
-                    localStorage.setItem('toto_total_miembros', total);
-                    elMiembros.innerText = parseInt(total).toLocaleString();
-                } else {
-                    fallbackConteoLocal();
-                }
-            } catch (e) {
-                fallbackConteoLocal();
-            }
+            if (elMiembros) elMiembros.innerText = parseInt(local).toLocaleString();
         }
 
-        async function incrementarConteoGlobal() {
+        function incrementarConteoMiembrosLocal() {
             let actual = parseInt(localStorage.getItem('toto_total_miembros') || '1421') + 1;
             localStorage.setItem('toto_total_miembros', actual);
-            document.getElementById('numMiembros').innerText = actual.toLocaleString();
-
-            try {
-                await fetch(JSONBIN_URL, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Access-Key': JSONBIN_KEY
-                    },
-                    body: JSON.stringify({ total_miembros: actual })
-                });
-            } catch (e) {
-                console.log("Servidor ocupado, sincronizado localmente.");
-            }
-        }
-
-        function fallbackConteoLocal() {
-            const local = localStorage.getItem('toto_total_miembros') || '1421';
-            document.getElementById('numMiembros').innerText = parseInt(local).toLocaleString();
+            const elMiembros = document.getElementById('numMiembros');
+            if (elMiembros) elMiembros.innerText = actual.toLocaleString();
         }
 
         function simularUsuariosConectados() {
