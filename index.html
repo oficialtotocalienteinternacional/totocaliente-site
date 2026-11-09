@@ -325,7 +325,7 @@
                     </form>
                 </div>
 
-                <!-- BOTONES REDES SOCIALES -->
+                <!-- BOTONES REDES SOCIALES (Corregidos y limpiados) -->
                 <div class="hero-botones">
                     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="btn btn-primario">
                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE PUENTE
@@ -339,7 +339,6 @@
                         <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
                     </a>
 
-                    <div class="hero-botones">
                     <a href="https://t.me/oficialtotocalienteinternacional" target="_blank" class="btn btn-primario">
                         <i class="fab fa-telegram-plane"></i> TOTO CALIENTE INTERNACIONAL WEB
                     </a>
@@ -349,7 +348,7 @@
                     </a>
 
                     <a href="https://x.com/TOTOPROMOS" target="_blank" class="btn btn-outline" style="border-color: #ffffff;">
-                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i>X
+                        <i class="fab fa-x-twitter" style="color: #ffffff;"></i> X
                     </a>
                 </div>
             </div>
@@ -541,7 +540,7 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- PIE DE PÁGINA (Con enlaces legales añadidos) -->
     <footer>
         <div>
             <img src="no_bg_image.png" alt="TOTO CALIENTE LOGO" class="brand-logo" style="margin-bottom: 15px; width: 65px; height: 65px;">
@@ -549,7 +548,42 @@
         <p>&copy; 2026 <span class="footer-brand">TOTO CALIENTE INTERNACIONAL IN</span>. Todos los derechos reservados.</p>
         <p style="font-size: 14px; color: #888; margin-top: 5px;">Desarrollado por TOTO CALIENTE INTERNACIONAL IN.</p>
         <p style="font-size: 0.8rem; color: rgba(255,255,255,0.2); margin-top: 10px;">Asegúrate siempre de ingresar mediante nuestros enlaces oficiales verificados.</p>
+        
+        <!-- Enlaces legales para exención de responsabilidad -->
+        <p style="margin-top: 15px;">
+            <a href="#" onclick="openLegalModal(); return false;" style="color: #aaa; text-decoration: underline; margin: 0 8px;">Aviso Legal</a> | 
+            <a href="#" onclick="openLegalModal(); return false;" style="color: #aaa; text-decoration: underline; margin: 0 8px;">Política de Privacidad y Cookies</a>
+        </p>
     </footer>
+
+    <!-- BANNER DE COOKIES Y AVISO LEGAL FLOTANTE -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #111; color: #fff; padding: 15px; text-align: center; font-size: 13px; border-top: 1px solid #333; z-index: 9999; display: none;">
+      <span>Este sitio web utiliza cookies y servicios de terceros (OneSignal) para mejorar la experiencia. Al continuar navegando, aceptas nuestra <a href="#" onclick="openLegalModal(); return false;" style="color: #4da6ff; text-decoration: underline;">Política de Privacidad y Cookies</a>.</span>
+      <button onclick="acceptCookies()" style="margin-left: 15px; background: #ff4500; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold;">Aceptar</button>
+    </div>
+
+    <!-- MODAL LEGAL -->
+    <div id="legal-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center;">
+      <div style="background: #1a1a1a; color: #eee; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; padding: 25px; border-radius: 8px; font-size: 14px; line-height: 1.6; text-align: left;">
+        <h2 style="margin-top: 0; color: #fff;">Aviso Legal y Política de Privacidad</h2>
+        
+        <h3>1. Exención de Responsabilidad (Aviso Legal)</h3>
+        <p>Este sitio web opera únicamente como un portal informativo y de redirección de enlaces comunitarios. No alojamos, transmitimos ni distribuimos directamente contenido multimedia protegido ni archivos propios. Los enlaces externos dirigen a plataformas de terceros totalmente ajenas a este sitio.</p>
+
+        <h3>2. Política de Privacidad</h3>
+        <p>No recopilamos datos personales sensibles directos sin consentimiento. Los datos procesados automáticamente (como direcciones IP o métricas de acceso) se utilizan exclusivamente para el correcto funcionamiento del servidor y prevención de abusos.</p>
+
+        <h3>3. Uso de Cookies y Servicios de Terceros</h3>
+        <p>Utilizamos cookies propias y de terceros (como servicios de analítica y notificaciones push de OneSignal) para optimizar la funcionalidad técnica del portal. Puedes rechazar o limpiar las cookies en cualquier momento ajustando la configuración de tu navegador.</p>
+
+        <h3>4. Contacto y Retiro de Contenido</h3>
+        <p>Si consideras que algún enlace publicado infringe derechos de autor o normativas vigentes, contáctanos a través de nuestros canales oficiales para revisar y retirar el enlace correspondiente inmediatamente.</p>
+
+        <div style="text-align: right; margin-top: 20px;">
+          <button onclick="closeLegalModal()" style="background: #555; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Cerrar</button>
+        </div>
+      </div>
+    </div>
 
     <a href="https://t.me/TOTOCALIENTEPUENTE" target="_blank" class="telegram-flotante"><i class="fab fa-telegram-plane"></i></a>
 
@@ -572,7 +606,28 @@
             verificarSesionGuardada();
             obtenerEstadisticasGlobales();
             simularUsuariosConectados();
+            verificarBannerCookies();
         });
+
+        // Control de Cookies y Banner Legal
+        function verificarBannerCookies() {
+            if (!localStorage.getItem('cookies_accepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookies_accepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        function openLegalModal() {
+            document.getElementById('legal-modal').style.display = 'flex';
+        }
+
+        function closeLegalModal() {
+            document.getElementById('legal-modal').style.display = 'none';
+        }
 
         // 1. VERIFICACIÓN DE SESIÓN PERSISTENTE AL RECARGAR
         function verificarSesionGuardada() {
