@@ -184,10 +184,6 @@
         .icono-exito { color: var(--exito); font-size: 2rem; margin-bottom: 15px; }
         .titulo-exito { color: var(--exito); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
 
-        /* ESTILOS DE ÉXITO Y ERROR PARA FORMSPREE */
-        [data-fs-success] { display: none; color: var(--exito); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
-        [data-fs-error] { display: none; color: #ff3333; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
-
         /* BOTONES DE REDES SOCIALES */
         .hero-botones { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-bottom: 35px; }
         .hero-botones .btn { font-size: 0.72rem; padding: 10px 16px; border-radius: 6px; }
@@ -215,7 +211,7 @@
         .canal-icon-box { color: var(--primario); font-size: 0.9rem; }
         .canal-nombre-texto { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.3px; }
         
-        /* TAGS DE CATEGORÍA Y COMPRAR (AJUSTE DE ALTO CONTRASTE) */
+        /* TAGS DE CATEGORÍA Y COMPRAR */
         .canal-categoria-tag { font-size: 0.6rem; background: rgba(0, 136, 204, 0.15); color: #00a2f3; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
         .canal-categoria-tag.tag-comprar { background: #00e676 !important; color: #0b0b0e !important; font-weight: 900; }
         
@@ -320,23 +316,24 @@
                         <button onclick="confirmarIngresoFinal()" class="btn btn-primario" style="width:100%; font-size:0.7rem; padding:12px;">ACCEDER A CANALES VIP</button>
                     </div>
 
-                    <!-- FORMULARIO CAPTURA FORMSPREE -->
+                    <!-- FORMULARIO CAPTURA WEB3FORMS -->
                     <div style="width: 100%; max-width: 480px; margin: 0 auto 30px;">
-                        <div data-fs-success>✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.</div>
-                        <div data-fs-error>Ocurrió un error al procesar el correo. Inténtalo de nuevo.</div>
+                        <div id="resultado-form" style="display: none; font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"></div>
                         
-                        <form id="formspree-leads" style="display: flex; gap: 8px;">
+                        <form action="https://api.web3forms.com/submit" method="POST" id="form-respaldos" style="display: flex; gap: 8px;" onsubmit="enviarWeb3Forms(event)">
+                            <input type="hidden" name="access_key" value="1a589210-463e-4585-b367-c3eec314f411">
+                            <input type="hidden" name="subject" value="Nuevo Suscriptor de Respaldos - Toto Caliente">
+                            
                             <input 
                                 type="email" 
                                 name="email" 
                                 placeholder="Ingresa tu correo para recibir respaldos" 
                                 aria-label="Ingresa tu correo electrónico para respaldos"
                                 required 
-                                data-fs-field
                                 class="input-auth" 
                                 style="margin-bottom: 0; padding-left: 15px;"
                             >
-                            <button type="submit" data-fs-submit-btn class="btn btn-primario" style="white-space: nowrap;">SUSCRIBIRME</button>
+                            <button type="submit" class="btn btn-primario" style="white-space: nowrap;">SUSCRIBIRME</button>
                         </form>
                     </div>
 
@@ -591,13 +588,6 @@
 
     <a href="https://t.me/TOTOCALIENTEPUENTES" target="_blank" rel="noopener noreferrer" class="telegram-flotante" aria-label="Abrir Telegram directo"><i class="fab fa-telegram-plane"></i></a>
 
-    <!-- SCRIPT INICIALIZADOR DE FORMSPREE AJAX -->
-    <script>
-      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-      formspree('initForm', { formElement: '#formspree-leads', formId: 'moeqoqwr' });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-
     <!-- CONTROLADORES SCRIPT CON SISTEMA LOCAL OPTIMIZADO (SIN ERROR 404) -->
     <script>
         let usuarioActual = "";
@@ -710,7 +700,7 @@
         }
 
         function simularUsuariosConectados() {
-            The elConectados = document.getElementById('numConectados');
+            const elConectados = document.getElementById('numConectados');
             setInterval(() => {
                 let base = 60000 + Math.floor(Math.random() * 120);
                 if (elConectados) elConectados.innerText = base.toLocaleString();
@@ -723,6 +713,36 @@
             filas.forEach(fila => {
                 const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
                 fila.style.display = texto.includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        // SCRIPT DE ENVÍO PARA WEB3FORMS
+        function enviarWeb3Forms(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const divResultado = document.getElementById('resultado-form');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                divResultado.style.display = 'block';
+                if (response.status === 200) {
+                    divResultado.style.color = 'var(--exito)';
+                    divResultado.innerHTML = '✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.';
+                    form.reset();
+                } else {
+                    divResultado.style.color = '#ff3333';
+                    divResultado.innerHTML = json.message || 'Ocurrió un error. Inténtalo de nuevo.';
+                }
+            })
+            .catch(error => {
+                divResultado.style.display = 'block';
+                divResultado.style.color = '#ff3333';
+                divResultado.innerHTML = 'Error de red. Comprueba tu conexión.';
             });
         }
     </script>
