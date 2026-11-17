@@ -681,8 +681,20 @@
             document.getElementById('accionesInvitado').style.display = 'flex';
         }
         async function cerrarSesion() {
-            try { await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' }); }
-            finally { usuarioActual = ''; mostrarEstadoInvitado(); }
+            try {
+                const response = await fetch('/api/logout', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    cache: 'no-store'
+                });
+                if (!response.ok) {
+                    throw new Error('No se pudo cerrar la sesión. Inténtalo de nuevo.');
+                }
+                usuarioActual = '';
+                mostrarEstadoInvitado();
+            } catch (error) {
+                alert(error.message || 'No se pudo cerrar la sesión.');
+            }
         }
 
         function filtrarCanales() {
