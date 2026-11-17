@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcryptjs');
+const { setSession } = require('../lib/auth');
 
 const uri = process.env.MONGODB_URI;
 let clientPromise;
@@ -57,7 +58,8 @@ module.exports = async (req, res) => {
       fechaRegistro: new Date()
     });
 
-    return res.status(201).json({ ok: true });
+    setSession(res, usuario);
+    return res.status(201).json({ ok: true, usuario });
   } catch (error) {
     console.error('Error en registro:', error.message);
     return res.status(500).json({ error: 'Error interno del servidor' });
