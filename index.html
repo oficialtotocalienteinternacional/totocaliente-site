@@ -286,7 +286,7 @@
                                 </div>
                                 <div class="grupo-input">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" class="input-auth" placeholder="Contraseña" aria-label="Ingresa tu contraseña" required>
+                                    <input type="password" id="loginPassword" class="input-auth" placeholder="Contraseña" aria-label="Ingresa tu contraseña" autocomplete="current-password" required>
                                 </div>
                                 <button type="submit" class="btn btn-primario form-btn">Entrar al Portal</button>
                             </form>
@@ -301,7 +301,7 @@
                                 </div>
                                 <div class="grupo-input">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" class="input-auth" placeholder="Contraseña" aria-label="Elige tu contraseña" required>
+                                    <input type="password" id="regPassword" class="input-auth" placeholder="Contraseña (mínimo 12 caracteres)" aria-label="Elige tu contraseña" autocomplete="new-password" minlength="12" maxlength="128" required>
                                 </div>
                                 <button type="submit" class="btn btn-primario form-btn">Completar Registro</button>
                             </form>
@@ -589,82 +589,85 @@
     <a href="https://t.me/TOTOCALIENTEPUENTES" target="_blank" rel="noopener noreferrer" class="telegram-flotante" aria-label="Abrir Telegram directo"><i class="fab fa-telegram-plane"></i></a>
 
     <!-- CONTROLADORES SCRIPT CON SISTEMA LOCAL OPTIMIZADO (SIN ERROR 404) -->
+    <!-- CONTROLADORES DE SESIÓN Y AUTENTICACIÓN -->
     <script>
         let usuarioActual = "";
 
         document.addEventListener('DOMContentLoaded', () => {
             verificarSesionGuardada();
-            cargarConteoMiembrosLocal();
-            simularUsuariosConectados();
             verificarBannerCookies();
         });
 
         function verificarBannerCookies() {
-            if (!localStorage.getItem('cookies_accepted')) {
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
+            if (!localStorage.getItem('cookies_accepted')) document.getElementById('cookie-banner').style.display = 'block';
         }
-
         function acceptCookies() {
             localStorage.setItem('cookies_accepted', 'true');
             document.getElementById('cookie-banner').style.display = 'none';
         }
+        function openLegalModal() { document.getElementById('legal-modal').style.display = 'flex'; }
+        function closeLegalModal() { document.getElementById('legal-modal').style.display = 'none'; }
 
-        function openLegalModal() {
-            document.getElementById('legal-modal').style.display = 'flex';
-        }
-
-        function closeLegalModal() {
-            document.getElementById('legal-modal').style.display = 'none';
-        }
-
-        function verificarSesionGuardada() {
-            const usuarioGuardado = localStorage.getItem('toto_usuario_activo');
-            if (usuarioGuardado) {
-                usuarioActual = usuarioGuardado;
+        async function verificarSesionGuardada() {
+            try {
+                const response = await fetch('/api/sesion', { credentials: 'same-origin', cache: 'no-store' });
+                if (!response.ok) throw new Error('Sin sesión');
+                const data = await response.json();
+                usuarioActual = '@' + data.usuario;
                 mostrarSesionIniciada(usuarioActual);
-            } else {
+            } catch (_) {
+                usuarioActual = '';
                 mostrarEstadoInvitado();
             }
         }
 
         function alternarFormulario(tipo) {
             const zona = document.getElementById('zonaFormularios');
-            const cajaLogin = document.getElementById('cajaLogin');
-            const cajaRegistro = document.getElementById('cajaRegistro');
+            document.getElementById('cajaLogin').style.display = tipo === 'login' ? 'block' : 'none';
+            document.getElementById('cajaRegistro').style.display = tipo === 'registro' ? 'block' : 'none';
             document.getElementById('pantallaExito').style.display = 'none';
-
-            if (tipo === 'login') {
-                zona.style.display = 'block';
-                cajaLogin.style.display = 'block';
-                cajaRegistro.style.display = 'none';
-            } else {
-                zona.style.display = 'block';
-                cajaRegistro.style.display = 'block';
-                cajaLogin.style.display = 'none';
-            }
+            zona.style.display = 'block';
             zona.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function ejecutarAccion(event, tipo) {
+        async function ejecutarAccion(event, tipo) {
             event.preventDefault();
-            const apodo = tipo === 'login' ? document.getElementById('loginUser').value : document.getElementById('regUser').value;
-            usuarioActual = apodo.startsWith('@') ? apodo : '@' + apodo;
-
-            document.getElementById('zonaFormularios').style.display = 'none';
-            document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
-            document.getElementById('pantallaExito').style.display = 'block';
-
-            if (tipo === 'registro') {
-                incrementarConteoMiembrosLocal();
+            const form = event.target;
+            const usuarioInput = document.getElementById(tipo === 'login' ? 'loginUser' : 'regUser');
+            const passwordInput = document.getElementById(tipo === 'login' ? 'loginPassword' : 'regPassword');
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Procesando...';
+            try {
+                const response = await fetch(tipo === 'login' ? '/api/login' : '/api/registro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ usuario: usuarioInput.value.trim().replace(/^@/, ''), password: passwordInput.value })
+                });
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok) throw new Error(data.error || 'No se pudo completar la operación');
+                usuarioActual = '@' + (data.usuario || usuarioInput.value.trim().replace(/^@/, ''));
+                document.getElementById('zonaFormularios').style.display = 'none';
+                document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
+                document.querySelector('#pantallaExito .titulo-exito').textContent = tipo === 'registro' ? '¡REGISTRO EXITOSO!' : '¡SESIÓN INICIADA!';
+                document.querySelector('#pantallaExito p').innerHTML = 'Sesión iniciada como <strong id="nombreUsuarioCreado" style="color:#fff;"></strong>.';
+                document.getElementById('nombreUsuarioCreado').innerText = usuarioActual;
+                document.getElementById('pantallaExito').style.display = 'block';
+                form.reset();
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
             }
         }
 
         function confirmarIngresoFinal() {
-            localStorage.setItem('toto_usuario_activo', usuarioActual);
             mostrarSesionIniciada(usuarioActual);
             document.getElementById('pantallaExito').style.display = 'none';
-            window.open('https://t.me/TOTOCALIENTEPUENTE', '_blank');
+            window.open('https://t.me/TOTOCALIENTEPUENTES', '_blank', 'noopener,noreferrer');
         }
 
         function mostrarSesionIniciada(usuario) {
@@ -673,77 +676,45 @@
             pastilla.style.display = 'flex';
             document.getElementById('pastillaNombre').innerText = usuario;
         }
-
         function mostrarEstadoInvitado() {
             document.getElementById('pastillaSesion').style.display = 'none';
             document.getElementById('accionesInvitado').style.display = 'flex';
         }
-
-        function cerrarSesion() {
-            localStorage.removeItem('toto_usuario_activo');
-            usuarioActual = "";
-            mostrarEstadoInvitado();
-        }
-
-        // SISTEMA LOCAL DE CONTEO SIN SOLICITUDES DE RED FALLIDAS
-        function cargarConteoMiembrosLocal() {
-            const local = localStorage.getItem('toto_total_miembros') || '1421';
-            const elMiembros = document.getElementById('numMiembros');
-            if (elMiembros) elMiembros.innerText = parseInt(local).toLocaleString();
-        }
-
-        function incrementarConteoMiembrosLocal() {
-            let actual = parseInt(localStorage.getItem('toto_total_miembros') || '1421') + 1;
-            localStorage.setItem('toto_total_miembros', actual);
-            const elMiembros = document.getElementById('numMiembros');
-            if (elMiembros) elMiembros.innerText = actual.toLocaleString();
-        }
-
-        function simularUsuariosConectados() {
-            const elConectados = document.getElementById('numConectados');
-            setInterval(() => {
-                let base = 60000 + Math.floor(Math.random() * 120);
-                if (elConectados) elConectados.innerText = base.toLocaleString();
-            }, 5000);
+        async function cerrarSesion() {
+            try { await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' }); }
+            finally { usuarioActual = ''; mostrarEstadoInvitado(); }
         }
 
         function filtrarCanales() {
             const query = document.getElementById('inputBuscar').value.toLowerCase();
-            const filas = document.querySelectorAll('#listaCanales .canal-fila');
-            filas.forEach(fila => {
-                const texto = fila.querySelector('.canal-nombre-texto').innerText.toLowerCase();
-                fila.style.display = texto.includes(query) ? 'flex' : 'none';
+            document.querySelectorAll('#listaCanales .canal-fila').forEach(fila => {
+                const nombre = fila.querySelector('.canal-nombre-texto');
+                fila.style.display = nombre && nombre.innerText.toLowerCase().includes(query) ? 'flex' : 'none';
             });
         }
 
-        // SCRIPT DE ENVÍO PARA WEB3FORMS
         function enviarWeb3Forms(e) {
             e.preventDefault();
             const form = e.target;
-            const formData = new FormData(form);
             const divResultado = document.getElementById('resultado-form');
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                divResultado.style.display = 'block';
-                if (response.status === 200) {
-                    divResultado.style.color = 'var(--exito)';
-                    divResultado.innerHTML = '✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.';
-                    form.reset();
-                } else {
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+                .then(async response => {
+                    const json = await response.json();
+                    divResultado.style.display = 'block';
+                    if (response.ok) {
+                        divResultado.style.color = 'var(--exito)';
+                        divResultado.textContent = '✔ ¡Suscripción exitosa! Estás respaldado en nuestra lista oficial.';
+                        form.reset();
+                    } else {
+                        divResultado.style.color = '#ff3333';
+                        divResultado.textContent = json.message || 'Ocurrió un error. Inténtalo de nuevo.';
+                    }
+                })
+                .catch(() => {
+                    divResultado.style.display = 'block';
                     divResultado.style.color = '#ff3333';
-                    divResultado.innerHTML = json.message || 'Ocurrió un error. Inténtalo de nuevo.';
-                }
-            })
-            .catch(error => {
-                divResultado.style.display = 'block';
-                divResultado.style.color = '#ff3333';
-                divResultado.innerHTML = 'Error de red. Comprueba tu conexión.';
-            });
+                    divResultado.textContent = 'Error de red. Comprueba tu conexión.';
+                });
         }
     </script>
 </body>
