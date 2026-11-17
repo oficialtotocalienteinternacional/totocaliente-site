@@ -1,58 +1,32 @@
 const { MongoClient } = require('mongodb');
-
-const uri = "mongodb+srv://totocalienteinternacionalbooking_db_user:5lcXpMT3yBXDrgAc@cluster0.1fzqg8u.mongodb.net/totocaliente?appName=Cluster0";
-let client;
-let clientPromise;
-
-if (!global._mongoClientPromise) {
-  client = new MongoClient(uri);
-  global._mongoClientPromise = client.connect();
+const bcrypt = require('bcryptjs');
+const { setSession } = require('../lib/auth');
+const { sameOrigin, ensureAuthIndexes } = require('../lib/security');
+function getClient() {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) throw new Error('MONGODB_URI no está configurada');
+  if (!global._mongoClientPromise) global._mongoClientPromise = new MongoClient(uri, { serverSelectionTimeoutMS: 5000, maxPoolSize: 5 }).connect();
+  return global._mongoClientPromise;
 }
-clientPromise = global._mongoClientPromise;
-
 module.exports = async (req, res) => {
-  // Manejar el CORS por si las moscas
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método no permitido' });
-  }
-
+  res.setHeader('Cache-Control', 'no-store');
+  if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ error: 'Método no permitido' }); }
+  if (!sameOrigin(req)) return res.status(403).json({ error: 'Origen no permitido' });
   try {
-    const { usuario, password } = req.body;
-    
-    if (!usuario || !password) {
-      return res.status(400).json({ error: 'Usuario y contraseña requeridos' });
-    }
-
-    const connection = await clientPromise;
-    const db = connection.db('totocaliente');
-    const collection = db.collection('usuarios');
-
-    // Verificar si ya existe
-    const usuarioExiste = await collection.findOne({ usuario });
-    if (usuarioExiste) {
-      return res.status(400).json({ error: 'El apodo ya existe' });
-    }
-
-    // Insertar el nuevo usuario
-    await collection.insertOne({
-      usuario,
-      password,
-      fechaRegistro: new Date()
-    });
-
-    return res.status(200).json({ ok: true });
-
+    const body = req.body || {};
+    const usuario = typeof body.usuario === 'string' ? body.usuario.trim() : '';
+    const password = typeof body.password === 'string' ? body.password : '';
+    if (!/^[a-zA-Z0-9_]{3,24}$/.test(usuario)) return res.status(400).json({ error: 'El usuario debe tener entre 3 y 24 caracteres alfanuméricos o guion bajo' });
+    if (password.length < 12 || password.length > 128) return res.status(400).json({ error: 'La contraseña debe tener entre 12 y 128 caracteres' });
+    const db = (await getClient()).db('totocaliente');
+    await ensureAuthIndexes(db);
+    const passwordHash = await bcrypt.hash(password, 12);
+    await db.collection('usuarios').insertOne({ usuario, passwordHash, fechaRegistro: new Date() });
+    setSession(res, usuario);
+    return res.status(201).json({ ok: true, usuario });
   } catch (error) {
-    console.error(error);
+    if (error && error.code === 11000) return res.status(409).json({ error: 'El apodo ya existe' });
+    console.error('Error en registro:', error.message);
     return res.status(500).json({ error: 'Error interno del servidor' });
   }
 };

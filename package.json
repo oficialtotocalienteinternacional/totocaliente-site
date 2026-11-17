@@ -2,6 +2,7 @@
   "name": "totocaliente-site",
   "version": "1.0.0",
   "dependencies": {
-    "mongodb": "^6.0.0"
+    "mongodb": "^6.0.0",
+    "bcryptjs": "^2.4.3"
   }
 }
